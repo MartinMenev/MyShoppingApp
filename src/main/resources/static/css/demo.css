@@ -20,7 +20,7 @@
 }
 
 .button {
-    text-decoration: none;
+    text-decoration: #0b2e13;
     color: rgba(255, 255, 255, 0.8);
     background: rgb(145, 92, 182);
     padding: 15px 40px;
