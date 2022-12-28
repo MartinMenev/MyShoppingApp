@@ -64,8 +64,7 @@ public class ProductService {
     }
 
     public void updateProduct(Long id, String newName) {
-        this.productRepository.updateProduct(id, newName)
-                .orElseThrow(NoSuchElementException::new);
+        this.productRepository.updateProduct(id, newName);
     }
 
     @Modifying
@@ -73,4 +72,10 @@ public class ProductService {
     public void deleteById(long id) {
         this.productRepository.deleteById(id);
     }
+
+    public Product getProductById(Long id){
+        return this.productRepository
+                .getProductById(id)
+                .orElseThrow(NoSuchElementException::new);
+    };
 }

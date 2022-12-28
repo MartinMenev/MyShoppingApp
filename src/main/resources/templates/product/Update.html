@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+    <title>Update product</title>
+</head>
+<body>
+<div>
+    <form th:action="@{/Product/Update}" th:object="${product}" method="post">
+
+        <label>
+            <input type="text" name="name" th:value="${product.name}">
+        </label>
+
+        <button type="submit">UPDATE</button>
+    </form>
+</div>
+
+</body>
+</html>

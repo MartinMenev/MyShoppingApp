@@ -29,16 +29,18 @@
 
 
     <div class="jumbotron">
-        <table style="background-color:#e3eeff" width="100%" class="table table-striped" >
+        <table style="table-border-color-light: #b8daff" class="table table-striped" >
             <thead>
             <tr>
-                <th>name</th>
+                <th>item</th>
                 <th>your action</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="product:${products}">
-                <td th:text="${product.name}"  ></td>
+                <td width="20px" th:text="${product.name}"  ></td>
+
+
                 <td><a th:href="@{/product/updateProduct/{id}(id=${product.id})}"
                        class="btn btn-primary"> update </a>
                     <a th:href="@{/deleteProduct/{id}(id=${product.id})}"

@@ -24,7 +24,7 @@ public class Product {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne (fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn
     private User user;
 

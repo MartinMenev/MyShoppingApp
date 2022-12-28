@@ -17,8 +17,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findByNameAndUserId (String productName, Long userid);
 
     @Modifying
+    @Transactional
     @Query("update Product p set p.name = :newName where p.id = :id")
-    Optional<Product> updateProduct( Long id, String newName);
+    void updateProduct( Long id, String newName);
 
     public void deleteById(long id);
+
+    Optional<Product> getProductById(Long id);
 }

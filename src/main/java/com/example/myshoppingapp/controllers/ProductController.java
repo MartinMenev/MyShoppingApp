@@ -8,9 +8,7 @@ import com.example.myshoppingapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,16 +18,16 @@ public class ProductController {
     private final ProductService productService;
     private final UserService userService;
 
-  @Autowired
+    @Autowired
     public ProductController(ProductService productService, UserService userService) {
-      this.productService = productService;
-      this.userService = userService;
-  }
+        this.productService = productService;
+        this.userService = userService;
+    }
 
 
     @GetMapping("/product/addProduct")
     public String openPageForAddingProduct(Model model) {
-        if (this.userService.getLoggedInUser() ==null) {
+        if (this.userService.getLoggedInUser() == null) {
             return "index";
         }
         List<OutputProductDTO> products = this.productService.getListedProducts();
@@ -48,11 +46,13 @@ public class ProductController {
         return "product/addProduct";
     }
 
-    @GetMapping("/product/updateProduct/{id}")
-    public String updateForm(@PathVariable(value = "id") Long id, Model model) {
-        productService.updateProduct();
+
+
+    @GetMapping("product/updateProduct/{id}")
+    public String updateProduct(@PathVariable(value = "id") Long id, Model model) {
+        Product product = productService.getProductById(id);
         model.addAttribute("product", product);
-      return "product/updateProduct";
+        return "product/updateProduct";
     }
 
     @GetMapping("/deleteProduct/{id}")
@@ -60,4 +60,6 @@ public class ProductController {
         productService.deleteById(id);
         return "redirect:/product/addProduct";
     }
+
+
 }

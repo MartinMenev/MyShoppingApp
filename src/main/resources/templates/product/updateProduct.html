@@ -6,9 +6,9 @@
     <title>Update product</title>
 </head>
 <body>
-<div class="container">
+<div class="container" align="center">
     <hr>
-    <h2>Update Employee</h2>
+    <h2>Update product</h2>
 
     <hr>
 
@@ -16,12 +16,9 @@
 
         <!-- Add hidden form field to handle update -->
         <input type="hidden" th:field="*{id}"/>
+        <input type="text" th:field="*{name}" class="form-control mb-4 col-4">
 
-        <label>
-            <input type="text" th:field="*{name}" class="form-control mb-4 col-4">
-        </label>
-
-        <button type="submit" class="btn btn-info col-2"> Update Employee</button>
+        <button type="submit" class="btn btn-info col-2"> Update </button>
     </form>
 
     <hr>
