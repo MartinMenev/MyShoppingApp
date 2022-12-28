@@ -26,28 +26,27 @@
     </form>
     <span style="visibility: hidden">....</span>
 
-    ----------------------
+
 
     <div class="jumbotron">
-        <form>
-            <div class="col-md-12 d-flex justify-content-center">
-                <label class="display-4" for="export-project-textarea">All my products so far:</label>
-            </div>
-            <div class="col-md-12 d-flex justify-content-center">
-                <div class="col-md-8 d-flex justify-content-center">
-                    <textarea class="form-control" id="export-project-textarea" rows="10"
-                              th:text="${showAllProducts}"></textarea>
-                    <table class="text-md-left" th:text="${showAllProducts}">
-                        <tbody>
-                        <tr th:each="product: ${products}">
-                            <td th:text="${product.getName()}"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-        </form>
+        <table style="background-color:#e3eeff" width="100%" class="table table-striped" >
+            <thead>
+            <tr>
+                <th>name</th>
+                <th>your action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product:${products}">
+                <td th:text="${product.name}"  ></td>
+                <td><a th:href="@{/product/updateProduct/{id}(id=${product.id})}"
+                       class="btn btn-primary"> update </a>
+                    <a th:href="@{/deleteProduct/{id}(id=${product.id})}"
+                       class="btn btn-danger"> remove from my list </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
 </main>

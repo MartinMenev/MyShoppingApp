@@ -12,6 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class OutputProductDTO implements Serializable{
 
+        private Long id;
         private String name;
 
     @Override

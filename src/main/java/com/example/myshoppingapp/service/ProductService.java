@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -60,5 +61,16 @@ public class ProductService {
                 .stream()
                 .map(product -> this.modelMapper.map(product, OutputProductDTO.class))
                 .toList();
+    }
+
+    public void updateProduct(Long id, String newName) {
+        this.productRepository.updateProduct(id, newName)
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+    @Modifying
+    @Transactional
+    public void deleteById(long id) {
+        this.productRepository.deleteById(id);
     }
 }
