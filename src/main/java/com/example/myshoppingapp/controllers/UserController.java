@@ -16,7 +16,6 @@ public class UserController {
 
     private final UserService userService;
 
-
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
@@ -29,6 +28,7 @@ public class UserController {
 
     @PostMapping("/users/login")
     public String doLogin(LoginDTO loginDTO) throws NoSuchFieldException {
+
         User user = userService.login(loginDTO);
 
         if (user != null) {
@@ -53,4 +53,6 @@ public class UserController {
 
         return "user/register";
     }
+
+
 }

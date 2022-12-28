@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+    <title>Add product</title>
+</head>
+<body>
+<header>
+    <th:block th:include="~{fragments/nav-bar}"></th:block>
+</header>
+<main class="mt-5">
+    <hr class="bg-hero hr-2"/>
+    <h1 class="text-center text-black display-4">Add product to your shopping list</h1>
+    <hr class="bg-hero w-25 hr-2"/>
+    <form class="mx-auto w-25" th:method="post" th:action="@{/product/addProduct}">
+        <input type="hidden" name="_csrf" value="c95ccb2b-1afa-47bd-bf7b-a5b72739470b">
+        <div class="form-group">
+            <label for="name" class="text-black mb-1">Add your product</label>
+            <input type="text" class="form-control" id="name" placeholder="product ..." name="name">
+        </div>
+        <hr class="bg-hero hr-2"/>
+        <div class="button-holder mt-3 d-flex justify-content-center">
+            <button type="submit" class="btn bg-black glow-button">Submit product</button>
+        </div>
+    </form>
+    <span style="visibility: hidden">....</span>
+
+    ----------------------
+
+    <div class="jumbotron">
+        <form>
+            <div class="col-md-12 d-flex justify-content-center">
+                <label class="display-4" for="export-project-textarea">All my products so far:</label>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center">
+                <div class="col-md-8 d-flex justify-content-center">
+                    <textarea class="form-control" id="export-project-textarea" rows="10"
+                              th:text="${showAllProducts}"></textarea>
+                    <table class="text-md-left" th:text="${showAllProducts}">
+                        <tbody>
+                        <tr th:each="product: ${products}">
+                            <td th:text="${product.getName()}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+</main>
+<footer>
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+</body>
+</html>

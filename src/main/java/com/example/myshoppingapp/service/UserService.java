@@ -4,17 +4,17 @@ import com.example.myshoppingapp.models.users.LoginDTO;
 import com.example.myshoppingapp.models.users.RegisterUserDTO;
 import com.example.myshoppingapp.models.users.User;
 import com.example.myshoppingapp.repositories.UserRepository;
-import jakarta.transaction.Transactional;
 import lombok.Getter;
+import lombok.Setter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Getter
+@Setter
 @Service
 public class UserService {
 
@@ -39,7 +39,6 @@ public class UserService {
         return user;
     }
 
-
     @Modifying
     public Boolean register(RegisterUserDTO registerUserDTO) {
         User user = this.modelMapper.map(registerUserDTO, User.class);
@@ -48,9 +47,12 @@ public class UserService {
             user.setIsAdmin(true);
         }
 
-        System.out.println(user);
         this.userRepository.save(user);
         return true;
+    }
+
+    public User findByUsername(String username) {
+        return this.userRepository.findByUsername(username).orElseThrow(NoSuchElementException::new);
     }
 }
 
