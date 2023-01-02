@@ -9,9 +9,13 @@
 }
 
 .bg-image-home {
-   background-image: url('https://pix4free.org/assets/library/2021-05-25/originals/shopping.jpg');
+    background:
+            linear-gradient(rgba(0,0,0,0.1),
+            rgba(0,0,0,0.2)),
+            url('https://t3.ftcdn.net/jpg/02/25/24/04/360_F_225240483_GDQMMUEJgpIpc3tXKueCCL5QYa0zpenv.jpg') no-repeat center;
     background-size: contain;
-    background-position: center;
+
+
 }
 
 .bg-black {

@@ -29,7 +29,7 @@
 
 
     <div class="jumbotron">
-        <table style="table-border-color-light: #b8daff" class="table table-striped" >
+        <table style="table-border-color-light: #e9f2f2" class="table table-striped" >
             <thead>
             <tr>
                 <th>item</th>
@@ -38,7 +38,7 @@
             </thead>
             <tbody>
             <tr th:each="product:${products}">
-                <td width="20px" th:text="${product.name}"  ></td>
+                <td th:text="${product.name}"  ></td>
 
 
                 <td><a th:href="@{/product/updateProduct/{id}(id=${product.id})}"

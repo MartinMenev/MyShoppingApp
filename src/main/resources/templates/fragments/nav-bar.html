@@ -1,4 +1,5 @@
 <th:block xmlns:th="http://www.w3.org/1999/xhtml">
+    <script src="https://kit.fontawesome.com/5e0c9322dd.js" crossorigin="anonymous"></script>
     <th:block sec:authorize="isAnonymous()">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container">
@@ -11,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" th:href="@{/}">Home
+                            <a class="nav-link" th:href="@{/}">
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -32,7 +33,7 @@
         <th:block sec:authorize="isAuthenticated()">
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                 <div class="container">
-                    <a class="navbar-brand" th:href="@{/export/export-all-products}">My products ... </a>
+                    <a class="navbar-brand" th:href="@{/export/export-all-products}"> <i class="fa-sharp fa-solid fa-list"> My products</i></a>
                     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
                             data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -42,22 +43,22 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" th:href="@{/}">Home
+                                <a class="nav-link" th:href="@{/}"><i class="fa-solid fa-house-user"> Home</i>
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="nav-item-active">
-                                <a class="nav-link" th:href="@{/product/addProduct}">Add||Remove product</a>
+                                <a class="nav-link" th:href="@{/product/addProduct}"><i class="fa-solid fa-plus"> Add / remove </i></a>
                             </li>
                             <li class="nav-item-active">
-                                <a class="nav-link" th:href="@{/export/export-all-products}">Show added products</a>
+                                <a class="nav-link" th:href="@{/export/export-all-products}"><i class="fa-brands fa-shopify"></i> </a>
                             </li>
                             <li class="nav-item-active">
                                 <form action="/logout?login" method="post">
                                     <input type="hidden" name="_csrf" value="80417983-fe8b-45c7-963e-31f6915a1560">
-                                    <a class="nav-link" th:href="@{/users/login}">Logout</a>
+                                    <a class="nav-link" th:href="@{/users/login}"><i class="fa-solid fa-right-from-bracket"></i></a>
                                 </form>
                             </li>
                         </ul>
