@@ -28,7 +28,7 @@ public class UserController {
 
     @PostMapping("/users/login")
     public String doLogin(LoginDTO loginDTO) throws NoSuchFieldException {
-
+//        this.userService.setLoggedInUser(null);
         User user = userService.login(loginDTO);
 
         if (user != null) {
