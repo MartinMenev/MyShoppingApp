@@ -12,10 +12,8 @@
     background:
             linear-gradient(rgba(0,0,0,0.3),
             rgba(0,0,0,0.1)),
-            url('https://t3.ftcdn.net/jpg/02/25/24/04/360_F_225240483_GDQMMUEJgpIpc3tXKueCCL5QYa0zpenv.jpg') no-repeat center;
-    background-size: contain;
-
-
+            url('https://www.kingfishershopping.co.uk/media/jjfpvc2b/shopping-banner.jpg?center=0.10413282349902948,0.7145827598123341&mode=crop&quality=100&width=780&height=600&rnd=132578992698100000') no-repeat ;
+    background-size: cover;
 }
 
 .bg-black {
@@ -109,4 +107,32 @@
     padding-bottom: calc(var(--input-padding-y) / 3);
     font-size: 12px;
     color: #777;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    background-color: #1F8186;
+
+}
+
+body > main > div > table > tbody {
+    font-family: system-ui;
+    font-size: 22px;
+}
+
+.title-name {
+    font-family: fantasy;
+    font-size: 60px;
+    font-style: italic;
+    color: #c2dccf;
+}
+
+.custom-container {
+    text-align: center!important;
+    margin: 5% 10%;
+    padding: 0 20%;
 }
