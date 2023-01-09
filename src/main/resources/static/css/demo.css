@@ -109,10 +109,6 @@
     color: #777;
 }
 
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
 
 body {
     background-color: #1F8186;
@@ -120,8 +116,10 @@ body {
 }
 
 body > main > div > table > tbody {
-    font-family: system-ui;
+    font-family: monospace;
     font-size: 22px;
+    margin: 2%;
+    padding: 2%;
 }
 
 .title-name {
@@ -133,6 +131,32 @@ body > main > div > table > tbody {
 
 .custom-container {
     text-align: center!important;
-    margin: 5% 10%;
-    padding: 0 20%;
+    margin: 0 30%;
+
 }
+
+
+td {
+    width: 50px;
+    overflow: hidden;
+}
+
+
+.export-container {
+    text-align: center !important;
+    margin: 1% 5%;
+}
+
+.jumbotron {
+    margin: 0 2%;
+    padding: 3% 3%;
+}
+
+.btn-light {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+}
+

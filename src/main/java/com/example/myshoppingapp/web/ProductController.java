@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.controllers;
+package com.example.myshoppingapp.web;
 
 import com.example.myshoppingapp.models.products.InputProductDTO;
 import com.example.myshoppingapp.models.products.OutputProductDTO;
@@ -25,25 +25,25 @@ public class ProductController {
     }
 
 
-    @GetMapping("/product/addProduct")
+    @GetMapping("/product-list")
     public String openPageForAddingProduct(Model model) {
         if (this.userService.getLoggedInUser() == null) {
             return "index";
         }
         List<OutputProductDTO> products = this.productService.getListedProducts();
         model.addAttribute("products", products);
-        return "product/addProduct";
+        return "product/product-list";
     }
 
 
-    @PostMapping("/product/addProduct")
+    @PostMapping("/product-list")
     public String doAddProduct(InputProductDTO inputProductDTO, Model model) {
         productService.addProduct(inputProductDTO);
 
         List<OutputProductDTO> products = this.productService.getListedProducts();
         model.addAttribute("products", products);
 
-        return "product/addProduct";
+        return "product/product-list";
     }
 
 
@@ -58,7 +58,7 @@ public class ProductController {
     @GetMapping("/deleteProduct/{id}")
     public String deleteById(@PathVariable(value = "id") long id) {
         productService.deleteById(id);
-        return "redirect:/product/addProduct";
+        return "redirect:/product-list";
     }
 
 

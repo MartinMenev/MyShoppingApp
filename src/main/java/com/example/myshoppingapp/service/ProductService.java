@@ -56,11 +56,13 @@ public class ProductService {
         String currentUsername = this.userService.getLoggedInUser();
         Long currentUserId = this.userService.findByUsername(currentUsername).getId();
 
-        return this.productRepository.findAllByUserId(currentUserId)
+        List<OutputProductDTO> outputProductDTOS = this.productRepository.findAllByUserId(currentUserId)
                 .orElseThrow(NoSuchElementException::new)
                 .stream()
                 .map(product -> this.modelMapper.map(product, OutputProductDTO.class))
                 .toList();
+
+        return outputProductDTOS.stream().sorted((a, b) -> b.getId().compareTo(a.getId())).toList();
     }
 
     public void updateProduct(Long id, String newName) {

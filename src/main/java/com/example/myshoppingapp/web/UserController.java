@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.controllers;
+package com.example.myshoppingapp.web;
 
 import com.example.myshoppingapp.models.users.LoginDTO;
 import com.example.myshoppingapp.models.users.RegisterUserDTO;
@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.Optional;
 
 @Controller
 public class UserController {

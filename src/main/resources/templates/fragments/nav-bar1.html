@@ -2,7 +2,16 @@
     <script src="https://kit.fontawesome.com/5e0c9322dd.js" crossorigin="anonymous"></script>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" th:href="@{/index}">ShoppingList</a>
+                <a class="navbar-brand" th:href="@{/}">sh<i class="fa-solid fa-basket-shopping"></i>pping list</a>
+            <span>
+                <form class="mx-auto w-75" th:method="post" th:action="@{/product-list}">
+                    <input type="hidden" name="_csrf" value="c95ccb2b-1afa-47bd-bf7b-a5b72739470b">
+                    <div class="form-group">
+                        <label for="name"></label><input type="text" class="form-control" id="name" placeholder="add item ..." name="name">
+                                </div>
+                </form>
+            </span>
+
             <button class="navbar-toggler"
                     type="button"
                     data-bs-toggle="collapse"
@@ -20,10 +29,20 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/product/addProduct}">
-                            <i class="fa-solid fa-plus"> Add / remove </i>
+                        <a class="nav-link" th:href="@{/product-list}">
+                            <i class="fa-solid fa-plus"> View List </i>
                         </a>
                     </li>
+<!--                    <li class="nav-item">-->
+<!--                        <span>-->
+<!--                            <form class="mx-auto w-75" th:method="post" th:action="@{/product/addProduct}">-->
+<!--                                <input type="hidden" name="_csrf" value="c95ccb2b-1afa-47bd-bf7b-a5b72739470b">-->
+<!--                                <div class="form-group">-->
+<!--                                    <input type="text" class="form-control" id="name" placeholder="add item ..." name="name">-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </span>-->
+<!--                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/export/export-all-products}">
                             <i class="fa-brands fa-shopify"></i>

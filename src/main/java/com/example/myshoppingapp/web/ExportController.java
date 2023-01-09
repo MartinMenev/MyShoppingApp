@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.controllers;
+package com.example.myshoppingapp.web;
 
 import com.example.myshoppingapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
