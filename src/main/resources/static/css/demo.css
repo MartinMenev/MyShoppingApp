@@ -8,12 +8,13 @@
     min-height: 100vh;
 }
 
-.bg-image-home {
-    background:
-            linear-gradient(rgba(0,0,0,0.3),
-            rgba(0,0,0,0.1)),
-            url('https://www.kingfishershopping.co.uk/media/jjfpvc2b/shopping-banner.jpg?center=0.10413282349902948,0.7145827598123341&mode=crop&quality=100&width=780&height=600&rnd=132578992698100000') no-repeat ;
+.bg-image {
+    background: url('https://images.pexels.com/photos/7879835/pexels-photo-7879835.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+    no-repeat center 51%;
+    height: 30rem;
     background-size: cover;
+    text-align: center;
+    padding-bottom:300px;
 }
 
 .bg-black {
@@ -189,11 +190,16 @@ body > header > nav > div > div:nth-child(2) > form {
 }
 
 #navbarText > ul > li {
-    margin-left: 20px;
+    margin-left: 10px;
+    text-align: right;
 }
 
 #addItem {
-    width: 150px;
+    width: 135px;
+}
+
+#navbarText > ul {
+    margin-left: 73%;
 }
 
 .logo {
@@ -203,7 +209,6 @@ body > header > nav > div > div:nth-child(2) > form {
     text-shadow: 0 0 0.05em rgba(0, 0, 0, 0.2), -0.025em 0.025em 0.1em #000,
     -0.05em 0.05em 0.1em #000, -0.1em 0.1em 0.3em #000,
     -0.1em 0.1em 0.5em rgba(0, 0, 0, 0.5);
-    font-family: "Muli", sans-serif;
 }
 
 body > header > nav > div > div.logo > a {
@@ -218,7 +223,6 @@ body > header > nav > div > div.logo > a {
     text-shadow: 0 0 0.05em rgba(0, 0, 0, 0.2), -0.025em 0.025em 0.1em #000,
     -0.05em 0.05em 0.1em #000, -0.1em 0.1em 0.3em #000,
     -0.1em 0.1em 0.5em rgba(0, 0, 0, 0.5);
-    font-family: "Muli", sans-serif;
 }
 
 .card {
@@ -230,11 +234,10 @@ body > header > nav > div > div.logo > a {
 }
 
 .mask {
-
+    background-color: rgba(0, 0, 60, 0.2);
     text-align: center;
-    margin-left: 20%;
     padding: 1%;
-    width: auto;
+
 
 }
 
@@ -280,3 +283,11 @@ a:active {
     text-decoration: none;
 }
 
+.sign-in {
+    font-style: inherit;
+    color: #7ad0d2;
+    text-shadow: 0 0 0.05em rgba(0, 0, 0, 0.2), -0.025em 0.025em 0.1em #000,
+    -0.05em 0.05em 0.1em #000, -0.1em 0.1em 0.3em #000,
+    -0.1em 0.1em 0.5em rgba(0, 0, 0, 0.5);
+    font-family: "Muli", sans-serif;
+}

@@ -13,26 +13,22 @@
     <body>
         <header>
             <!-- Jumbotron -->
-            <div class="p-4 bg-image rounded-5" style="
-            background: url('https://images.pexels.com/photos/9811517/pexels-photo-9811517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-            height: 400px;
-            background-size: cover;
-            text-align: center;
-            padding-bottom:300px;">
-                <div class="mask rounded-5" style="background-color: rgba(15, 5, 15, 0.6);">
-                    <div class="d-flex h-100">
+            <div class="p-4 bg-image rounded-5">
+                <div class="mask rounded-5 ">
+                    <div class="d-flex justify-content-center align-items-center h-100">
                         <div class="text-white">
                             <h1 class="logo-home-text">
                                 <i class="fa-solid fa-cart-arrow-down"></i> Sh</i><i class="fa-regular fa-heart"></i>pppIt
                             </h1>
-                            <h2 class="mb-3">Compile your wish list easy <hr> and don't forget any items while shopping</h2>
+                            <h2 class="mb-3">Make a list of items easily
+                                <hr> And don't forget a single product while shopping</h2>
                             <p>
                                 <a class="btn btn-outline-light btn-lg" th:href="@{/users/register}" role="button">REGISTER | GET STARTED</a>
                             </p>
                             <p>
                                 <h6>
                                     Already using the app?
-                                    <a th:href="@{/users/login}"> Sign in </a>
+                                    <a class="sign-in" th:href="@{/users/login}"> Sign in </a>
                                 </h6>
                             </p>
                         </div>
