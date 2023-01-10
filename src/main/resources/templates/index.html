@@ -21,12 +21,7 @@
                 <div class="login d-flex align-items-center py-3">
                     <div class="container">
                         <h1 class="title-name">My Sh<i class="fa-solid fa-cart-shopping"></i>pping List</h1>
-                        <hr class="bg-dark hr-2"/>
-                        <h1 th:if="${username == null}"
-                                class="text-black display-4"><a class="text-black" th:href="@{/users/login}">Login</a> if you
-                            have an account.</h1>
-                        <h1 th:if="${username == null}" class="text-black display-6"><a class="text-black" th:href="@{/users/register}">Register</a> if
-                            you don't.</h1>
+
                         <h1 th:if="${username != null}" class="text-black display-6">Hey,
                             <span th:text="${username}"></span>!
                         </h1>

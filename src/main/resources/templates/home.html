@@ -13,11 +13,18 @@
     <main>
         <div class="jumbotron">
 
-            <span style="visibility: hidden">....</span>
-            <h1 class="text-black display-3 mt-5 display-3">
-                Welcome to Your Shopping List App!
+            <div class="container">
+                <h1 class="logo-home-text">
+                    <i class="fa-solid fa-cart-arrow-down"></i> Sh</i><i class="fa-regular fa-heart"></i>pppIt
+                </h1>
+                <hr class="bg-dark hr-2"/>
+                <h1 th:if="${username == null}" class="text-black display-6"> Hello, guest!
+                </h1>
+                <h1 th:if="${username != null}" class="text-black display-6">Welcome,
+                    <span th:text="${username}"></span>!
+                </h1>
+            </div>
                 Here you can easily manage your shopping items
-            </h1>
         </div>
     </main>
         <footer>

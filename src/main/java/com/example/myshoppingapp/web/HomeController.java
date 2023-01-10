@@ -19,14 +19,15 @@ public class HomeController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("username", userService.getLoggedInUser());
-
-        return "index";
+        this.userService.setLoggedInUser(null);
+        return "index2";
     }
 
 
 
     @GetMapping("home")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("username", userService.getLoggedInUser());
         return "home";
     }
 }

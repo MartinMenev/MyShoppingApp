@@ -112,8 +112,14 @@
 
 body {
     background-color: #1F8186;
-
+    font-size: 16px;
+    text-align: center;
+    margin: auto auto;
+    padding: 1% 0;
+    width: 90%;
+    justify-content: center;
 }
+
 
 body > main > div > table > tbody {
     font-family: monospace;
@@ -137,8 +143,8 @@ body > main > div > table > tbody {
 
 
 td {
-    width: 50px;
-    overflow: hidden;
+    text-align: left;
+    width: 150px;
 }
 
 
@@ -158,5 +164,119 @@ td {
     border: none;
     cursor:pointer;
     overflow: hidden;
+}
+
+.btn-info {
+    background-color: #1F8186;
+    background-repeat:no-repeat;
+    border: #495057;
+    cursor:pointer;
+    overflow: hidden;
+    color: lavender;
+}
+
+.nav1 {
+    display: inline-block;
+}
+
+body > header > nav > div > div:nth-child(2) > form {
+    padding: 0 1%;
+    margin: 0 1%
+}
+
+#navbarText > ul {
+    align-content: space-around;
+}
+
+#navbarText > ul > li {
+    margin-left: 20px;
+}
+
+#addItem {
+    width: 150px;
+}
+
+.logo {
+    font-size: 1rem;
+    font-style: inherit;
+    color: #1F8186;
+    text-shadow: 0 0 0.05em rgba(0, 0, 0, 0.2), -0.025em 0.025em 0.1em #000,
+    -0.05em 0.05em 0.1em #000, -0.1em 0.1em 0.3em #000,
+    -0.1em 0.1em 0.5em rgba(0, 0, 0, 0.5);
+    font-family: "Muli", sans-serif;
+}
+
+body > header > nav > div > div.logo > a {
+    color: inherit;
+}
+
+.logo-home-text {
+    font-size: 2rem;
+    font-style: inherit;
+    color: #1F8186;
+    font-weight: bold;
+    text-shadow: 0 0 0.05em rgba(0, 0, 0, 0.2), -0.025em 0.025em 0.1em #000,
+    -0.05em 0.05em 0.1em #000, -0.1em 0.1em 0.3em #000,
+    -0.1em 0.1em 0.5em rgba(0, 0, 0, 0.5);
+    font-family: "Muli", sans-serif;
+}
+
+.card {
+    display: inline-block;
+    padding: 8px;
+    margin: 2% 2%;
+    text-align: justify-all;
+    width: 20rem;
+}
+
+.mask {
+
+    text-align: center;
+    margin-left: 20%;
+    padding: 1%;
+    width: auto;
+
+}
+
+section{
+    font-family: "Helvetica",
+    sans-serif;
+    font-size: 16px;
+    margin: auto;
+    width: 90%;
+    text-align: center;
+}
+
+.small-section {
+    font-family: "system-ui";
+    font-size: 12px;
+    margin: auto;
+    width: 20%;
+    text-align: left;
+
+}
+
+.mb-3 {
+    font-family: system-ui;
+    font-style: italic;
+    font-size: 1rem;
+    color: #fff2e9;
+}
+
+a {
+    color: #1F8186;
+    font-weight: bold;
+}
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #e9f2f2;
+}
+
+a:active {
+    text-decoration: none;
 }
 

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/5e0c9322dd.js" crossorigin="anonymous"></script>
+    <th:block th:include="~{fragments/head}"></th:block>
+    <title>ShopppIt</title>
+</head>
+    <body>
+        <header>
+            <!-- Jumbotron -->
+            <div class="p-4 bg-image rounded-5" style="
+            background: url('https://images.pexels.com/photos/9811517/pexels-photo-9811517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            height: 400px;
+            background-size: cover;
+            text-align: center;
+            padding-bottom:300px;">
+                <div class="mask rounded-5" style="background-color: rgba(15, 5, 15, 0.6);">
+                    <div class="d-flex h-100">
+                        <div class="text-white">
+                            <h1 class="logo-home-text">
+                                <i class="fa-solid fa-cart-arrow-down"></i> Sh</i><i class="fa-regular fa-heart"></i>pppIt
+                            </h1>
+                            <h2 class="mb-3">Compile your wish list easy <hr> and don't forget any items while shopping</h2>
+                            <p>
+                                <a class="btn btn-outline-light btn-lg" th:href="@{/users/register}" role="button">REGISTER | GET STARTED</a>
+                            </p>
+                            <p>
+                                <h6>
+                                    Already using the app?
+                                    <a th:href="@{/users/login}"> Sign in </a>
+                                </h6>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Jumbotron -->
+        </header>
+        <section>
+            <div class="card rounded-5">
+                <img src="https://global-uploads.webflow.com/5fc266068a88f47e2dbc6135/6391dc743bae91f96949f052_Header_image-p-800.jpeg" class="card-img-top" alt="VEGAN PROTEIN">
+                <div class="card-body">
+                    <h5 class="card-title">THE 5 BEST VEGAN PROTEIN SOURCES</h5>
+                    <p class="card-text">Why are proteins so important? How much protein per day do we need?</p>
+                    <a href="#" class="btn btn-info col-10 rounded-5">read more</a>
+                </div>
+            </div>
+            <div class="card rounded-5">
+                <img src="https://t3.ftcdn.net/jpg/01/59/27/44/1000_F_159274497_0LeHVWK7Deyhrjebkiv5ftFCK6o61Pxs.jpg" class="card-img-top" alt="PLAN YOUR GROCERIES">
+                <div class="card-body">
+                    <h5 class="card-title">3 REASONS WHY YOU SHOULD PLAN YOUR GROCERIES</h5>
+                    <p class="card-text">Do you often forget half of the things you would have needed? </p>
+                    <a href="#" class="btn btn-info col-10 rounded-5">read more</a>
+                </div>
+            </div>
+            <div class="card rounded-5">
+                <img src="https://www.eatthis.com/wp-content/uploads/sites/4/2019/06/warm-brussels-sprouts-salad-eggs-pickled-red-onions.jpg" class="card-img-top" alt="RECIPE COLLECTION">
+                <div class="card-body">
+                    <h5 class="card-title">CREATE YOUR OWN RECIPE COLLECTION</h5>
+                    <p class="card-text">Did you know that you can save your favorite recipes and view others already shared?</p>
+                    <a href="#" class="btn btn-info col-10 rounded-5">read more</a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    </body>
+    <footer>
+        <th:block th:include="~{fragments/footer}"></th:block>
+    </footer>
+    </body>
+</html>
