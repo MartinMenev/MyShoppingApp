@@ -15,6 +15,8 @@ public class OutputProductDTO implements Serializable{
         private Long id;
         private String name;
 
+        private Long position;
+
     @Override
     public String toString() {
         return this.name;

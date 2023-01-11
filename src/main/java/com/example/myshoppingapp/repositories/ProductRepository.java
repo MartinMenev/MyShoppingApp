@@ -1,5 +1,6 @@
 package com.example.myshoppingapp.repositories;
 
+import com.example.myshoppingapp.models.products.OutputProductDTO;
 import com.example.myshoppingapp.models.products.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -14,7 +15,6 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<List<Product>> findAllByUserId(Long id);
 
-    Optional<Product> findByNameAndUserId (String productName, Long userid);
 
     @Modifying
     @Transactional
@@ -24,4 +24,19 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     public void deleteById(long id);
 
     Optional<Product> getProductById(Long id);
+
+    @Query("select max(p.id) from Product p")
+    Optional <Long> findLatestId();
+
+    @Modifying
+    @Transactional
+    @Query("update Product p set p.position = case " +
+            "when (p.position = :pos1) then :pos2 " +
+            "when (p.position = :pos2) then :pos1 " +
+            "end " +
+    "WHERE p.position in (:pos1, :pos2)")
+    void swapProductOrder(Long pos1, Long pos2);
+
+    Product getProductByPosition(Long position);
+
 }

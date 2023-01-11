@@ -11,7 +11,6 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "products")
@@ -24,11 +23,18 @@ public class Product {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     @JoinColumn
     private User user;
 
+    @Column
+    private long position;
+
+    public Product() {
+    }
+
     public Product(String name) {
+        this();
         this.name = name;
     }
 }

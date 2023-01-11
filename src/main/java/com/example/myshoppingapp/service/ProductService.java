@@ -37,7 +37,12 @@ public class ProductService {
         User user = userService.findByUsername(userService.getLoggedInUser());
         Product product = this.modelMapper.map(inputProductDTO, Product.class);
         product.setUser(user);
+//        long count = this.productRepository.findLatestId().orElse(0L);
+//        product.setPosition(++count);
         this.productRepository.saveAndFlush(product);
+        product.setPosition(product.getId());
+        this.productRepository.saveAndFlush(product);
+
     }
 
     public String getAllProducts() {
@@ -62,7 +67,7 @@ public class ProductService {
                 .map(product -> this.modelMapper.map(product, OutputProductDTO.class))
                 .toList();
 
-        return outputProductDTOS.stream().sorted((a, b) -> b.getId().compareTo(a.getId())).toList();
+        return outputProductDTOS.stream().sorted((a, b) -> b.getPosition().compareTo(a.getPosition())).toList();
     }
 
     public void updateProduct(Long id, String newName) {
@@ -79,5 +84,18 @@ public class ProductService {
         return this.productRepository
                 .getProductById(id)
                 .orElseThrow(NoSuchElementException::new);
-    };
+    }
+
+        public void moveUpProduct(long position) {
+        if (this.productRepository.getProductByPosition(position +1) !=null) {
+            this.productRepository.swapProductOrder(position, position +1);
+        }
+    }
+
+    public void moveDownProduct(long position) {
+        if (this.productRepository.getProductByPosition(position -1) !=null) {
+            this.productRepository.swapProductOrder(position, position - 1);
+        }
+    }
 }
+

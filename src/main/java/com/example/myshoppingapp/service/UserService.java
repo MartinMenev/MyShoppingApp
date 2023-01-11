@@ -54,6 +54,10 @@ public class UserService {
     public User findByUsername(String username) {
         return this.userRepository.findByUsername(username).orElseThrow(NoSuchElementException::new);
     }
+
+    public Long getLoggedUserId() {
+        return this.userRepository.findByUsername(getLoggedInUser()).get().getId();
+    }
 }
 
 

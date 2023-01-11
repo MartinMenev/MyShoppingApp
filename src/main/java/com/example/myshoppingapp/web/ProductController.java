@@ -5,6 +5,7 @@ import com.example.myshoppingapp.models.products.OutputProductDTO;
 import com.example.myshoppingapp.models.products.Product;
 import com.example.myshoppingapp.service.ProductService;
 import com.example.myshoppingapp.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,11 +56,23 @@ public class ProductController {
         return "product/updateProduct";
     }
 
+    @GetMapping("/moveUpProduct/{position}")
+    public String moveUpProduct(@PathVariable(value = "position") long position) {
+        productService.moveUpProduct(position);
+        return "redirect:/product-list";
+    }
+
+    @GetMapping("/moveDownProduct/{position}")
+    public String moveDownProduct(@PathVariable(value = "position") long position) {
+        productService.moveDownProduct(position);
+        return "redirect:/product-list";
+    }
+
+
     @GetMapping("/deleteProduct/{id}")
     public String deleteById(@PathVariable(value = "id") long id) {
         productService.deleteById(id);
         return "redirect:/product-list";
     }
-
 
 }
