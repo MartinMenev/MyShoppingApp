@@ -23,10 +23,19 @@
             </thead>
             <tbody>
             <tr th:each="product:${products}">
-                <td th:text="${product.name}"  ></td>
+                <td th:text="${product.name}" >
 
-<!--                update Product-->
-                <td><a th:href="@{/product/updateProduct/{id}(id=${product.id})}"
+                </td>
+                <td>
+                    <!--               moveUp Product-->
+                    <a th:href="@{/moveUpProduct/{id}(id=${product.id})}"
+                       class="btn btn-light"> <i class="fa-regular fa-circle-up"></i> </a>
+                    <!--                moveDown Product-->
+                    <a th:href="@{/moveDownProduct/{id}(id=${product.id})}"
+                       class="btn btn-light"> <i class="fa-regular fa-circle-down"></i> </a>
+
+<!--                update Product&ndash;&gt;-->
+                    <a th:href="@{/product/updateProduct/{id}(id=${product.id})}"
                        class="btn btn-light"> <i class="fa-regular fa-pen-to-square"></i> </a>
 <!--                remove Product-->
                     <a th:href="@{/deleteProduct/{id}(id=${product.id})}"

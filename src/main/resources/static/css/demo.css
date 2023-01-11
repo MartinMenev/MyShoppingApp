@@ -291,3 +291,7 @@ a:active {
     -0.1em 0.1em 0.5em rgba(0, 0, 0, 0.5);
     font-family: "Muli", sans-serif;
 }
+
+.fa-regular, fa-solid {
+    font-size: 23px;
+}
