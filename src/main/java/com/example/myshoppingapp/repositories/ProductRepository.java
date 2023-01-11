@@ -37,6 +37,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     "WHERE p.position in (:pos1, :pos2)")
     void swapProductOrder(Long pos1, Long pos2);
 
+
     Product getProductByPosition(Long position);
 
 }

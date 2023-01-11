@@ -10,6 +10,7 @@ import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -86,16 +87,12 @@ public class ProductService {
                 .orElseThrow(NoSuchElementException::new);
     }
 
-        public void moveUpProduct(long position) {
-        if (this.productRepository.getProductByPosition(position +1) !=null) {
-            this.productRepository.swapProductOrder(position, position +1);
-        }
+    public void moveUpProduct(long position) {
+        this.productRepository.swapProductOrder(position, position +1);
     }
 
     public void moveDownProduct(long position) {
-        if (this.productRepository.getProductByPosition(position -1) !=null) {
-            this.productRepository.swapProductOrder(position, position - 1);
-        }
+        this.productRepository.swapProductOrder(position, position - 1);
     }
 }
 
