@@ -25,9 +25,9 @@ public class ProductController {
         this.userService = userService;
     }
 
-
+    // show all products in table (html):
     @GetMapping("/product-list")
-    public String openPageForAddingProduct(Model model) {
+    public String openProductListPage(Model model) {
         if (this.userService.getLoggedInUser() == null) {
             return "index";
         }
@@ -36,15 +36,17 @@ public class ProductController {
         return "product/product-list";
     }
 
+//    @PostMapping("/product-list")
+//    public String doShowProduct(Model model) {
+//        List<OutputProductDTO> products = this.productService.getListedProducts();
+//        model.addAttribute("products", products);
+//        return "product/product-list";
+//    }
 
-    @PostMapping("/product-list")
-    public String doAddProduct(InputProductDTO inputProductDTO, Model model) {
+    @PostMapping("/add-product")
+    public String doAddProduct(InputProductDTO inputProductDTO) {
         productService.addProduct(inputProductDTO);
-
-        List<OutputProductDTO> products = this.productService.getListedProducts();
-        model.addAttribute("products", products);
-
-        return "product/product-list";
+        return "redirect:/product-list";
     }
 
     @GetMapping("/product/updateProduct/{id}")
