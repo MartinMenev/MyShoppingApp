@@ -19,7 +19,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Modifying
     @Transactional
     @Query("update Product p set p.name = :newName where p.id = :id")
-    void updateProduct( Long id, String newName);
+    void updateProductName(Long id, String newName);
 
     public void deleteById(long id);
 
@@ -36,7 +36,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "end " +
     "WHERE p.position in (:pos1, :pos2)")
     void swapProductOrder(Long pos1, Long pos2);
-
 
     Product findFirstByPositionGreaterThanAndUserIdOrderByPositionAsc(Long position, Long userId);
 

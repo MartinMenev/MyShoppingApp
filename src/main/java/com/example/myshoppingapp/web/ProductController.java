@@ -47,13 +47,19 @@ public class ProductController {
         return "product/product-list";
     }
 
-
-
-    @GetMapping("product/updateProduct/{id}")
+    @GetMapping("/product/updateProduct/{id}")
     public String updateProduct(@PathVariable(value = "id") Long id, Model model) {
         Product product = productService.getProductById(id);
         model.addAttribute("product", product);
         return "product/updateProduct";
+    }
+
+    @PutMapping ("/product/updateProduct/{id}")
+    public String doUpdateProduct(@PathVariable(value = "id") Long id, Model model, InputProductDTO inputProductDTO) {
+        Product product = productService.getProductById(id);
+        model.addAttribute("product", product);
+        productService.updateProduct(inputProductDTO);
+        return "redirect:/product-list";
     }
 
     @GetMapping("/moveUpProduct/{position}")

@@ -38,8 +38,6 @@ public class ProductService {
         User user = userService.findByUsername(userService.getLoggedInUser());
         Product product = this.modelMapper.map(inputProductDTO, Product.class);
         product.setUser(user);
-//        long count = this.productRepository.findLatestId().orElse(0L);
-//        product.setPosition(++count);
         this.productRepository.saveAndFlush(product);
         product.setPosition(product.getId());
         this.productRepository.saveAndFlush(product);
@@ -71,8 +69,10 @@ public class ProductService {
         return outputProductDTOS.stream().sorted((a, b) -> b.getPosition().compareTo(a.getPosition())).toList();
     }
 
-    public void updateProduct(Long id, String newName) {
-        this.productRepository.updateProduct(id, newName);
+    public void updateProduct(InputProductDTO inputProductDTO) {
+        Long idToUpdate = inputProductDTO.getId();
+        String newName = inputProductDTO.getName();
+        this.productRepository.updateProductName(idToUpdate, newName);
     }
 
     @Modifying
