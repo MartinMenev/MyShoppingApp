@@ -81,18 +81,29 @@ public class ProductService {
         this.productRepository.deleteById(id);
     }
 
-    public Product getProductById(Long id){
+    public Product getProductById(Long id) {
         return this.productRepository
                 .getProductById(id)
                 .orElseThrow(NoSuchElementException::new);
     }
 
     public void moveUpProduct(long position) {
-        this.productRepository.swapProductOrder(position, position +1);
+        long userId = this.userService.getLoggedUserId();
+        if (this.productRepository.findFirstByPositionGreaterThanAndUserIdOrderByPositionAsc(position, userId) !=null) {
+            long newPosition = this.productRepository.
+                    findFirstByPositionGreaterThanAndUserIdOrderByPositionAsc(position, userId).getPosition();
+            this.productRepository.swapProductOrder(position, newPosition);
+        }
+
     }
 
     public void moveDownProduct(long position) {
-        this.productRepository.swapProductOrder(position, position - 1);
+        long userId = this.userService.getLoggedUserId();
+        if (this.productRepository.findFirstByPositionLessThanAndUserIdOrderByPositionDesc(position, userId) != null) {
+            long newPosition = this.productRepository.
+                    findFirstByPositionLessThanAndUserIdOrderByPositionDesc(position, userId).getPosition();
+            this.productRepository.swapProductOrder(position, newPosition);
+        }
     }
 }
 

@@ -176,6 +176,32 @@ td {
     color: lavender;
 }
 
+.tooltip .tooltiptext {
+    font-size: 23px;
+    width: 120px;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+}
+
+.tooltip:hover .tooltiptext:hover {
+    visibility: visible;
+    width: 120px;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+}
+
 .nav1 {
     display: inline-block;
 }

@@ -38,8 +38,10 @@
                     <a th:href="@{/product/updateProduct/{id}(id=${product.id})}"
                        class="btn btn-light"> <i class="fa-regular fa-pen-to-square"></i> </a>
 <!--                remove Product-->
-                    <a th:href="@{/deleteProduct/{id}(id=${product.id})}"
-                       class="btn btn-light"> <i class="fa-solid fa-xmark"></i> </a>
+                        <a th:href="@{/deleteProduct/{id}(id=${product.id})}"
+                           class="btn btn-light">
+                            <i class="fa-solid fa-xmark"></i>
+                        </a>
                 </td>
             </tr>
             </tbody>

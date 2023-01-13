@@ -38,6 +38,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     void swapProductOrder(Long pos1, Long pos2);
 
 
-    Product getProductByPosition(Long position);
+    Product findFirstByPositionGreaterThanAndUserIdOrderByPositionAsc(Long position, Long userId);
+
+    Product findFirstByPositionLessThanAndUserIdOrderByPositionDesc(Long position, Long userId);
 
 }
