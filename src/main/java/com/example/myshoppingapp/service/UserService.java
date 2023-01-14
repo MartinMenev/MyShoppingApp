@@ -1,8 +1,10 @@
 package com.example.myshoppingapp.service;
 
+import com.example.myshoppingapp.models.UserRole;
 import com.example.myshoppingapp.models.users.LoginDTO;
 import com.example.myshoppingapp.models.users.RegisterUserDTO;
 import com.example.myshoppingapp.models.users.User;
+import com.example.myshoppingapp.models.users.UserOutputDTO;
 import com.example.myshoppingapp.repositories.UserRepository;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,14 +30,10 @@ public class UserService {
         this.loggedInUser = null;
     }
 
-
-
     public User login(LoginDTO loginDTO) {
         User user = this.userRepository
                 .findByUsernameAndPassword(loginDTO.getUsername(), loginDTO.getPassword()).orElseThrow(NoSuchElementException::new);
-
         this.loggedInUser = user.getUsername();
-
         return user;
     }
 
@@ -44,10 +42,10 @@ public class UserService {
         User user = this.modelMapper.map(registerUserDTO, User.class);
 
         if (this.userRepository.count() == 0) {
-            user.setIsAdmin(true);
-        }
-
+            user.setUserRole(UserRole.ADMIN);
+        } else user.setUserRole(UserRole.USER);
         this.userRepository.save(user);
+        this.setLoggedInUser(user.getUsername());
         return true;
     }
 
@@ -57,6 +55,11 @@ public class UserService {
 
     public Long getLoggedUserId() {
         return this.userRepository.findByUsername(getLoggedInUser()).get().getId();
+    }
+
+    public UserOutputDTO getLoggedUserDTO() {
+        User currentuser = this.findByUsername(getLoggedInUser());
+        return this.modelMapper.map(currentuser, UserOutputDTO.class);
     }
 }
 

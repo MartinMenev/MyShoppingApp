@@ -3,9 +3,11 @@ package com.example.myshoppingapp.web;
 import com.example.myshoppingapp.models.users.LoginDTO;
 import com.example.myshoppingapp.models.users.RegisterUserDTO;
 import com.example.myshoppingapp.models.users.User;
+import com.example.myshoppingapp.models.users.UserOutputDTO;
 import com.example.myshoppingapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -48,9 +50,14 @@ public class UserController {
         if (successfulRegistration) {
             return "redirect:/home";
         }
-
         return "user/register";
     }
 
+    @GetMapping("user/profile")
+    public String ShowUserProfile(Model model){
+        UserOutputDTO userOutputDTO = this.userService.getLoggedUserDTO();
+        model.addAttribute("user", userOutputDTO);
+        return "user/profile";
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.example.myshoppingapp.models.users;
 
+import com.example.myshoppingapp.models.UserRole;
 import com.example.myshoppingapp.models.products.Product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,7 +31,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column
-    private Boolean isAdmin = false;
-
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
 }

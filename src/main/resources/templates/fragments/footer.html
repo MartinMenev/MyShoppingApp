@@ -1,9 +1,36 @@
 <th:block th:fragment>
-    <div class="text-white bg-dark text-hero p-2 text-center rounded-5">&copy; Copyright
-        <span class="logo">
+    <div class="footer-section text-white bg-dark text-hero p-2 text-center rounded-5">
+        <div class="footer-column">
+            &copy;Copyright
+            <span class="logo">
             <a class="navbar-brand" th:href="@{/home}">
-                <i class="fa-solid fa-cart-arrow-down"></i> Sh<i class="fa-regular fa-heart"></i>pppIt .</a>
-        </span>
-        All rights reserved.
+                <i class="fa-solid fa-cart-arrow-down"></i> Sh<i class="fa-regular fa-heart"></i>pppIt 2023 .</a>
+            </span>
+            All rights reserved.
+        </div>
+        <div class="footer-column">
+<!--            <div class="footer-column">-->
+               <div class="footer-element">
+                   <a class="nav-link" th:href="@{/user/profile}">
+                       <i class="fab fa-facebook-square"></i>
+                    </a>
+               </div >
+                <div class="footer-element">
+                    <a class="nav-link" th:href="@{/user/profile}">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="footer-element">
+                    <a class="nav-link" th:href="@{/user/profile}">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+                <div class="footer-element">
+                    <a class="nav-link" th:href="@{/user/profile}">
+                        <i class="fab fa-google"></i>
+                    </a>
+                </div>
+<!--            </div>-->
+        <div>
     </div>
 </th:block>
