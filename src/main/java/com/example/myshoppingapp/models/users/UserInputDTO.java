@@ -7,16 +7,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+public class UserInputDTO implements Serializable {
 
-public class UserOutputDTO implements Serializable {
-    private long id;
-    private String username;
-    private String password;
-    private String email;
-    private UserRole userRole;
+        private long id;
+        private String username;
+        private String password;
+        private String email;
+        private UserRole userRole;
+
 }

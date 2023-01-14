@@ -9,26 +9,25 @@
 <header>
     <th:block th:include="~{fragments/nav-bar1}"></th:block>
 </header>
-<h1 class="logo-home-text">My profile</h1>
+<h1 class="logo-home-text">Update:</h1>
 <hr class="bg-hero hr-2"/>
 <main class="p-5 align-content-center bg-blur my-register-div">
     <div class="container mt-5">
         <div class="row d-flex justify-content-center">
             <div class="col-md-7">
                 <div class="profile-card p-3 py-4">
+                    <form action="#" th:action="@{/update-user}" th:object="${user}" th:method="PUT">
                     <div class="text-center"><img src="/images/ShoppingPic.jpg" width="100" class="rounded-circle" alt="picture"></div>
                     <div class="text-center mt-3" th:object="${user}">
-                        <a th:href="@{/update-user}"
-                           class="btn btn-light"> <i class="fa-regular fa-pen-to-square"></i> </a>
                             <h4 class="mt-4 mb-0">Username</h4>
-                            <span class="mt-2 mb-0 text-white" th:text="${user.username}" ></span>
+                        <input type="text" th:field="*{username}" class="form-control mb-4 col-4">
                             <h4 class="mt-2 mb-0">Password</h4>
-                            <span class="mt-2 mb-0 text-white" th:text="${user.password}"></span>
+                        <input type="text" th:field="*{password}" class="form-control mb-4 col-4">
                             <h4 class="mt-2 mb-0">Email</h4>
-                            <span class="mt-2 mb-0 text-white" th:text="${user.email}"></span>
-                            <h4 class="mt-2 mb-0">Role</h4>
-                            <span class="logo-home-text" th:text="${user.userRole}"></span>
-                            </div>
+                        <input type="text" th:field="*{email}" class="form-control mb-4 col-4">
+                    </div>
+                        <button type="submit" class="btn btn-info col-5"> Update </button>
+                    </form>
                     <hr class="bg-hero hr-2"/>
                     <a th:href="@{/home}"
                        class="btn btn-light text-white">Back to home</a>

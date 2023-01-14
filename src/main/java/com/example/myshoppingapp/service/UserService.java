@@ -1,10 +1,7 @@
 package com.example.myshoppingapp.service;
 
 import com.example.myshoppingapp.models.UserRole;
-import com.example.myshoppingapp.models.users.LoginDTO;
-import com.example.myshoppingapp.models.users.RegisterUserDTO;
-import com.example.myshoppingapp.models.users.User;
-import com.example.myshoppingapp.models.users.UserOutputDTO;
+import com.example.myshoppingapp.models.users.*;
 import com.example.myshoppingapp.repositories.UserRepository;
 import lombok.Getter;
 import lombok.Setter;
@@ -60,6 +57,18 @@ public class UserService {
     public UserOutputDTO getLoggedUserDTO() {
         User currentuser = this.findByUsername(getLoggedInUser());
         return this.modelMapper.map(currentuser, UserOutputDTO.class);
+    }
+
+    public void updateUser(UserInputDTO userInputDTO) {
+        Long idToUpdate = this.getLoggedUserId();
+        String newUsername = userInputDTO.getUsername();
+        String newPassword = userInputDTO.getPassword();
+        String newEmail = userInputDTO.getEmail();
+        if (!newUsername.equals(this.loggedInUser)) {
+            this.loggedInUser = newUsername;
+        }
+        this.userRepository.updateUser(idToUpdate, newUsername, newPassword, newEmail);
+
     }
 }
 

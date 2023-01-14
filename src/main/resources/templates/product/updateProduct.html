@@ -17,10 +17,10 @@
         <!-- Add hidden form field to handle update -->
         <input type="hidden" th:field="*{id}"/>
         <input type="text" th:field="*{name}" class="form-control mb-4 col-4">
-        <button type="submit" class="btn btn-info col-2"> Update </button>
+        <button type="submit" class="btn btn-info col-5"> Update </button>
     </form>
     <hr>
-    <a th:href="@{/product/addProduct}"> Back to Product List </a>
+    <a th:href="@{/product/addProduct}" th:color="white"> Back to Product List </a>
 </div>
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

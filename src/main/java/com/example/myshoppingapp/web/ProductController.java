@@ -27,7 +27,7 @@ public class ProductController {
 
     // show all products in table (html):
     @GetMapping("/product-list")
-    public String openProductListPage(Model model) {
+    public String showProductListPage(Model model) {
         if (this.userService.getLoggedInUser() == null) {
             return "index";
         }
@@ -35,13 +35,6 @@ public class ProductController {
         model.addAttribute("products", products);
         return "product/product-list";
     }
-
-//    @PostMapping("/product-list")
-//    public String doShowProduct(Model model) {
-//        List<OutputProductDTO> products = this.productService.getListedProducts();
-//        model.addAttribute("products", products);
-//        return "product/product-list";
-//    }
 
     @PostMapping("/add-product")
     public String doAddProduct(InputProductDTO inputProductDTO) {

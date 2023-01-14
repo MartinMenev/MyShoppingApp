@@ -131,7 +131,7 @@ body > main > div > table > tbody {
 
 .title-name {
     font-family: fantasy;
-    font-size: 60px;
+    font-size: 70px;
     font-style: italic;
     color: #c2dccf;
 }
@@ -148,6 +148,9 @@ td {
     width: 150px;
 }
 
+body > main > div > table > tbody > tr {
+    color: white;
+}
 
 .export-container {
     text-align: center !important;
@@ -242,6 +245,7 @@ body > header > nav > div > div.logo > a {
 }
 
 .logo-home-text {
+    margin-top: 1rem;
     font-size: 2rem;
     font-style: inherit;
     color: #1F8186;
@@ -318,6 +322,27 @@ a:active {
     font-family: "Muli", sans-serif;
 }
 
+input {
+    width: 4rem;
+}
 .fa-regular, fa-solid {
     font-size: 23px;
+}
+
+.footer-section {
+    margin: 0 2%;
+    display: block;
+    text-align: center;
+}
+
+.footer-column {
+    display: inline-block;
+    width:45%;
+    vertical-align: center;
+    margin: 0 1%;
+}
+
+.footer-element {
+    display: inline-block;
+    margin: auto 1%;
 }
