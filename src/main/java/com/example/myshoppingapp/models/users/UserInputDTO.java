@@ -1,6 +1,6 @@
 package com.example.myshoppingapp.models.users;
 
-import com.example.myshoppingapp.models.UserRole;
+import com.example.myshoppingapp.models.enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
 package com.example.myshoppingapp.service;
 
-import com.example.myshoppingapp.models.UserRole;
+import com.example.myshoppingapp.models.enums.UserRole;
 import com.example.myshoppingapp.models.products.Product;
 import com.example.myshoppingapp.models.users.*;
 import com.example.myshoppingapp.repositories.ProductRepository;

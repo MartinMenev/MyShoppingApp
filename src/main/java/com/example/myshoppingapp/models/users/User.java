@@ -1,15 +1,12 @@
 package com.example.myshoppingapp.models.users;
 
-import com.example.myshoppingapp.models.UserRole;
-import com.example.myshoppingapp.models.products.Product;
+import com.example.myshoppingapp.models.enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
