@@ -1,7 +1,9 @@
 package com.example.myshoppingapp.service;
 
 import com.example.myshoppingapp.models.UserRole;
+import com.example.myshoppingapp.models.products.Product;
 import com.example.myshoppingapp.models.users.*;
+import com.example.myshoppingapp.repositories.ProductRepository;
 import com.example.myshoppingapp.repositories.UserRepository;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -18,12 +22,14 @@ import java.util.NoSuchElementException;
 public class UserService {
 
     private UserRepository userRepository;
+    private ProductRepository productRepository;
     private final ModelMapper modelMapper = new ModelMapper();
     private String loggedInUser;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, ProductRepository productRepository) {
         this.userRepository = userRepository;
+        this.productRepository = productRepository;
         this.loggedInUser = null;
     }
 
@@ -69,6 +75,16 @@ public class UserService {
         }
         this.userRepository.updateUser(idToUpdate, newUsername, newPassword, newEmail);
 
+    }
+
+    public void deleteById(long id) {
+        Optional<List<Product>> userProducts= this.productRepository.findAllByUserId(id);
+        if (userProducts.isPresent()) {
+            for (Product userProduct : userProducts.get()) {
+               this.productRepository.deleteById(userProduct.getId());
+            }
+        }
+        this.userRepository.deleteById(id);
     }
 }
 
