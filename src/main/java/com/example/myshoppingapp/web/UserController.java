@@ -78,7 +78,7 @@ public class UserController {
 
     @GetMapping("/delete-profile/{id}")
     public String deleteById(@PathVariable(value = "id") long id) {
-        userService.deleteById(id);
+        userService.deleteUserById(id);
         return "redirect:/";
     }
 

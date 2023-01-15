@@ -77,7 +77,8 @@ public class UserService {
 
     }
 
-    public void deleteById(long id) {
+    //delete user, but first delete all his product lists (if any)!
+    public void deleteUserById(long id) {
         Optional<List<Product>> userProducts= this.productRepository.findAllByUserId(id);
         if (userProducts.isPresent()) {
             for (Product userProduct : userProducts.get()) {
