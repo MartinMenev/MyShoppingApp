@@ -1,47 +1,39 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
->
-
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-   <meta charset="UTF-8">
-    <title>MobiLeLeLe</title>
-    <link rel="stylesheet" href="/css/reset-css.css"/>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
-    <script src="/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <th:block th:include="~{fragments/head}"></th:block>
+    <title>All recipes</title>
 </head>
-
 <body>
-
-    <div th:replace="fragments/navbar">Navbar</div>
-
-
+<header>
+    <th:block th:include="~{fragments/nav-bar1}"></th:block>
+</header>
     <div class="container-fluid">
-        <h2 class="text-center text-white mt-5">All Offers</h2>
-        <div th:each="offer : ${offers.getContent()}"
-             th:object="${offer}"
+        <h1 class="logo-home-text">All Recipes</h1>
+        <div th:each="recipe : ${recipes.getContent()}"
+             th:object="${recipe}"
             class="offers row mx-auto d-flex flex-row justify-content-center">
             <div class="offer card col-sm-6 col-md-3  col-lg-2 m-1 p-0">
                 <div class="card-img-top-wrapper">
-                    <img class="card-img-top" th:src="*{imageUrl}" alt="Car image">
+                    <img class="card-img-top" th:src="*{url}" alt="Car image">
                 </div>
                 <div class="card-body pb-1">
                     <h5 class="card-title">
-                        <th:block th:text="*{offerHighlight}"></th:block>
+                        <th:block th:text="*{description}"></th:block>
                     </h5>
                 </div>
                 <ul class="offer-details list-group list-group-flush">
                     <li class="list-group-item">
-                        <div class="card-text"><span>• Mileage <th:block th:text="*{mileage}"></th:block> </span></div>
-                        <div class="card-text"><span>• Price <th:block th:text="*{price}"></th:block></span></div>
-                        <div class="card-text"><span>• Engine type <th:block th:text="*{engine}"></th:block></span></div>
-                        <div class="card-text"><span>• Transmission type <th:block th:text="*{transmission}"></th:block> </span></div>
+                        <div class="card-text"><span>• Name: <th:block th:text="*{name}"></th:block> </span></div>
+                        <div class="card-text"><span>• Category: <th:block th:text="*{category}"></th:block></span></div>
+                        <div class="card-text"><span>• Rating: <th:block th:text="*{rating}"></th:block></span></div>
+                        <div class="card-text"><span>• Author: <th:block th:text="*{getAuthorName}"></th:block> </span></div>
                     </li>
                 </ul>
                 <div class="card-body">
-                    <a class="card-link" href="#" th:href="@{/offers/{offerId}(offerId=*{id})}">Details</a>
+                    <a class="card-link" href="#" th:href="@{/recipe/{Id}(Id=*{id})}">Edit</a>
+                    <a class="card-link" href="#" th:href="*{url}">Open</a>
                 </div>
             </div>
         </div>
@@ -50,53 +42,51 @@
     <div class="container-fluid container-fluid row justify-content-center">
         <nav>
             <ul class="pagination">
-                <li class="page-item" th:classappend="${offers.isFirst()} ? 'disabled' : ''">
-                    <a th:unless="${offers.isFirst()}"
-                       th:href="@{/offers/all(size=${offers.getSize()},page=0)}"
+                <li class="page-item" th:classappend="${recipes.isFirst()} ? 'disabled' : ''">
+                    <a th:unless="${recipes.isFirst()}"
+                       th:href="@{/recipes/all(size=${recipes.getSize()},page=0)}"
                        class="page-link" href="#">First</a>
-                    <a th:if="${offers.isFirst()}"
+                    <a th:if="${recipes.isFirst()}"
                        class="page-link" href="#">First</a>
                 </li>
             </ul>
         </nav>
         <nav>
             <ul class="pagination">
-                <li class="page-item" th:classappend="${offers.hasPrevious() ? '' : 'disabled'}">
-                    <a th:if="${offers.hasPrevious()}"
-                       th:href="@{/offers/all(size=${offers.getSize()},page=${offers.getNumber() - 1})}"
+                <li class="page-item" th:classappend="${recipes.hasPrevious() ? '' : 'disabled'}">
+                    <a th:if="${recipes.hasPrevious()}"
+                       th:href="@{/recipes/all(size=${recipes.getSize()},page=${recipes.getNumber() - 1})}"
                        class="page-link" href="#">Previous</a>
-                    <a th:unless="${offers.hasPrevious()}"
+                    <a th:unless="${recipes.hasPrevious()}"
                        class="page-link" href="#">Previous</a>
                 </li>
             </ul>
         </nav>
         <nav>
             <ul class="pagination">
-                <li class="page-item" th:classappend="${offers.hasNext() ? '' : 'disabled'}">
-                    <a th:if="${offers.hasNext()}"
-                       th:href="@{/offers/all(size=${offers.getSize()},page=${offers.getNumber() + 1})}"
+                <li class="page-item" th:classappend="${recipes.hasNext() ? '' : 'disabled'}">
+                    <a th:if="${recipes.hasNext()}"
+                       th:href="@{/recipes/all(size=${recipes.getSize()},page=${recipes.getNumber() + 1})}"
                        class="page-link" href="#">Next</a>
-                    <a th:unless="${offers.hasNext()}"
+                    <a th:unless="${recipes.hasNext()}"
                        class="page-link" href="#">Next</a>
                 </li>
             </ul>
         </nav>
         <nav>
             <ul class="pagination">
-                <li class="page-item" th:classappend="${offers.isLast()} ? 'disabled' : ''">
-                    <a th:unless="${offers.isLast()}"
-                       th:href="@{/offers/all(size=${offers.getSize()},page=${offers.getTotalPages() - 1})}"
+                <li class="page-item" th:classappend="${recipes.isLast()} ? 'disabled' : ''">
+                    <a th:unless="${recipes.isLast()}"
+                       th:href="@{/recipes/all(size=${recipes.getSize()},page=${recipes.getTotalPages() - 1})}"
                        class="page-link" href="#">Last</a>
-                    <a th:if="${offers.isLast()}"
+                    <a th:if="${recipes.isLast()}"
                        class="page-link" href="#">Last</a>
                 </li>
             </ul>
         </nav>
     </div>
-
-    <div>
-		<footer> </footer>
-	</div>
-
+<footer>
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
 </body>
 </html>
