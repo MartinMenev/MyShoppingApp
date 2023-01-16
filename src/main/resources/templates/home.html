@@ -25,7 +25,13 @@
                 </h1>
             </div>
                 Here you can easily manage your shopping items
-        </div>
+                and get inspired by delicious recipe ideas!
+
+            </div>
+        <section class="summary">
+            <a th:href="@{/add-recipe}"
+               class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
+        </section>
     </main>
         <footer>
             <th:block th:include="~{fragments/footer}"></th:block>

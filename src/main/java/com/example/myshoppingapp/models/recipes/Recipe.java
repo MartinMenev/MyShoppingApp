@@ -28,8 +28,8 @@ public class Recipe {
     @Column(nullable = false)
     private String name;
 
-    @Column
-   private String url;
+    @Column(columnDefinition = "TEXT")
+    private String url;
 
     @Column(columnDefinition = "TEXT")
     private String description;
@@ -51,11 +51,14 @@ public class Recipe {
    @JoinColumn
    private Picture picture;
 
-   @OneToMany(targetEntity = Comment.class,mappedBy = "recipe")
+   @OneToMany(targetEntity = Comment.class, mappedBy = "recipe", fetch = FetchType.EAGER)
    private List<Comment> commentList;
 
   @OneToMany(targetEntity = Product.class, mappedBy = "recipe")
    private List<Product> productList;
+
+  @Column
+  private long position;
 
   public Recipe() {
       this.dateAdded = LocalDate.now();
