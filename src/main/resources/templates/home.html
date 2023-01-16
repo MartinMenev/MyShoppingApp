@@ -29,7 +29,7 @@
 
             </div>
         <section class="summary">
-            <a th:href="@{/add-recipe}"
+            <a th:if="${username != null}" th:href="@{/add-recipe}"
                class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
         </section>
     </main>

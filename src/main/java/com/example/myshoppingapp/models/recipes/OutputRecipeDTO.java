@@ -25,6 +25,7 @@ public class OutputRecipeDTO {
     private long rating;
     private Picture picture;
     private long position;
+    private String imageUrl;
     private User author;
     private List<Comment> commentList;
 

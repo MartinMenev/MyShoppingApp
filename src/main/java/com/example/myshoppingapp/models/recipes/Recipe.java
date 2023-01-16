@@ -51,6 +51,9 @@ public class Recipe {
    @JoinColumn
    private Picture picture;
 
+   @Column(columnDefinition = "TEXT")
+   private String imageUrl;
+
    @OneToMany(targetEntity = Comment.class, mappedBy = "recipe", fetch = FetchType.EAGER)
    private List<Comment> commentList;
 

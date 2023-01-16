@@ -22,5 +22,6 @@ public class InputRecipeDTO implements Serializable {
     private long rating;
     private Picture picture;
     private long position;
+    private String imageUrl;
 
 }

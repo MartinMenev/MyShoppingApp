@@ -11,12 +11,18 @@
 </header>
     <div class="container-fluid">
         <h1 class="logo-home-text">All Recipes</h1>
+        <hr class="bg-dark hr-2"/>
+        <section class="logo-home-text">
+            <a th:href="@{/add-recipe}"
+               class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
+        </section>
+        <hr class="bg-dark hr-2"/>
         <div th:each="recipe : ${recipes.getContent()}"
              th:object="${recipe}"
-            class="offers row mx-auto d-flex flex-row justify-content-center">
-            <div class="offer card col-sm-6 col-md-3  col-lg-2 m-1 p-0">
+            class="recipe row mx-auto d-flex flex-row justify-content-center">
+            <div class="recipe card col-sm-6 col-md-3  col-lg-2 m-1 p-0">
                 <div class="card-img-top-wrapper">
-                    <img class="card-img-top" th:src="*{url}" alt="Car image">
+                    <img class="card-img-top" th:src="*{imageUrl}" alt="Car image">
                 </div>
                 <div class="card-body pb-1">
                     <h5 class="card-title">
@@ -25,7 +31,7 @@
                 </div>
                 <ul class="offer-details list-group list-group-flush">
                     <li class="list-group-item">
-                        <div class="card-text"><span>• Name: <th:block th:text="*{name}"></th:block> </span></div>
+                        <div class="card-text"><span><th:block th:text="*{name}"></th:block> </span></div>
                         <div class="card-text"><span>• Category: <th:block th:text="*{category}"></th:block></span></div>
                         <div class="card-text"><span>• Rating: <th:block th:text="*{rating}"></th:block></span></div>
                         <div class="card-text"><span>• Author: <th:block th:text="*{getAuthorName}"></th:block> </span></div>
