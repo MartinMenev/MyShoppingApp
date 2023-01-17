@@ -12,13 +12,22 @@
 <main>
 <div class="wrapper">
     <input type="hidden" name="id" th:field="${recipe.id}">
+    <p1 class="logo-home-text"><span id="name" th:text="${recipe.name}"></span> </p1>
     <div class="details-main">
+
+        <div class="card rounded-5">
+            <img class="card-img-top" th:if="${recipe.hasImageUrl}" th:src="${recipe.imageUrl}" alt="Recipe image" src="#">
+        </div>
+        <div>
+            <a class="logo-home-text" href="#" th:href="@{/edit-recipe/{Id}(Id=*{id})}">Edit</a>
+            <a class="logo-home-text" href="#" th:href="${recipe.url}">Open link</a>
+        </div>
         <section class="recipe-info text-center">
             <h4 id="track-name"></h4>
-            <p>Title: <span id="name" th:text="${recipe.name}"></span> </p>
             <p>Author: <span id="getAuthorName" th:text="${recipe.authorName}"></span></p>
             <p>Category: <span id="category" th:text="${recipe.category}"></span></p>
             <p>Date addded: <span id="dateAdded" th:text="${recipe.dateAdded}"></span></p>
+            <p>Date addded: <span id="rating" th:text="${recipe.rating}"></span></p>
             <h4>Difficulty Level (1-3):</h4>
             <div class="level">
                 <p><img class="level-img" src="/images/difficulty-level.png" alt=""></p>
@@ -65,18 +74,18 @@
             <div>
                 <!-- Comments submission -->
                 <form id="commentForm" method="POST"
-                      action="/">
+                      th:action="@{/save-comment/{id}(id=*{id})}">
                     <div class="form-group">
                         <h4>Leave a comment</h4>
-                        <label for="message">Message</label>
-                        <textarea name="message"
-                                  id="message"
+                        <label for="text">Message</label>
+                        <textarea name="text"
+                                  id="text"
                                   cols="30"
                                   rows="5"
                                   class="form-control"
                                   style="background-color: white;"></textarea>
                         <small id="messageError" class="invalid-feedback">
-                            Message should be at least 10 characters.
+                            Message should be at least 5 characters.
                         </small>
                     </div>
 
