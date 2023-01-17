@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -23,7 +24,7 @@ public class Comment {
     @Column(columnDefinition = "TEXT")
     private String text;
     @Column
-    private LocalDate dateAdded;
+    private LocalDateTime dateAdded;
 
     @Column
     private long rating;
@@ -36,6 +37,6 @@ public class Comment {
     private Recipe recipe;
 
     public Comment() {
-        this.dateAdded = LocalDate.now();
+        this.dateAdded = LocalDateTime.now();
     }
 }
