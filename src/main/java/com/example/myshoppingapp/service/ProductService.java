@@ -81,10 +81,11 @@ public class ProductService {
         this.productRepository.deleteById(id);
     }
 
-    public Product getProductById(Long id) {
-        return this.productRepository
+    public OutputProductDTO getProductById(Long id) {
+        Product product = this.productRepository
                 .getProductById(id)
                 .orElseThrow(NoSuchElementException::new);
+        return modelMapper.map(product, OutputProductDTO.class);
     }
 
     public void moveUpProduct(long position) {

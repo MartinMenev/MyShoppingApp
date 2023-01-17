@@ -44,15 +44,15 @@ public class ProductController {
 
     @GetMapping("/product/updateProduct/{id}")
     public String updateProduct(@PathVariable(value = "id") Long id, Model model) {
-        Product product = productService.getProductById(id);
-        model.addAttribute("product", product);
+        OutputProductDTO outputProductDTO = productService.getProductById(id);
+        model.addAttribute("product", outputProductDTO);
         return "product/updateProduct";
     }
 
     @PutMapping ("/product/updateProduct/{id}")
     public String doUpdateProduct(@PathVariable(value = "id") Long id, Model model, InputProductDTO inputProductDTO) {
-        Product product = productService.getProductById(id);
-        model.addAttribute("product", product);
+        OutputProductDTO outputProductDTO = productService.getProductById(id);
+        model.addAttribute("product", outputProductDTO);
         productService.updateProduct(inputProductDTO);
         return "redirect:/product-list";
     }
