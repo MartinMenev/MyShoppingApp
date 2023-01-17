@@ -9,7 +9,7 @@
 }
 
 .bg-image {
-    background: url('https://images.pexels.com/photos/7879835/pexels-photo-7879835.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+    background: url('https://images.pexels.com/photos/4110226/pexels-photo-4110226.jpeg')
     no-repeat center 51%;
     height: 30rem;
     background-size: cover;
@@ -264,7 +264,7 @@ body > header > nav > div > div.logo > a {
 }
 
 .mask {
-    background-color: rgba(0, 0, 60, 0.2);
+    background-color: rgba(0, 0, 60, 0.6);
     text-align: center;
     padding: 1%;
 

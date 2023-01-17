@@ -54,10 +54,12 @@ public class Recipe {
    @Column(columnDefinition = "TEXT")
    private String imageUrl;
 
-   @OneToMany(targetEntity = Comment.class, mappedBy = "recipe", fetch = FetchType.EAGER)
+   @OneToMany(targetEntity = Comment.class, mappedBy = "recipe",
+           fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
    private List<Comment> commentList;
 
-  @OneToMany(targetEntity = Product.class, mappedBy = "recipe")
+  @OneToMany(targetEntity = Product.class, mappedBy = "recipe",
+          cascade = CascadeType.PERSIST)
    private List<Product> productList;
 
   @Column
@@ -68,5 +70,10 @@ public class Recipe {
       this.commentList = new ArrayList<>();
       this.productList = new ArrayList<>();
   }
+
+  public boolean hasImageUrl(){
+      return this.imageUrl != null;
+  }
+
 
 }

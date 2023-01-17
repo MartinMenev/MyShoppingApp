@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -29,7 +30,13 @@ public class OutputRecipeDTO {
     private User author;
     private List<Comment> commentList;
 
+    private LocalDate dateAdded;
+
     public String getAuthorName(){
         return this.author.getUsername();
+    }
+
+    public boolean hasImageUrl(){
+        return this.imageUrl != null;
     }
 }
