@@ -12,6 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
+
 @Getter
 @Service
 public class RecipeService {
@@ -40,5 +42,12 @@ public class RecipeService {
                 findAll(pageable).
                 map(recipe -> this.modelMapper.map(recipe, OutputRecipeDTO.class));
 
+    }
+
+    public OutputRecipeDTO getRecipeById(Long id) {
+        Recipe recipe = this.recipeRepository
+                .getRecipeById(id)
+                .orElseThrow(NoSuchElementException::new);
+        return modelMapper.map(recipe, OutputRecipeDTO.class);
     }
 }

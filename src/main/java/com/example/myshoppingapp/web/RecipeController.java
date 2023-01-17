@@ -45,12 +45,11 @@ public class RecipeController {
             return "recipe/all-recipes";
     }
 
-//    @{/recipe/{Id}
-//    @GetMapping("/recipe/{Id}")
-//    public String reviewRecipe(@PathVariable(value = "id") Long id, Model model) {
-//        OutputRecipeDTO outputRecipeDTO = recipeService.getRecipeById(id);
-//        model.addAttribute("recipe", outputRecipeDTO);
-//        return "product/updateProduct";
-//}
+    @GetMapping("/recipe/{id}")
+    public String reviewRecipe(@PathVariable(value = "id") Long id, Model model) {
+        OutputRecipeDTO outputRecipeDTO = recipeService.getRecipeById(id);
+        model.addAttribute("recipe", outputRecipeDTO);
+        return "recipe/recipe-details";
+    }
 
 }
