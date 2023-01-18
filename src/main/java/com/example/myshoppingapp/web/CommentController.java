@@ -20,7 +20,7 @@ public class CommentController {
     }
 
     @PostMapping("/save-comment/{id}")
-    public String reviewRecipe(@PathVariable(value = "id") Long id,
+    public String reviewRecipe(@PathVariable(value = "id") long id,
                                InputCommentDTO inputCommentDTO) {
         commentService.addComment(inputCommentDTO, id);
         return "redirect:/recipe/{id}";

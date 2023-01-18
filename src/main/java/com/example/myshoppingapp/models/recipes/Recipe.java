@@ -47,19 +47,19 @@ public class Recipe {
    @JoinColumn
    private User author;
 
-   @OneToOne
+   @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
    @JoinColumn
    private Picture picture;
 
    @Column(columnDefinition = "TEXT")
    private String imageUrl;
 
-   @OneToMany(targetEntity = Comment.class, mappedBy = "recipe",
-           fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+   @OneToMany(targetEntity = Comment.class, mappedBy= "recipe",
+           fetch = FetchType.EAGER,cascade = CascadeType.ALL)
    private List<Comment> commentList;
 
   @OneToMany(targetEntity = Product.class, mappedBy = "recipe",
-          cascade = CascadeType.PERSIST)
+          cascade = CascadeType.ALL)
    private List<Product> productList;
 
   @Column
@@ -74,6 +74,5 @@ public class Recipe {
   public boolean hasImageUrl(){
       return this.imageUrl != null;
   }
-
 
 }

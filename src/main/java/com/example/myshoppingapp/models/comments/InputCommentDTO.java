@@ -12,14 +12,15 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class InputCommentDTO {
     private Long id;
-    private String title;
     private String text;
     private LocalDateTime dateAdded;
     private long rating;
-    private User author;
+    private String authorName;
     private Recipe recipe;
 
+    public InputCommentDTO() {
+        this.dateAdded = LocalDateTime.now();
+    }
 }

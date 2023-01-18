@@ -3,8 +3,8 @@ package com.example.myshoppingapp.service;
 import com.example.myshoppingapp.models.comments.Comment;
 import com.example.myshoppingapp.models.comments.InputCommentDTO;
 import com.example.myshoppingapp.models.recipes.Recipe;
-import com.example.myshoppingapp.models.users.User;
 import com.example.myshoppingapp.repositories.CommentRepository;
+import com.example.myshoppingapp.repositories.RecipeRepository;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,7 @@ public class CommentService {
     private final UserService userService;
     private final RecipeService recipeService;
 
+
     @Autowired
     public CommentService(CommentRepository commentRepository, UserService userService, RecipeService recipeService) {
         this.commentRepository = commentRepository;
@@ -27,14 +28,15 @@ public class CommentService {
 
 
     public void addComment(InputCommentDTO inputCommentDTO, Long recipeId) {
-        User author = this.userService.findByUsername(userService.getLoggedInUser());
-        Recipe recipe = modelMapper
-                .map(this.recipeService.getRecipeById(recipeId), Recipe.class);
-
+        inputCommentDTO.setId(null);
         Comment comment = modelMapper.map(inputCommentDTO, Comment.class);
-        this.commentRepository.saveAndFlush(comment);
-        comment.setAuthor(author);
+        String authorName = this.userService.getLoggedInUser();
+        if (authorName == null) {
+            authorName = "Guest";
+        }
+        Recipe recipe = this.recipeService.getRecipeRepository().getById(recipeId);
         comment.setRecipe(recipe);
+        comment.setAuthorName(authorName);
         this.commentRepository.saveAndFlush(comment);
     }
 

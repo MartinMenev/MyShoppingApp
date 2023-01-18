@@ -10,6 +10,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,9 +19,9 @@ import java.time.LocalDateTime;
 @Table(name = "comments")
 public class Comment {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
-    private String title;
+
     @Column(columnDefinition = "TEXT")
     private String text;
     @Column
@@ -29,9 +30,8 @@ public class Comment {
     @Column
     private long rating;
 
-    @ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
-    @JoinColumn
-    private User author;
+   @Column
+    private String authorName;
 
     @ManyToOne
     private Recipe recipe;

@@ -11,7 +11,7 @@
 </header>
 <main>
 <div class="wrapper">
-    <input type="hidden" name="id" th:field="${recipe.id}">
+    <input type="hidden" name="recipeId" th:field="*{id}">
     <p1 class="logo-home-text"><span id="name" th:text="${recipe.name}"></span> </p1>
     <div class="details-main">
 
@@ -74,7 +74,7 @@
             <div>
                 <!-- Comments submission -->
                 <form id="commentForm" method="POST"
-                      th:action="@{/save-comment/{id}(id=*{id})}">
+                      th:action="@{/save-comment/{id}(id=${recipe.id})}">
                     <div class="form-group">
                         <h4>Leave a comment</h4>
                         <label for="text">Message</label>

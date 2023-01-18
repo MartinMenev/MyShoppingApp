@@ -15,10 +15,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class OutputCommentDTO {
     private Long id;
-    private String title;
     private String text;
     private LocalDateTime dateAdded;
     private long rating;
-    private User author;
+    private String authorName;
     private Recipe recipe;
 }
