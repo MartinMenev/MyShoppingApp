@@ -49,7 +49,7 @@ public class UserController {
        Boolean successfulRegistration = userService.register(registerUserDTO);
 
         if (successfulRegistration) {
-            return "redirect:/home";
+            return "redirect:/users/login";
         }
         return "user/register";
     }
