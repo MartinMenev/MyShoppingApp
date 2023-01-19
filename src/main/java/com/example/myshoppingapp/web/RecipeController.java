@@ -1,8 +1,8 @@
 package com.example.myshoppingapp.web;
 
-import com.example.myshoppingapp.models.products.Product;
 import com.example.myshoppingapp.models.recipes.InputRecipeDTO;
 import com.example.myshoppingapp.models.recipes.OutputRecipeDTO;
+import com.example.myshoppingapp.service.CommentService;
 import com.example.myshoppingapp.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RecipeController {
     private final RecipeService recipeService;
+    private final CommentService commentService;
 
     @Autowired
-    public RecipeController(RecipeService recipeService) {
+    public RecipeController(RecipeService recipeService, CommentService commentService) {
         this.recipeService = recipeService;
+        this.commentService = commentService;
     }
 
     @GetMapping("/add-recipe")
@@ -42,6 +44,7 @@ public class RecipeController {
                 page = 0,
                 size = 5) Pageable pageable) {
             model.addAttribute("recipes", recipeService.showAllRecipes(pageable));
+
             return "recipe/all-recipes";
     }
 
@@ -49,6 +52,7 @@ public class RecipeController {
     public String reviewRecipe(@PathVariable(value = "id") Long id, Model model) {
         OutputRecipeDTO outputRecipeDTO = recipeService.getRecipeById(id);
         model.addAttribute("recipe", outputRecipeDTO);
+        model.addAttribute("comments", commentService.showLatestComments(id));
         return "recipe/recipe-details";
     }
 

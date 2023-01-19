@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
@@ -20,4 +21,8 @@ public class OutputCommentDTO {
     private long rating;
     private String authorName;
     private Recipe recipe;
+
+    public String getDate(){
+        return this.dateAdded.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+    }
 }

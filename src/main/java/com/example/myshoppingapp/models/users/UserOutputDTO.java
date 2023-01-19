@@ -1,6 +1,7 @@
 package com.example.myshoppingapp.models.users;
 
 import com.example.myshoppingapp.models.enums.UserRole;
+import com.example.myshoppingapp.models.pictures.Picture;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,4 +20,5 @@ public class UserOutputDTO implements Serializable {
     private String password;
     private String email;
     private UserRole userRole;
+    private Picture picture;
 }

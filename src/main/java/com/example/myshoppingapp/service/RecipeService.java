@@ -10,8 +10,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.NoSuchElementException;
 
 @Getter
@@ -49,5 +51,13 @@ public class RecipeService {
                 .getRecipeById(id)
                 .orElseThrow(NoSuchElementException::new);
         return modelMapper.map(recipe, OutputRecipeDTO.class);
+    }
+
+    @Transactional
+    @Modifying
+    public void addRecipeRating(double rating, long id) {
+        Recipe recipe = this.recipeRepository.getById(id);
+        recipe.addRating(rating);
+        this.recipeRepository.saveAndFlush(recipe);
     }
 }

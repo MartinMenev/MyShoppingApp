@@ -16,7 +16,10 @@
         <div class="row d-flex justify-content-center">
             <div class="col-md-7">
                 <div class="profile-card p-3 py-4">
-                    <div class="text-center"><img src="/images/ShoppingPic.jpg" width="100" class="rounded-circle" alt="picture"></div>
+                    <div class="text-center">
+<!--                        DEFAULT PICTURE-->
+                        <img th:src="${user.picture}"width="100" class="rounded-circle" alt="picture"></div>
+                            <img th:unless="${user.picture!=null}" th:src="@{'/images/default-user-pic.jpg'}" />
                     <div class="text-center mt-3" th:object="${user}">
                         <a th:href="@{/update-user}"
                            class="btn btn-light"> <i class="fa-regular fa-pen-to-square"></i> </a>

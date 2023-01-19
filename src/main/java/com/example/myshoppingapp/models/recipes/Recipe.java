@@ -40,8 +40,11 @@ public class Recipe {
     @Column
     private LocalDate dateAdded;
 
-   @Column
-    private long rating;
+   @Column(scale = 1, precision = 2)
+    private double rating;
+
+   @ElementCollection
+   private List<Double> ratingList;
 
    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
    @JoinColumn
@@ -69,10 +72,25 @@ public class Recipe {
       this.dateAdded = LocalDate.now();
       this.commentList = new ArrayList<>();
       this.productList = new ArrayList<>();
+      this.ratingList = new ArrayList<>();
   }
 
   public boolean hasImageUrl(){
       return this.imageUrl != null;
+  }
+
+  public void addRating(double currentRating) {
+    this.ratingList.add(currentRating);
+    this.rating = ratingList
+            .stream()
+            .mapToDouble(Double::doubleValue)
+            .average().orElse(0);
+//      double sum = 0;
+//      for (Double rating : ratingList) {
+//          sum += rating;
+//          this.rating = sum / ratingList.size();
+//      }
+
   }
 
 }

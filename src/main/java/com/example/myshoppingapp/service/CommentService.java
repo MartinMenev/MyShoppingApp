@@ -45,13 +45,17 @@ public class CommentService {
         this.commentRepository.saveAndFlush(comment);
     }
 
-
-    public List<OutputCommentDTO> showLatestComments(Long recipeId) {
+    public List<OutputCommentDTO> showAllComments(Long recipeId) {
         return this.commentRepository
                 .findAllByRecipeIdOrderByIdDesc(recipeId)
                 .orElseThrow(NoSuchElementException::new)
                 .stream()
                 .map(comment -> this.modelMapper.map(comment, OutputCommentDTO.class))
+                .toList();
+    }
+    public List<OutputCommentDTO> showLatestComments(Long recipeId) {
+        return showAllComments(recipeId)
+                .stream()
                 .limit(3)
                 .toList();
     }

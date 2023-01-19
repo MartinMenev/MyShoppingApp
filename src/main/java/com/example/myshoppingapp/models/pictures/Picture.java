@@ -24,5 +24,4 @@ public class Picture {
     @JoinColumn()
     private User author;
 
-
 }
