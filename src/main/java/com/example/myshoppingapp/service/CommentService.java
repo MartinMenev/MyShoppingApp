@@ -2,6 +2,8 @@ package com.example.myshoppingapp.service;
 
 import com.example.myshoppingapp.models.comments.Comment;
 import com.example.myshoppingapp.models.comments.InputCommentDTO;
+import com.example.myshoppingapp.models.comments.OutputCommentDTO;
+import com.example.myshoppingapp.models.products.OutputProductDTO;
 import com.example.myshoppingapp.models.recipes.Recipe;
 import com.example.myshoppingapp.repositories.CommentRepository;
 import com.example.myshoppingapp.repositories.RecipeRepository;
@@ -9,6 +11,9 @@ import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.NoSuchElementException;
 
 @Getter
 @Service
@@ -41,4 +46,13 @@ public class CommentService {
     }
 
 
+    public List<OutputCommentDTO> showLatestComments(Long recipeId) {
+        return this.commentRepository
+                .findAllByRecipeIdOrderByIdDesc(recipeId)
+                .orElseThrow(NoSuchElementException::new)
+                .stream()
+                .map(comment -> this.modelMapper.map(comment, OutputCommentDTO.class))
+                .limit(3)
+                .toList();
+    }
 }
