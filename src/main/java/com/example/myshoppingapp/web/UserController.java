@@ -1,8 +1,8 @@
 package com.example.myshoppingapp.web;
 
-import com.example.myshoppingapp.models.products.InputProductDTO;
-import com.example.myshoppingapp.models.products.Product;
+import com.example.myshoppingapp.models.pictures.OutputPictureDTO;
 import com.example.myshoppingapp.models.users.*;
+import com.example.myshoppingapp.service.PictureService;
 import com.example.myshoppingapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class UserController {
 
     private final UserService userService;
+    private final PictureService pictureService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, PictureService pictureService) {
         this.userService = userService;
+        this.pictureService = pictureService;
     }
 
     @GetMapping("/users/login")
@@ -57,6 +59,8 @@ public class UserController {
     @GetMapping("user/profile")
     public String ShowUserProfile(Model model){
         UserOutputDTO userOutputDTO = this.userService.getLoggedUserDTO();
+        String currentUrl = this.pictureService.getPictureUrlByUserId();
+        model.addAttribute("pictureUrl", currentUrl);
         model.addAttribute("user", userOutputDTO);
         return "user/profile";
     }
