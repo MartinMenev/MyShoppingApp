@@ -1,5 +1,6 @@
 package com.example.myshoppingapp.models.comments;
 
+import com.example.myshoppingapp.models.pictures.Picture;
 import com.example.myshoppingapp.models.recipes.Recipe;
 import com.example.myshoppingapp.models.users.User;
 import lombok.AllArgsConstructor;
@@ -30,13 +31,23 @@ public class Comment {
     @Column
     private long rating;
 
-   @Column
-    private String authorName;
+   @ManyToOne
+    private User author;
 
     @ManyToOne
     private Recipe recipe;
 
     public Comment() {
         this.dateAdded = LocalDateTime.now();
+    }
+
+    public String getAuthorPicUrl() {
+
+        String url = this.getAuthor().getPicture().getUrl();
+        if (url == null) {
+            return "/images/default-user-pic.jpg";
+        }
+
+        return "/images/"+url;
     }
 }

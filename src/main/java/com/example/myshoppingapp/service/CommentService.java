@@ -3,8 +3,10 @@ package com.example.myshoppingapp.service;
 import com.example.myshoppingapp.models.comments.Comment;
 import com.example.myshoppingapp.models.comments.InputCommentDTO;
 import com.example.myshoppingapp.models.comments.OutputCommentDTO;
+import com.example.myshoppingapp.models.pictures.Picture;
 import com.example.myshoppingapp.models.products.OutputProductDTO;
 import com.example.myshoppingapp.models.recipes.Recipe;
+import com.example.myshoppingapp.models.users.User;
 import com.example.myshoppingapp.repositories.CommentRepository;
 import com.example.myshoppingapp.repositories.RecipeRepository;
 import lombok.Getter;
@@ -35,14 +37,13 @@ public class CommentService {
     public void addComment(InputCommentDTO inputCommentDTO, Long recipeId) {
         inputCommentDTO.setId(null);
         Comment comment = modelMapper.map(inputCommentDTO, Comment.class);
-        String authorName = this.userService.getLoggedInUser();
-        if (authorName == null) {
-            authorName = "Guest";
-        }
+        User author = this.userService.findByUsername(userService.getLoggedInUser());
         Recipe recipe = this.recipeService.getRecipeRepository().getById(recipeId);
         comment.setRecipe(recipe);
-        comment.setAuthorName(authorName);
-        this.commentRepository.saveAndFlush(comment);
+        if (author != null) {
+            comment.setAuthor(author);
+            this.commentRepository.saveAndFlush(comment);
+        }
     }
 
     public List<OutputCommentDTO> showAllComments(Long recipeId) {

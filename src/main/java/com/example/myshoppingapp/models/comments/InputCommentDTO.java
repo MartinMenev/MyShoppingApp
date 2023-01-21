@@ -17,7 +17,7 @@ public class InputCommentDTO {
     private String text;
     private LocalDateTime dateAdded;
     private long rating;
-    private String authorName;
+    private User author;
     private Recipe recipe;
 
     public InputCommentDTO() {

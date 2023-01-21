@@ -33,7 +33,10 @@
                         </thead>
                         <tbody>
                         <tr th:each="comment:${comments}">
-                            <td> <span th:text="${comment.authorName}"></span> wrote on <span th:text="${comment.getDate()}"></span>
+                            <td>
+                                <img th:if="${comment.getAuthorPicUrl() != null}" th:src="${comment.getAuthorPicUrl()}" width="30" class="rounded-circle" alt="picture">
+                                <!--                            <img th:unless="${comment.getAuthorPicUrl() != null}" th:src="@{'/images/default-user-pic.jpg'}" width="30" />-->
+                                <span th:text="${comment.author.username}"></span> wrote on <span th:text="${comment.getDate()}"></span>
                             </td>
 
                             <td th:text="${comment.text}" >

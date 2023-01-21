@@ -14,4 +14,5 @@ public class OutputPictureDTO {
     private Long id;
     private String url;
     private User author;
+
 }
