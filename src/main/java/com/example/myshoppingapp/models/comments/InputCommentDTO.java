@@ -4,7 +4,6 @@ import com.example.myshoppingapp.models.recipes.Recipe;
 import com.example.myshoppingapp.models.users.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;

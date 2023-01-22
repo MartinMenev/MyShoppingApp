@@ -3,7 +3,6 @@ package com.example.myshoppingapp.models.recipes;
 import com.example.myshoppingapp.models.comments.Comment;
 import com.example.myshoppingapp.models.enums.Category;
 import com.example.myshoppingapp.models.pictures.Picture;
-import com.example.myshoppingapp.models.products.Product;
 import com.example.myshoppingapp.models.users.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

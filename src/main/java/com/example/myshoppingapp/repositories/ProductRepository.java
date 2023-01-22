@@ -1,6 +1,5 @@
 package com.example.myshoppingapp.repositories;
 
-import com.example.myshoppingapp.models.products.OutputProductDTO;
 import com.example.myshoppingapp.models.products.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

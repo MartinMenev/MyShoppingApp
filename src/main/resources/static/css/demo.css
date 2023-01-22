@@ -205,31 +205,28 @@ body > main > div > table > tbody > tr {
     border-radius: 6px;
 }
 
-.nav1 {
-    display: inline-block;
-}
+/*.nav1 {*/
+/*    display: inline-block;*/
+/*}*/
 
-body > header > nav > div > div:nth-child(2) > form {
-    padding: 0 1%;
-    margin: 0 1%
-}
+/*body > header > nav > div > div:nth-child(2) > form {*/
+/*    padding: 0 1%;*/
+/*    margin: 0 1%*/
+/*}*/
 
-#navbarText > ul {
-    align-content: space-around;
-}
+/*#navbarText > ul {*/
+/*    align-content: space-around;*/
+/*}*/
 
-#navbarText > ul > li {
-    margin-left: 10px;
-    text-align: right;
-}
+/*#navbarText > ul > li {*/
+/*    margin-left: 10px;*/
+/*    text-align: right;*/
+/*}*/
 
 #addItem {
     width: 135px;
 }
 
-#navbarText > ul {
-    margin-left: 73%;
-}
 
 .logo {
     font-size: 1rem;
@@ -240,9 +237,9 @@ body > header > nav > div > div:nth-child(2) > form {
     -0.1em 0.1em 0.5em rgba(0, 0, 0, 0.5);
 }
 
-body > header > nav > div > div.logo > a {
-    color: inherit;
-}
+/*body > header > nav > div > div.logo > a {*/
+/*    color: inherit;*/
+/*}*/
 
 .logo-home-text {
     margin-top: 1rem;

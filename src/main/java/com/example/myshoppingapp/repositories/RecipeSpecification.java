@@ -1,6 +1,5 @@
 package com.example.myshoppingapp.repositories;
 
-import com.example.myshoppingapp.models.recipes.OutputRecipeDTO;
 import com.example.myshoppingapp.models.recipes.Recipe;
 import org.springframework.data.jpa.domain.Specification;
 

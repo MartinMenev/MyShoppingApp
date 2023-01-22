@@ -1,6 +1,5 @@
 package com.example.myshoppingapp.web;
 
-import com.example.myshoppingapp.models.pictures.OutputPictureDTO;
 import com.example.myshoppingapp.models.users.*;
 import com.example.myshoppingapp.service.PictureService;
 import com.example.myshoppingapp.service.UserService;

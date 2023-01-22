@@ -1,6 +1,5 @@
 package com.example.myshoppingapp.web;
 
-import com.example.myshoppingapp.models.pictures.OutputPictureDTO;
 import com.example.myshoppingapp.models.recipes.InputRecipeDTO;
 import com.example.myshoppingapp.models.recipes.OutputRecipeDTO;
 import com.example.myshoppingapp.service.CommentService;
@@ -15,8 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.List;
 
 @Controller
 public class RecipeController {

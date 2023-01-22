@@ -5,12 +5,10 @@ import com.example.myshoppingapp.models.products.OutputProductDTO;
 import com.example.myshoppingapp.models.products.Product;
 import com.example.myshoppingapp.models.users.User;
 import com.example.myshoppingapp.repositories.ProductRepository;
-import com.example.myshoppingapp.repositories.UserRepository;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

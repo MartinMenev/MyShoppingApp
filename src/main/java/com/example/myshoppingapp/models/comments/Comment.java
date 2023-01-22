@@ -1,17 +1,13 @@
 package com.example.myshoppingapp.models.comments;
 
-import com.example.myshoppingapp.models.pictures.Picture;
 import com.example.myshoppingapp.models.recipes.Recipe;
 import com.example.myshoppingapp.models.users.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter

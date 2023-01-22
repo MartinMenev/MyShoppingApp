@@ -1,7 +1,6 @@
 package com.example.myshoppingapp.web;
 
 import com.example.myshoppingapp.models.comments.InputCommentDTO;
-import com.example.myshoppingapp.models.comments.OutputCommentDTO;
 import com.example.myshoppingapp.models.recipes.OutputRecipeDTO;
 import com.example.myshoppingapp.service.CommentService;
 import com.example.myshoppingapp.service.RecipeService;

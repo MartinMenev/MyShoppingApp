@@ -10,7 +10,7 @@
     <th:block th:include="~{fragments/nav-bar1}"></th:block>
 </header>
 <main>
-    <div class="container-fluid">
+    <div class="container justify-content-center">
         <h1 class="logo-home-text">All Recipes</h1>
         <hr class="bg-dark hr-2"/>
         <section class="logo-home-text">
@@ -18,7 +18,10 @@
                class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
         </section>
         <hr class="bg-dark hr-2"/>
-        <div th:each="recipe : ${recipes.getContent()}"
+        <div th:class="row">
+
+
+        <div th:class="col-lg-4" th:each="recipe : ${recipes.getContent()}"
              th:object="${recipe}"
             class="recipe row mx-auto d-flex flex-row justify-content-center">
             <div class="recipe card col-sm-6 col-md-3  col-lg-2 m-1 p-0">
@@ -47,9 +50,10 @@
                 </div>
             </div>
         </div>
+        </div>
     </div>
 
-    <div class="container-fluid container-fluid row justify-content-center">
+    <div class="container justify-content-center">
         <nav>
             <ul class="pagination">
                 <li class="page-item" th:classappend="${recipes.isFirst()} ? 'disabled' : ''">
