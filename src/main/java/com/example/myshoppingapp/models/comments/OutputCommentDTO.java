@@ -17,8 +17,6 @@ import java.time.format.DateTimeFormatter;
 @NoArgsConstructor
 public class OutputCommentDTO {
 
-    public static final String DEFAULT_USER_PIC = "/images/default-user-pic.jpg";
-
     private Long id;
     private String text;
     private LocalDateTime dateAdded;

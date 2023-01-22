@@ -48,7 +48,7 @@ public class RecipeController {
                 sort = "position",
                 direction = Sort.Direction.DESC,
                 page = 0,
-                size = 5) Pageable pageable) {
+                size = 9) Pageable pageable) {
             model.addAttribute("recipes", recipeService.showAllRecipes(pageable));
 
             return "recipe/all-recipes";
