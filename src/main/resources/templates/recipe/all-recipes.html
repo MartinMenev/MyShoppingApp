@@ -10,49 +10,31 @@
     <th:block th:include="~{fragments/nav-bar1}"></th:block>
 </header>
 <main>
-    <div class="container justify-content-center">
+    <div class="container justify-content-center" >
         <h1 class="logo-home-text">All Recipes</h1>
         <hr class="bg-dark hr-2"/>
-        <section class="logo-home-text">
+        <button class="btn glow-button rounded-5" >
             <a th:href="@{/add-recipe}"
                class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
-        </section>
+        </button>
         <hr class="bg-dark hr-2"/>
-        <div th:class="row">
-
-
-        <div th:class="col-lg-4" th:each="recipe : ${recipes.getContent()}"
-             th:object="${recipe}"
-            class="recipe row mx-auto d-flex flex-row justify-content-center">
-            <div class="recipe card col-sm-6 col-md-3  col-lg-2 m-1 p-0">
-
-                    <div class="card-img-top-wrapper">
-                    <img class="card-img-top" th:if="*{hasImageUrl}" th:src="*{imageUrl}" alt="Recipe image">
-                    </div>
-
-                <div class="card-body pb-1">
+        <div th:class="container" >
+        <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6" th:each="recipe : ${recipes.getContent()}"
+             th:object="${recipe}">
+            <div class="card h-75 rounded-5">
+                    <img class="card-img-top h-50" th:if="*{hasImageUrl}" th:src="*{imageUrl}" alt="Recipe image">
+                <div class="card-body h-40">
                     <h5 class="card-title">
-                        <th:block th:text="*{description}"></th:block>
+                        <h5 th:text="*{description}"></h5>
                     </h5>
-                </div>
-                <ul class="offer-details list-group list-group-flush">
-                    <li class="list-group-item">
-                        <div class="card-text"><span><th:block th:text="*{name}"></th:block> </span></div>
-                        <div class="card-text"><span>• Category: <th:block th:text="*{category}"></th:block></span></div>
-                        <div class="card-text"><span>• Rating: <th:block th:text="*{rating}"></th:block></span></div>
-                        <div class="card-text"><span>• Author: <th:block th:text="*{getAuthorName}"></th:block> </span></div>
-                        <div class="card-text"><span>• Date added: <th:block th:text="*{dateAdded}"></th:block> </span></div>
-                    </li>
-                </ul>
-                <div class="card-body">
                     <a class="card-link" href="#" th:href="@{/recipe/{id}(id=*{id})}">Details</a>
                     <a class="card-link" href="#" th:href="*{url}">Open link</a>
                 </div>
             </div>
         </div>
+         </div>
         </div>
-    </div>
-
     <div class="container justify-content-center">
         <nav>
             <ul class="pagination">
@@ -100,12 +82,13 @@
         </nav>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
 </main>
 <footer>
     <th:block th:include="~{fragments/footer}"></th:block>
 </footer>
+
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 </body>
 </html>
