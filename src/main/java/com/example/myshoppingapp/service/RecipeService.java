@@ -32,9 +32,12 @@ public class RecipeService {
 
     public void addRecipe(InputRecipeDTO inputRecipeDTO) {
         User authorId = this.userService.findByUsername(userService.getLoggedInUser());
+        if (inputRecipeDTO.getImageUrl().isBlank()) {
+            inputRecipeDTO.setImageUrl("https://images.pexels.com/photos/4033165/pexels-photo-4033165.jpeg?auto=compress&cs=tinysrgb&w=1600");
+        }
         Recipe recipe = this.modelMapper.map(inputRecipeDTO, Recipe.class);
         recipe.setAuthor(authorId);
-        this.recipeRepository.saveAndFlush(recipe);
+        this.recipeRepository.save(recipe);
         recipe.setPosition(recipe.getId());
         this.recipeRepository.saveAndFlush(recipe);
     }
