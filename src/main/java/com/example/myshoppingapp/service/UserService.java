@@ -23,13 +23,14 @@ public class UserService {
 
     private UserRepository userRepository;
     private ProductRepository productRepository;
-    private final ModelMapper modelMapper = new ModelMapper();
+    private final ModelMapper modelMapper;
     private String loggedInUser;
 
     @Autowired
-    public UserService(UserRepository userRepository, ProductRepository productRepository) {
+    public UserService(UserRepository userRepository, ProductRepository productRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.productRepository = productRepository;
+        this.modelMapper = modelMapper;
         this.loggedInUser = null;
     }
 

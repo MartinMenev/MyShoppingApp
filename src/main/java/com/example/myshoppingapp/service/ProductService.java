@@ -23,12 +23,13 @@ public class ProductService {
 
 
     private final ProductRepository productRepository;
-    private final ModelMapper modelMapper = new ModelMapper();
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public ProductService(UserService userService, ProductRepository productRepository) {
+    public ProductService(UserService userService, ProductRepository productRepository, ModelMapper modelMapper) {
         this.userService = userService;
         this.productRepository = productRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Modifying

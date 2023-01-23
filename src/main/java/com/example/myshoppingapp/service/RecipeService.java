@@ -21,12 +21,13 @@ import java.util.NoSuchElementException;
 public class RecipeService {
     private final RecipeRepository recipeRepository;
     private final UserService userService;
-    private final ModelMapper modelMapper = new ModelMapper();
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public RecipeService(RecipeRepository recipeRepository, UserService userService) {
+    public RecipeService(RecipeRepository recipeRepository, UserService userService, ModelMapper modelMapper) {
         this.recipeRepository = recipeRepository;
         this.userService = userService;
+        this.modelMapper = modelMapper;
     }
 
 

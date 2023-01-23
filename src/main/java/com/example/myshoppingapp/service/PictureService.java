@@ -19,12 +19,14 @@ public class PictureService {
     private final PictureRepository pictureRepository;
     private final UserRepository userRepository;
     private final UserService userService;
-    private final ModelMapper modelMapper = new ModelMapper();
+    private final ModelMapper modelMapper;
     @Autowired
-    public PictureService(PictureRepository pictureRepository, UserRepository userRepository, UserService userService) {
+    public PictureService(PictureRepository pictureRepository, UserRepository userRepository,
+                          UserService userService, ModelMapper modelMapper) {
         this.pictureRepository = pictureRepository;
         this.userRepository = userRepository;
         this.userService = userService;
+        this.modelMapper = modelMapper;
     }
 
 

@@ -18,14 +18,15 @@ import java.util.NoSuchElementException;
 @Service
 public class CommentService {
     private final CommentRepository commentRepository;
-    private final ModelMapper modelMapper = new ModelMapper();
+    private final ModelMapper modelMapper;
     private final UserService userService;
     private final RecipeService recipeService;
 
 
     @Autowired
-    public CommentService(CommentRepository commentRepository, UserService userService, RecipeService recipeService) {
+    public CommentService(CommentRepository commentRepository, ModelMapper modelMapper, UserService userService, RecipeService recipeService) {
         this.commentRepository = commentRepository;
+        this.modelMapper = modelMapper;
         this.userService = userService;
         this.recipeService = recipeService;
     }
