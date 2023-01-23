@@ -28,13 +28,21 @@
                 and get inspired by delicious recipe ideas!
                 </h5>
             </div>
+            <p th:if="${username != null}">
+                <button>
+                    <a th:if="${username != null}" th:href="@{/add-recipe}"
+                       class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
+                </button>
+<!--                Modal button from navbar fragment-->
+                <button th:if="${username != null}" data-bs-toggle="modal" data-bs-target="#exampleModal"> Add product
+                </button>
+            </p>
 
         </div>
 
-        <section class="summary">
-            <a th:if="${username != null}" th:href="@{/add-recipe}"
-               class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
-        </section>
+
+
+
     </main>
         <footer>
             <th:block th:include="~{fragments/footer}"></th:block>

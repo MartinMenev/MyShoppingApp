@@ -6,11 +6,15 @@
                 <a class="navbar-brand" th:href="@{/home}">
                     <i class="fa-solid fa-cart-arrow-down"></i> Sh</i><i class="fa-regular fa-heart"></i>pppIt</a>
             </div>
+<!--             Add product-->
             <div>
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    add item
+                </button>
 <!--                Add product-->
-                <form  th:method="post" th:action="@{/add-product}">
-                    <input type="text" class="form-control" id="addItem" placeholder="add item . . ." name="name">
-                </form>
+<!--                <form  th:method="post" th:action="@{/add-product}">-->
+<!--                    <input type="text" class="form-control" id="addItem" placeholder="add item . . ." name="name">-->
+<!--                </form>-->
             </div>
                 <div class="nav">
                 <button class="navbar-toggler"
@@ -60,5 +64,32 @@
                     </ul>
                 </div>
         </nav>
+    </div>
+
+    <!-- Adding Product with Modal box -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        <h3 class="logo-home-text">
+                            add item
+                        </h3>
+
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form  th:method="post" th:action="@{/add-product}">
+                        <label>
+                            <input type="text" class="form-control"  placeholder="add item . . ." name="name">
+                        </label>
+                        <button type="submit" class="btn btn-lg">
+                            <i class="fa-solid fa-cart-plus "></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </th:block>
