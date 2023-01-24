@@ -10,7 +10,6 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @Entity
 @Table(name = "products")
@@ -35,5 +34,25 @@ public class Product extends BaseEntity {
     public Product(String name) {
         this();
         this.name = name;
+    }
+
+    public Product setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public Product setUser(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public Product setPosition(long position) {
+        this.position = position;
+        return this;
+    }
+
+    public Product setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+        return this;
     }
 }

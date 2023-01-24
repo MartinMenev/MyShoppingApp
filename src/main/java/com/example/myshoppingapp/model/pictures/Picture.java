@@ -10,7 +10,6 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -24,4 +23,13 @@ public class Picture extends BaseEntity {
     private User author;
 
 
+    public Picture setUrl(String url) {
+        this.url = url;
+        return this;
+    }
+
+    public Picture setAuthor(User author) {
+        this.author = author;
+        return this;
+    }
 }

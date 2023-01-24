@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @Entity
 @Table(name = "recipes")
@@ -90,4 +89,48 @@ public class Recipe extends BaseEntity {
 
   }
 
+    public Recipe setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public Recipe setUrl(String url) {
+        this.url = url;
+        return this;
+    }
+
+    public Recipe setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public Recipe setCategory(Category category) {
+        this.category = category;
+        return this;
+    }
+
+    public Recipe setRating(double rating) {
+        this.rating = rating;
+        return this;
+    }
+
+    public Recipe setAuthor(User author) {
+        this.author = author;
+        return this;
+    }
+
+    public Recipe setPicture(Picture picture) {
+        this.picture = picture;
+        return this;
+    }
+
+    public Recipe setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public Recipe setPosition(long position) {
+        this.position = position;
+        return this;
+    }
 }

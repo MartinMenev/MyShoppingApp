@@ -11,7 +11,6 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @Entity
 @Table(name = "comments")
@@ -43,5 +42,25 @@ public class Comment extends BaseEntity {
         }
 
         return "/images/"+url;
+    }
+
+    public Comment setText(String text) {
+        this.text = text;
+        return this;
+    }
+
+    public Comment setAuthor(User author) {
+        this.author = author;
+        return this;
+    }
+
+    public Comment setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+        return this;
+    }
+
+    public Comment setRating(long rating) {
+        this.rating = rating;
+        return this;
     }
 }
