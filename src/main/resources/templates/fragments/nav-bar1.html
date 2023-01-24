@@ -1,70 +1,112 @@
-<th:block >
+<th:block th:fragment="nav-bar" >
     <div class="container">
     <script src="https://kit.fontawesome.com/5e0c9322dd.js" crossorigin="anonymous"></script>
-         <nav class="navbar navbar-expand-sm bg-white small rounded-5">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end justify-content-evenly mt-1 rounded-5">
             <span class="logo">
                 <a class="navbar-brand" th:href="@{/home}">
-                    <i class="fa-solid fa-cart-arrow-down"></i> sh<i class="fa-regular fa-heart"></i>pLIZT</a>
+                    <i class="fa-solid fa-cart-arrow-down"></i> Sh<i class="fa-regular fa-heart"></i>pLizt</a>
             </span>
-<!--             Add product-->
-            <div>
-                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    add item
-                </button>
-<!--                Add product-->
-<!--                <form  th:method="post" th:action="@{/add-product}">-->
-<!--                    <input type="text" class="form-control" id="addItem" placeholder="add item . . ." name="name">-->
-<!--                </form>-->
-            </div>
-                <div class="nav">
-                <button class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarText"
-                        aria-controls="navbarText"
-                        aria-expanded="true"
-                        aria-label="Toggle navigation">
-                    <i class="fas fa-bars text-dark"></i>
-                </button>
-                </div>
 
+
+
+                <!--                Add product-->
+                <!--                <form  th:method="post" th:action="@{/add-product}">-->
+                <!--                    <input type="text" class="form-control" id="addItem" placeholder="add item . . ." name="name">-->
+                <!--                </form>-->
+
+
+
+
+              <span th:if="${true} ">
+                     <div class="nav">
+                          <button class="navbar-toggler"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#navbarText"
+                                  aria-controls="navbarText"
+                                  aria-expanded="true"
+                                  aria-label="Toggle navigation">
+                              <i class="fas fa-bars text-dark"></i>
+                          </button>
+                    </div>
                 <div class="collapse navbar-collapse" id="navbarText" >
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <ul class="nav navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/home}">
-                                <i class="fa-solid fa-house-user"> Home</i>
+                                <i class="fa-solid fa-house-user"> home </i>
                             </a>
                         </li>
                         <li class="nav-item">
+                            <span type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="fa-solid fa-plus"> add item </i>
+                        </span>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" th:href="@{/product-list}">
-                                <i class="fa-solid fa-plus"> View List </i>
+                                <i class="fa-solid fa-list-ol"> item list </i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/all-recipes}">
-                                <i class="fa-solid fa-book-open-reader"></i>RECIPES
+                                <i class="fa-solid fa-book-open-reader"> recipes </i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/export/export-all-products}">
-                                <i class="fa-brands fa-shopify"></i>
+                                <i class="fa-brands fa-shopify"> print </i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/user/profile}">
-                                <i class="fa-solid fa-user"></i>
+                                <i class="fa-solid fa-user"> profile </i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <form action="/logout?login" method="post">
                                 <input type="hidden" name="_csrf" value="80417983-fe8b-45c7-963e-31f6915a1560">
-                                <a class="nav-link" th:href="@{/}"><i class="fa-solid fa-right-from-bracket"></i></a>
+                                <a class="nav-link" th:href="@{/}"><i class="fa-solid fa-right-from-bracket"> logout </i></a>
                             </form>
                         </li>
-                    </ul>
+                    </ul >
                 </div>
-        </nav>
-    </div>
+             </span>
+
+<!--             NO ACTIVE USER LOGGED IN-->
+             <span th:if="${false}">
+                 <div class="nav">
+                     <button class="navbar-toggler"
+                             type="button"
+                             data-bs-toggle="collapse"
+                             data-bs-target="#navbarText1"
+                             aria-controls="navbarText1"
+                             aria-expanded="true"
+                             aria-label="Toggle navigation">
+                          <i class="fas fa-bars text-dark"></i>
+                      </button>
+                 </div>
+                 <div class="collapse navbar-collapse" id="navbarText1" >
+
+                     <ul class="nav navbar-nav">
+                          <li class="nav-item">
+                                <a class="nav-link" th:href="@{/all-recipes}">
+                                    <i class="fa-solid fa-book-open-reader"> recipes </i>
+                                </a>
+                       </li>
+                          <li class="nav-item">
+                                <form action="/logout?login" method="post">
+                                    <input type="hidden" name="_csrf" value="80417983-fe8b-45c7-963e-31f6915a1560">
+                                    <a class="nav-link" th:href="@{/users/login}"><i class="fa-solid fa-right-from-bracket"> login </i></a>
+                                </form>
+                          </li>
+                     </ul>
+                 </div>
+             </span>
+         </nav>
+        </div>
+
+
+
 
     <!-- Adding Product with Modal box -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
