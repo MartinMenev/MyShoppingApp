@@ -204,23 +204,6 @@ body > main > div > table > tbody > tr {
     border-radius: 6px;
 }
 
-/*.nav1 {*/
-/*    display: inline-block;*/
-/*}*/
-
-/*body > header > nav > div > div:nth-child(2) > form {*/
-/*    padding: 0 1%;*/
-/*    margin: 0 1%*/
-/*}*/
-
-/*#navbarText > ul {*/
-/*    align-content: space-around;*/
-/*}*/
-
-/*#navbarText > ul > li {*/
-/*    margin-left: 10px;*/
-/*    text-align: right;*/
-/*}*/
 
 #addItem {
     width: 135px;
@@ -231,18 +214,15 @@ body > main > div > table > tbody > tr {
     font-size: 1rem;
     font-style: inherit;
     color: #1F8186;
+    font-weight: bold;
     text-shadow: 0 0 0.05em rgba(0, 0, 0, 0.2), -0.025em 0.025em 0.1em #000,
     -0.05em 0.05em 0.1em #000, -0.1em 0.1em 0.3em #000,
     -0.1em 0.1em 0.5em rgba(0, 0, 0, 0.5);
 }
 
-/*body > header > nav > div > div.logo > a {*/
-/*    color: inherit;*/
-/*}*/
 
 .logo-home-text {
     margin-top: 1rem;
-    font-size: 2rem;
     font-style: inherit;
     color: #1F8186;
     font-weight: bold;

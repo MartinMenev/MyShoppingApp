@@ -1,10 +1,10 @@
 package com.example.myshoppingapp.service;
 
-import com.example.myshoppingapp.models.pictures.OutputPictureDTO;
-import com.example.myshoppingapp.models.pictures.Picture;
-import com.example.myshoppingapp.models.users.User;
-import com.example.myshoppingapp.repositories.PictureRepository;
-import com.example.myshoppingapp.repositories.UserRepository;
+import com.example.myshoppingapp.model.pictures.OutputPictureDTO;
+import com.example.myshoppingapp.model.pictures.Picture;
+import com.example.myshoppingapp.model.users.User;
+import com.example.myshoppingapp.repository.PictureRepository;
+import com.example.myshoppingapp.repository.UserRepository;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

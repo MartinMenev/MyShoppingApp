@@ -1,11 +1,11 @@
 package com.example.myshoppingapp.service;
 
-import com.example.myshoppingapp.models.comments.Comment;
-import com.example.myshoppingapp.models.comments.InputCommentDTO;
-import com.example.myshoppingapp.models.comments.OutputCommentDTO;
-import com.example.myshoppingapp.models.recipes.Recipe;
-import com.example.myshoppingapp.models.users.User;
-import com.example.myshoppingapp.repositories.CommentRepository;
+import com.example.myshoppingapp.model.comments.Comment;
+import com.example.myshoppingapp.model.comments.InputCommentDTO;
+import com.example.myshoppingapp.model.comments.OutputCommentDTO;
+import com.example.myshoppingapp.model.recipes.Recipe;
+import com.example.myshoppingapp.model.users.User;
+import com.example.myshoppingapp.repository.CommentRepository;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

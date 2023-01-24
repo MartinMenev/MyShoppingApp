@@ -1,10 +1,10 @@
 package com.example.myshoppingapp.service;
 
-import com.example.myshoppingapp.models.enums.UserRole;
-import com.example.myshoppingapp.models.products.Product;
-import com.example.myshoppingapp.models.users.*;
-import com.example.myshoppingapp.repositories.ProductRepository;
-import com.example.myshoppingapp.repositories.UserRepository;
+import com.example.myshoppingapp.model.enums.UserRole;
+import com.example.myshoppingapp.model.products.Product;
+import com.example.myshoppingapp.model.users.*;
+import com.example.myshoppingapp.repository.ProductRepository;
+import com.example.myshoppingapp.repository.UserRepository;
 import lombok.Getter;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;

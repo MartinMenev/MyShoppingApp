@@ -1,10 +1,10 @@
 package com.example.myshoppingapp.service;
 
-import com.example.myshoppingapp.models.recipes.InputRecipeDTO;
-import com.example.myshoppingapp.models.recipes.OutputRecipeDTO;
-import com.example.myshoppingapp.models.recipes.Recipe;
-import com.example.myshoppingapp.models.users.User;
-import com.example.myshoppingapp.repositories.RecipeRepository;
+import com.example.myshoppingapp.model.recipes.InputRecipeDTO;
+import com.example.myshoppingapp.model.recipes.OutputRecipeDTO;
+import com.example.myshoppingapp.model.recipes.Recipe;
+import com.example.myshoppingapp.model.users.User;
+import com.example.myshoppingapp.repository.RecipeRepository;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

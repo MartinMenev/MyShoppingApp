@@ -139,10 +139,15 @@
                     <tbody>
                     <tr th:each="comment:${comments}">
                         <td>
-                            <img th:if="${comment.getAuthorPicUrl() != null}" th:src="${comment.getAuthorPicUrl()}" width="30" class="rounded-circle" alt="picture">
-<!--                            <img th:unless="${comment.getAuthorPicUrl() != null}" th:src="@{'/images/default-user-pic.jpg'}" width="30" />-->
-
-                            <span th:text="${comment.author.username}"></span> wrote on <span th:text="${comment.getDate()}"></span>
+                            <span th:if="${comment.getAuthorPicUrl() != null}">
+                                 <img  th:src="${comment.getAuthorPicUrl()}" width="30" class="rounded-circle" alt="picture">
+                            </span>
+                            <span th:if="${comment.getAuthorPicUrl() == null}">
+                                 <img th:src="@{https://freesvg.org/img/abstract-user-flat-4.png}" width="30" class="rounded-circle" alt="picture">
+                            </span>
+                            <span th:text="${comment.author.username}"></span>
+                            wrote on
+                            <span th:text="${comment.getDate()}"></span>
                         </td>
 
                         <td th:text="${comment.text}" >
