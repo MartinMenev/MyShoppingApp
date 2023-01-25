@@ -24,7 +24,7 @@ public class HomeController {
     public String index(Model model) {
         model.addAttribute("username", userService.getLoggedInUser());
         this.userService.setLoggedInUser(null);
-        return "index2";
+        return "index";
     }
 
 
