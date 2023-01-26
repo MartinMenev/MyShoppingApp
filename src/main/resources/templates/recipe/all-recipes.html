@@ -1,98 +1,141 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
 <head>
-    <th:block th:include="~{fragments/head}"></th:block>
-    <title>All recipes</title>
+  <th:block th:include="~{fragments/head}"></th:block>
+  <title>All Recipes</title>
 </head>
+
 <body>
-<header>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
     <th:block th:include="~{fragments/nav-bar1}"></th:block>
-</header>
-<main>
-    <div class="container justify-content-center bg-gradient rounded-5" >
-        <h1 class="logo-home-text">All Recipes</h1>
-        <hr class="bg-dark hr-2"/>
-        <button class="btn glow-button rounded-5" >
+  </header>
+ <!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 data-aos="fade-up">Inspiration</h2>
+
+          <button class="btn glow-button rounded-5" >
             <a th:href="@{/add-recipe}"
                class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
-        </button>
-        <hr class="bg-dark hr-2"/>
-        <div th:class="container" >
-        <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-6" th:each="recipe : ${recipes.getContent()}"
-             th:object="${recipe}">
-            <div class="card h-75 rounded-5">
+          </button>
+
+          <ol>
+            <li><a th:href="@{/home}">Home</a></li>
+            <li>Recipes</li>
+          </ol>
+        </div>
+
+      </div>
+    </div><!-- End Breadcrumbs -->
 
 
-                <img class="card-img-top h-50" th:if="*{imageUrl != null}" th:src="*{imageUrl}"  />
-<!--                <img class="card-img-top h-50" th:if="*{imageUrl != null}" th:src="@{https://freesvg.org/img/Gerald_G_Campfires_and_cooking_cranes_15.png}"/>-->
 
-                <div class="card-body h-40">
-                    <h5 class="card-title">
-                        <h5 th:text="*{description}"></h5>
-                    </h5>
-                    <a class="card-link" href="#" th:href="@{/recipe/{id}(id=*{id})}">Details</a>
-                    <a class="card-link" href="#" th:href="*{url}">Open link</a>
-                </div>
+
+    <!-- ======= Chefs Section ======= -->
+    <section id="chefs" class="chefs section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Recipes</h2>
+          <p>Latest <span>Delicious</span> Recipes</p>
+        </div>
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch aos-init aos-animate" data-aos="fade-up" data-aos-delay="100"
+               th:each="recipe : ${recipes.getContent()}"
+               th:object="${recipe}">
+
+            <div class="chef-member">
+              <div class="member-img">
+                <img th:src="*{imageUrl}" class="img-fluid" alt="">
+
+              </div>
+              <div class="member-info">
+                <h4 th:text="*{name}"></h4>
+                <span th:text="*{getAuthorName}">(added by)</span>
+                <p th:text="*{description}"></p>
+              </div>
+              <a class="button" href="#" th:href="@{/recipe/{id}(id=*{id})}">Details</a>
+              <a class="button" href="#" th:href="*{url}">Open link</a>
             </div>
-        </div>
-         </div>
-        </div>
-    <div class="container justify-content-center">
-        <nav>
-            <ul class="pagination">
-                <li class="page-item" th:classappend="${recipes.isFirst()} ? 'disabled' : ''">
-                    <a th:unless="${recipes.isFirst()}"
-                       th:href="@{/recipes/all(size=${recipes.getSize()},page=0)}"
-                       class="page-link" href="#">First</a>
-                    <a th:if="${recipes.isFirst()}"
-                       class="page-link" href="#">First</a>
-                </li>
-            </ul>
-        </nav>
-        <nav>
-            <ul class="pagination">
-                <li class="page-item" th:classappend="${recipes.hasPrevious() ? '' : 'disabled'}">
-                    <a th:if="${recipes.hasPrevious()}"
-                       th:href="@{/recipes/all(size=${recipes.getSize()},page=${recipes.getNumber() - 1})}"
-                       class="page-link" href="#">Previous</a>
-                    <a th:unless="${recipes.hasPrevious()}"
-                       class="page-link" href="#">Previous</a>
-                </li>
-            </ul>
-        </nav>
-        <nav>
-            <ul class="pagination">
-                <li class="page-item" th:classappend="${recipes.hasNext() ? '' : 'disabled'}">
-                    <a th:if="${recipes.hasNext()}"
-                       th:href="@{/recipes/all(size=${recipes.getSize()},page=${recipes.getNumber() + 1})}"
-                       class="page-link" href="#">Next</a>
-                    <a th:unless="${recipes.hasNext()}"
-                       class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
-        <nav>
-            <ul class="pagination">
-                <li class="page-item" th:classappend="${recipes.isLast()} ? 'disabled' : ''">
-                    <a th:unless="${recipes.isLast()}"
-                       th:href="@{/recipes/all(size=${recipes.getSize()},page=${recipes.getTotalPages() - 1})}"
-                       class="page-link" href="#">Last</a>
-                    <a th:if="${recipes.isLast()}"
-                       class="page-link" href="#">Last</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
 
 
-</main>
-<footer>
+
+          </div><!-- End Chefs Member -->
+
+
+        </div>
+
+        <div class="container justify-content-center">
+          <nav>
+            <ul class="pagination">
+              <li class="page-item" th:classappend="${recipes.isFirst()} ? 'disabled' : ''">
+                <a th:unless="${recipes.isFirst()}"
+                   th:href="@{/recipes/all(size=${recipes.getSize()},page=0)}"
+                   class="page-link" href="#">First</a>
+                <a th:if="${recipes.isFirst()}"
+                   class="page-link" href="#">First</a>
+              </li>
+            </ul>
+          </nav>
+          <nav>
+            <ul class="pagination">
+              <li class="page-item" th:classappend="${recipes.hasPrevious() ? '' : 'disabled'}">
+                <a th:if="${recipes.hasPrevious()}"
+                   th:href="@{/recipes/all(size=${recipes.getSize()},page=${recipes.getNumber() - 1})}"
+                   class="page-link" href="#">Previous</a>
+                <a th:unless="${recipes.hasPrevious()}"
+                   class="page-link" href="#">Previous</a>
+              </li>
+            </ul>
+          </nav>
+          <nav>
+            <ul class="pagination">
+              <li class="page-item" th:classappend="${recipes.hasNext() ? '' : 'disabled'}">
+                <a th:if="${recipes.hasNext()}"
+                   th:href="@{/recipes/all(size=${recipes.getSize()},page=${recipes.getNumber() + 1})}"
+                   class="page-link" href="#">Next</a>
+                <a th:unless="${recipes.hasNext()}"
+                   class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+          <nav>
+            <ul class="pagination">
+              <li class="page-item" th:classappend="${recipes.isLast()} ? 'disabled' : ''">
+                <a th:unless="${recipes.isLast()}"
+                   th:href="@{/recipes/all(size=${recipes.getSize()},page=${recipes.getTotalPages() - 1})}"
+                   class="page-link" href="#">Last</a>
+                <a th:if="${recipes.isLast()}"
+                   class="page-link" href="#">Last</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+    </section><!-- End Chefs Section -->
+
+
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer>
     <th:block th:include="~{fragments/footer}"></th:block>
-</footer>
+  </footer>
 
-<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 </body>
+
 </html>

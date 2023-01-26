@@ -1,7 +1,7 @@
 package com.example.myshoppingapp.web;
 
-import com.example.myshoppingapp.service.PictureService;
 import com.example.myshoppingapp.service.ProductService;
+import com.example.myshoppingapp.service.RecipeService;
 import com.example.myshoppingapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,16 +13,19 @@ public class HomeController {
 
     private final UserService userService;
     private final ProductService productService;
+    private final RecipeService recipeService;
 
     @Autowired
-    public HomeController(UserService userService, PictureService productService, ProductService productService1) {
+    public HomeController(UserService userService, ProductService productService, RecipeService recipeService) {
         this.userService = userService;
-        this.productService = productService1;
+        this.productService = productService;
+        this.recipeService = recipeService;
     }
 
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("username", userService.getLoggedInUser());
+        model.addAttribute("recipes", recipeService.showLast3Recipes());
         this.userService.setLoggedInUser(null);
         return "index";
     }

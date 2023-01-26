@@ -14,6 +14,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Getter
@@ -48,6 +49,15 @@ public class RecipeService {
                 findAll(pageable).
                 map(recipe -> this.modelMapper.map(recipe, OutputRecipeDTO.class));
 
+    }
+
+    public List<OutputRecipeDTO> showLast3Recipes() {
+        return this.recipeRepository
+                .findAll()
+                .stream()
+                .map(recipe -> modelMapper.map(recipe, OutputRecipeDTO.class))
+                .limit(3)
+                .toList();
     }
 
     public OutputRecipeDTO getRecipeById(Long id) {
