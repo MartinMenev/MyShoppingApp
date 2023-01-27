@@ -20,7 +20,7 @@
 :root {
   --color-default: #212529;
   --color-primary: #1F8186;
-  --color-secondary: #1F8186;
+  --color-secondary: #6f866b;
 }
 
 /* Smooth scroll behavior */
@@ -1128,6 +1128,7 @@ section {
 .chefs .chef-member .member-img {
   position: relative;
   overflow: hidden;
+  background-color: #ebf2f6;
 }
 
 .chefs .chef-member .member-img:after {
@@ -1137,7 +1138,7 @@ section {
   bottom: 0;
   height: 100%;
   width: 100%;
-  background: url(../img/team-shape.svg) no-repeat center bottom;
+  background: url("../images/app-images/team-shape.svg") no-repeat center bottom;
   background-size: contain;
   z-index: 1;
 }
@@ -1171,14 +1172,16 @@ section {
 }
 
 .chefs .chef-member .member-info {
+  color: #1F8186;
   padding: 10px 15px 20px 15px;
 }
 
 .chefs .chef-member .member-info h4 {
   font-weight: 700;
+  font-family: system-ui;
   margin-bottom: 5px;
   font-size: 20px;
-  color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 .chefs .chef-member .member-info span {
@@ -1352,14 +1355,13 @@ section {
 }
 
 .gallery .swiper-pagination {
-  margin-top: 20px;
   position: relative;
 }
 
 .gallery .swiper-pagination .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
-  background-color: #d1d1d7;
+  background-color: #b2a4a4;
   opacity: 1;
 }
 
@@ -1369,6 +1371,7 @@ section {
 
 .gallery .swiper-slide-active {
   text-align: center;
+
 }
 
 @media (min-width: 992px) {
@@ -1379,9 +1382,10 @@ section {
   .gallery .swiper-slide-active {
     border: 6px solid var(--color-primary);
     padding: 4px;
-    background: #fff;
+    background: #d5c2c2;
     z-index: 1;
     transform: scale(1.2);
+
   }
 }
 

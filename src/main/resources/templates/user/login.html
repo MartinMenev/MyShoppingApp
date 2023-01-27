@@ -1,49 +1,96 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
 <head>
-    <th:block th:include="~{fragments/head}"></th:block>
-    <title>Login</title>
+  <th:block th:include="~{fragments/head}"></th:block>
+  <title>All Recipes</title>
 </head>
+
 <body>
-<header>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
     <th:block th:include="~{fragments/nav-bar1}"></th:block>
-</header>
-<main class="mt-5">
-    <h1 class="text-center text-black display-4">Login</h1>
-    <hr class="bg-hero hr-2"/>
-    <form class="mx-auto w-25" th:method="POST" th:action="@{/users/login}">
-        <input type="hidden" name="_csrf" value="c95ccb2b-1afa-47bd-bf7b-a5b72739470b">
-        <div class="form-group">
-            <label for="username" class="text-black mb-1">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Username..." name="username">
-        </div>
-        <div class="form-group">
-            <label for="password" class="text-black mb-1">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password..." name="password">
-        </div>
-        <hr class="bg-hero hr-2"/>
-        <div class="button-holder mt-3 d-flex justify-content-center">
-            <button type="submit" class="btn btn-light glow-button">Login</button>
-        </div>
-    </form>
+  </header>
+ <!-- End Header -->
 
-    <div class="container align-content-center">
-        <div class="col-md-4">
-            <h6>
-                Not using the app yet?
-                <a class="sign-in" th:href="@{/users/register}"> Register </a>
-            </h6>
-        </div>
-    </div>
+  <main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container align-content-center">
 
-    <span style="visibility: hidden">....</span>
-</main>
-<footer>
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 data-aos="fade-up">
+
+            <div class="section-header align-content-center">
+              <p > <span>Login</span>
+              </p>
+            </div>
+
+          </h2>
+          <ol>
+            <li><a th:href="@{/home}">Home</a></li>
+            <li>Recipe Details</li>
+          </ol>
+        </div>
+
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+
+    <section id="why-us" class="why-us section-bg">
+      <div class="container justify-content-center" data-aos="fade-up">
+
+        <div class="col-lg-12 justify-content-center" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row lg-12 justify-content-center">
+              <div class="col-lg-6 justify-content-center rounded-5" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box d-flex flex-column align-items-center rounded-5 ">
+
+                  <form class="mx-auto w-60" th:method="POST" th:action="@{/users/login}">
+                    <input type="hidden" name="_csrf" value="c95ccb2b-1afa-47bd-bf7b-a5b72739470b">
+                    <div class="form-group p-2">
+                      <label for="username" class="text-black mb-1">Username</label>
+                      <input type="text" class="form-control" id="username" placeholder="Username..." name="username">
+                    </div>
+                    <div class="form-group p-2">
+                      <label for="password" class="text-black mb-1">Password</label>
+                      <input type="password" class="form-control" id="password" placeholder="Password..." name="password">
+                    </div>
+                    <hr class="bg-hero hr-2"/>
+                    <div class="button-holder mt-3 d-flex justify-content-center">
+                      <button type="submit" class="btn btn-light glow-button">Login</button>
+                    </div>
+                  </form>
+
+                  <hr class="bg-hero hr-3"/>
+
+                  <h6>
+                    Not using the app yet?
+                    <a class="sign-in" th:href="@{/users/register}"> Register </a>
+                  </h6>
+
+                </div>
+              </div><!-- End Icon Box -->
+
+
+            </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer>
     <th:block th:include="~{fragments/footer}"></th:block>
-</footer>
+  </footer>
 
-<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 </body>
+
 </html>

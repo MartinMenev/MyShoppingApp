@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+    <title>User Profile</title>
+</head>
+<body>
+<header>
+    <th:block th:include="~{fragments/nav-bar1}"></th:block>
+</header>
+<h1 class="logo-home-text">Update:</h1>
+<hr class="bg-hero hr-2"/>
+<main class="p-5 align-content-center bg-blur my-register-div">
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-7">
+                <div class="profile-card p-3 py-4">
+                    <section class="my-5">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 mx-auto">
+                                    <h4>Upload Image</h4>
+                                    <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+                                    <form method="post" th:action="@{/upload}" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <input type="file" name="image" accept="image/*" class="form-control-file">
+                                        </div>
+                                        <button type="submit" class="btn btn-info col-5">Upload image</button>
+                                    </form>
+                                    <span th:if="${msg != null}" th:text="${msg}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <form action="#" th:action="@{/update-user}" th:object="${user}" th:method="PUT">
+                        <div class="text-center"><img src="/images/ShoppingPic.jpg" width="100" class="rounded-circle" alt="picture"></div>
+                        <div class="text-center mt-3" th:object="${user}">
+                                <h4 class="mt-4 mb-0">Username</h4>
+                            <input type="text" th:field="*{username}" class="form-control mb-4 col-4">
+                                <h4 class="mt-2 mb-0">Password</h4>
+                            <input type="text" th:field="*{password}" class="form-control mb-4 col-4">
+                                <h4 class="mt-2 mb-0">Email</h4>
+                            <input type="text" th:field="*{email}" class="form-control mb-4 col-4">
+                        </div>
+                            <button type="submit" class="btn btn-info col-5"> Update </button>
+                    </form>
+                    <hr class="bg-hero hr-2"/>
+                    <a th:href="@{/delete-profile/{id}(id=${user.id})}"
+                       class="btn btn-light text-danger">Delete profile</a>
+                    <hr class="bg-hero hr-2"/>
+                    <a th:href="@{/home}"
+                       class="btn btn-light text-white">Back to home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+</body>
+
+
+</html>

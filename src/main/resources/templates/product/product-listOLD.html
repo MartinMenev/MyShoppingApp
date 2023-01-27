@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+    <title>My product list</title>
+</head>
+<body>
+<header>
+    <th:block th:include="~{fragments/nav-bar1}"></th:block>
+</header>
+<main>
+    <h1 class="logo-home-text">My shopping list</h1>
+    <hr class="bg-hero hr-2"/>
+    <div class="container min-vh-100">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <table class="table table-responsive-sm  rounded-3 bg-white" >
+                    <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Preferences</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="product:${products}">
+                        <td th:text="${product.name}" >
+                        </td>
+                        <td>
+                            <!--               moveUp Product-->
+                            <a th:href="@{/moveUpProduct/{position}(position=${product.position})}"
+                               class="btn btn-light"> <i class="fa-regular fa-circle-up"></i> </a>
+                            <!--                moveDown Product-->
+                            <a th:href="@{/moveDownProduct/{position}(position=${product.position})}"
+                               class="btn btn-light"> <i class="fa-regular fa-circle-down"></i> </a>
+
+                            <!--                update Product&ndash;&gt;-->
+                            <a th:href="@{/product/updateProduct/{id}(id=${product.id})}"
+                               class="btn btn-light"> <i class="fa-regular fa-pen-to-square"></i> </a>
+                            <!--                remove Product-->
+                            <a th:href="@{/deleteProduct/{id}(id=${product.id})}"
+                               class="btn btn-light">
+                                <i class="fa-solid fa-xmark"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</main>
+<footer>
+    <th:block th:include="~{fragments/footer}"></th:block>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+</body>
+</html>

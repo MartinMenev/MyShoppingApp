@@ -39,9 +39,9 @@
 
 
 
-    <!-- ======= Chefs Section ======= -->
+    <!-- ======= Recipes Section ======= -->
     <section id="chefs" class="chefs section-bg">
-      <div class="container" data-aos="fade-up">
+      <div class="container aos-init aos-animate" data-aos="fade-up">
 
         <div class="section-header">
           <h2>Recipes</h2>
@@ -54,7 +54,7 @@
                th:each="recipe : ${recipes.getContent()}"
                th:object="${recipe}">
 
-            <div class="chef-member">
+            <div class="chef-member bg-secondary-subtle rounded-4 border-1">
               <div class="member-img">
                 <img th:src="*{imageUrl}" class="img-fluid" alt="">
 
@@ -70,7 +70,7 @@
 
 
 
-          </div><!-- End Chefs Member -->
+          </div><!-- End Recipes Member -->
 
 
         </div>

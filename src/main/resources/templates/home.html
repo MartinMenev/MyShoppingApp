@@ -1,54 +1,109 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
-    <th:block th:include="~{fragments/head}"></th:block>
-    <title>Home</title>
+  <th:block th:include="~{fragments/head}"></th:block>
+  <title>All Recipes</title>
 </head>
-    <body>
-    <header>
-        <th:block th:include="~{fragments/nav-bar1}"></th:block>
-    </header>
-    <main>
-        <div class="container bg-gradient rounded-5 min-vh-100">
-                <h1 class="logo-home-text">
-                    <i class="fa-solid fa-cart-arrow-down"></i> Sh</i><i class="fa-regular fa-heart"></i>pLizt
-                </h1>
-                <hr class="bg-dark hr-2"/>
-                <h1 th:if="${username == null}" class="text-black display-6"> Hello, guest!
-                </h1>
-                <h1 th:if="${username != null}" class="text-black display-6">Welcome,
-                    <span th:text="${username}"></span>!
-                </h1>
 
-            <div  class="text-bg-success m-4 rounded-5 align-content-center" th:if="${username != null}">
-                <h5>
-                    Here you can easily manage your shopping items
-                and get inspired by delicious recipe ideas!
-                </h5>
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <th:block th:include="~{fragments/nav-bar1}"></th:block>
+  </header>
+ <!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 data-aos="fade-up">
+
+            <div class="section-header">
+              <p th:if="${username == null}" class="text-black display-6"> Hello, guest!
+              </p>
+              <p th:if="${username != null}" class="text-black display-6">Welcome,
+                <span th:text="${username}"></span>!
+              </p>
             </div>
-            <p th:if="${username != null}">
-                <button>
-                    <a th:if="${username != null}" th:href="@{/add-recipe}"
-                       class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
-                </button>
-<!--                Modal button from navbar fragment-->
-                <button th:if="${username != null}" data-bs-toggle="modal" data-bs-target="#exampleModal"> Add product
-                </button>
-            </p>
 
+          </h2>
+          <ol>
+            <li><a th:href="@{/}">Go back</a></li>
+            <li>Home</li>
+          </ol>
         </div>
 
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <section id="why-us" class="why-us section-bg">
+      <div class="container justify-content-center" data-aos="fade-up">
+
+        <div class="col-lg-12 justify-content-center" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row lg-12 justify-content-center">
+              <div class="col-lg-4 justify-content-center rounded-5" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box d-flex flex-column align-items-center rounded-5 ">
+                  <i class="bi bi-clipboard-data"></i>
+
+                  <div  class="text-bg-success m-4 rounded-5 align-content-center" th:if="${username != null}">
+                    <h5>
+                      Here you can easily manage your shopping items
+                      and get inspired by delicious recipe ideas!
+                    </h5>
+                  </div>
+                  <p th:if="${username != null}">
+                    <button>
+                      <a th:if="${username != null}" th:href="@{/add-recipe}"
+                         class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
+                    </button>
+                    <!--                Modal button from navbar fragment-->
+                    <button th:if="${username != null}" data-bs-toggle="modal" data-bs-target="#exampleModal"> Add product
+                    </button>
+                  </p>
+                </div>
+                </div><!-- End Icon Box -->
+
+              <div class="col-lg-4 justify-content-center  rounded-5" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box d-flex flex-column align-items-center rounded-5">
+                  <i class="bi bi-clipboard-data"></i>
 
 
 
-    </main>
-        <footer>
-            <th:block th:include="~{fragments/footer}"></th:block>
-        </footer>
+                </div>
+              </div><!-- End Icon Box -->
 
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    </body>
+              <div class="col-lg-4 justify-content-center  rounded-5" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box d-flex flex-column align-items-center rounded-5">
+                  <i class="bi bi-clipboard-data"></i>
+
+
+
+                </div>
+              </div><!-- End Icon Box -->
+
+            </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer>
+    <th:block th:include="~{fragments/footer}"></th:block>
+  </footer>
+
+</body>
+
 </html>

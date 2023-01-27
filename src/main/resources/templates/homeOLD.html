@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+    <title>Home</title>
+</head>
+    <body>
+    <header>
+        <th:block th:include="~{fragments/nav-bar1}"></th:block>
+    </header>
+    <main>
+        <div class="container bg-gradient rounded-5 min-vh-100">
+                <h1 class="logo-home-text">
+                    <i class="fa-solid fa-cart-arrow-down"></i> Sh</i><i class="fa-regular fa-heart"></i>pLizt
+                </h1>
+                <hr class="bg-dark hr-2"/>
+                <h1 th:if="${username == null}" class="text-black display-6"> Hello, guest!
+                </h1>
+                <h1 th:if="${username != null}" class="text-black display-6">Welcome,
+                    <span th:text="${username}"></span>!
+                </h1>
+
+            <div  class="text-bg-success m-4 rounded-5 align-content-center" th:if="${username != null}">
+                <h5>
+                    Here you can easily manage your shopping items
+                and get inspired by delicious recipe ideas!
+                </h5>
+            </div>
+            <p th:if="${username != null}">
+                <button>
+                    <a th:if="${username != null}" th:href="@{/add-recipe}"
+                       class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
+                </button>
+<!--                Modal button from navbar fragment-->
+                <button th:if="${username != null}" data-bs-toggle="modal" data-bs-target="#exampleModal"> Add product
+                </button>
+            </p>
+
+        </div>
+
+
+
+
+    </main>
+        <footer>
+            <th:block th:include="~{fragments/footer}"></th:block>
+        </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    </body>
+</html>

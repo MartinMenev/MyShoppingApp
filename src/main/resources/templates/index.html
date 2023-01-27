@@ -217,22 +217,18 @@
         </div>
 
         <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper"
-               th:each="recipe : ${recipes}">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end"
+                 th:each="recipe : ${recipes}"
+                 th:style="'background-image:url(' + ${recipe.imageUrl} + ');'">
 
-            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(../../../../../../../../Downloads/YummyExample/Yummy/assets/img/events-1.jpg)">
               <h3 th:text="${recipe.name}"></h3>
               <div class="price align-self-start" th:text="${recipe.authorName}"></div>
-              <p class="description" th:text="${recipe.description}">
-
-              </p>
-            </div><!-- End Event item -->
-
-
+              <p class="description" th:text="${recipe.description}"> </p>
+            </div>
           </div>
           <div class="swiper-pagination"></div>
-        </div>
-
+      </div>
       </div>
     </section><!-- End Recipes Section -->
 
