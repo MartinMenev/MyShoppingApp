@@ -1,36 +1,36 @@
 <th:block th:fragment="nav-bar" >
     <div class="container d-flex align-items-center justify-content-between bg-gradient rounded-5">
-        <h1>
+        <h3>
             <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="assets/img/logo.png" alt=""> -->
 
-                <i class="fa-solid fa-cart-arrow-down"></i> Sh<i class="fa-regular fa-heart"></i>pLizt</a>
-        </h1>
+                 Sh <i class="fa-solid fa-cart-arrow-down"></i> pLizt</a>
+        </h3>
 
 
 
 
         <nav th:if="${true}" id="navbar" class="navbar">
             <ul>
-                <li><a th:href="@{/home}">home</a></li>
+                <li><a th:href="@{/home}">Home</a></li>
                 <li>
             <span type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                         add item
+                         Add item
             </span>
                 </li>
                 <li>
                     <form  th:method="post" th:action="@{/add-product}">
-                        <input type="text" class="form-control" id="addItem" placeholder="add item . . ." name="name">
+                        <input type="text" class="form-control" id="addItem" placeholder="Add item . . ." name="name">
                     </form>
                 </li>
-                <li><a th:href="@{/product-list}">item list</a></li>
-                <li><a th:href="@{/all-recipes}">recipes</a></li>
-                <li><a th:href="@{/export/export-all-products}">print</a></li>
-                <li class="dropdown"><a href="#"><span>my profile</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <li><a th:href="@{/product-list}">Item list</a></li>
+                <li><a th:href="@{/all-recipes}">Recipes</a></li>
+                <li><a th:href="@{/export/export-all-products}">Print</a></li>
+                <li class="dropdown"><a href="#"><span>Profile</span> </a>
                     <ul>
-                        <li><a th:href="@{/user/profile}">view</a></li>
-                        <li><a th:href="@{/update-user}">edit profile</a></li>
+                        <li><a th:href="@{/user/profile}">View</a></li>
+                        <li><a th:href="@{/update-user}">Edit profile</a></li>
                         <!--              <li><a href="#">Drop Down 3</a></li>-->
                         <!--              <li><a href="#">Drop Down 4</a></li>-->
                     </ul>
@@ -38,42 +38,42 @@
             </ul>
         </nav>
 
-
-        <!-- Adding Product with Modal box -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title fs-5" id="exampleModalLabel">
-                            <h2 class="logo-home-text">
-                                add item
-                            </h2>
-
-                        </h3>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form  th:method="post" th:action="@{/add-product}">
-                            <label>
-                                <input type="text" class="form-control"  placeholder="add item . . ." name="name">
-                            </label>
-                            <button type="submit" class="btn btn-lg">
-                                <i class="fa-solid fa-cart-plus "> s a v e</i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
         <!-- .navbar -->
 
         <a class="btn-book-a-table" th:href="@{/users/login}">login</a>
-        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"> </i>
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
     </div>
 
+    <!-- Adding Product with Modal box -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title fs-5" id="exampleModalLabel">
+                        <h2 class="logo-home-text">
+                            add item
+                        </h2>
+
+                    </h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form  th:method="post" th:action="@{/add-product}">
+                        <label>
+                            <input type="text" class="form-control"  placeholder="add item . . ." name="name">
+                        </label>
+                        <button type="submit" class="btn btn-lg">
+                            <i class="fa-solid fa-cart-plus "> s a v e</i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
 </th:block>

@@ -22,14 +22,14 @@
           <h2 data-aos="fade-up">
 
             <div class="section-header align-content-center">
-              <p > <span>Login</span>
+              <p > <span>Update item</span>
               </p>
             </div>
 
           </h2>
           <ol>
             <li><a th:href="@{/home}">Home</a></li>
-            <li>Recipe Details</li>
+            <li>Update product</li>
           </ol>
         </div>
 
@@ -46,8 +46,15 @@
               <div class="col-lg-6 justify-content-center rounded-5" data-aos="fade-up" data-aos-delay="200">
                 <div class="icon-box d-flex flex-column align-items-center rounded-5 ">
 
-                  <h4>Corporis voluptates officia eiusmod</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                  <form action="#" th:action="@{/product/updateProduct/{id}(id=${product.id})}" th:object="${product}" th:method="PUT">
+                    <!-- Add hidden form field to handle update -->
+                    <input type="hidden" th:field="*{id}"/>
+                    <input type="text" th:field="*{name}" class="form-control mb-4 col-7">
+
+                    <button type="submit" class="btn btn-info col-7 mb-4"> Update </button>
+                  </form>
+
+                  <a th:href="@{/product-list}" th:color="white"> Back to Product List </a>
                 </div>
               </div><!-- End Icon Box -->
 

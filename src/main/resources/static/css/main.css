@@ -539,6 +539,9 @@ section {
     border: 1px solid #eee;
   }
 
+
+
+
   .navbar .dropdown>.dropdown-active,
   .navbar .dropdown .dropdown>.dropdown-active {
     display: block;
@@ -788,16 +791,13 @@ section {
 
 .why-us .icon-box i {
   color: var(--color-primary);
-  margin-bottom: 30px;
-  font-size: 32px;
-  margin-bottom: 30px;
-  background: rgba(206, 18, 18, 0.1);
+  margin-bottom: 5px;
+  font-size: 1rem;
   border-radius: 50px;
-  display: flex;
+
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+
 }
 
 .why-us .icon-box h4 {
@@ -1705,4 +1705,40 @@ section {
 
 .footer .credits a {
   color: #fff;
+}
+
+.btn btn-light {
+  border-radius: 50px;
+  transition: 0.5s;
+  color: #fff;
+  background: var(--color-primary);
+  box-shadow: 0 8px 28px rgba(206, 18, 18, 0.2);
+
+}
+
+.btn btn-light:hover {
+  background: rgba(206, 18, 18, 0.8);
+  box-shadow: 0 8px 28px rgba(206, 18, 18, 0.45);
+}
+
+
+
+/*--------------------------------------------------------------
+# Shopping Section
+--------------------------------------------------------------*/
+
+
+
+table > tbody {
+  font-family: monospace;
+  font-size: 18px;
+  text-align: left;
+  margin: 2%;
+  padding: 2%;
+}
+
+
+.btn{
+  background-color: white;
+
 }
