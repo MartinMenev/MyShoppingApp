@@ -83,57 +83,129 @@
 
         <div class="col-lg-12 justify-content-center" data-aos="fade-up" data-aos-delay="100">
 
-            <div class="row lg-11 justify-content-center">
-              <div class="col lg-6 md-12">
-
-                <!-- Recipe Details -->
-                <div class="col-lg-12 justify-content-center rounded-5" data-aos="fade-up" data-aos-delay="200">
-                  <div class="icon-box d-flex flex-column align-items-center rounded-5 ">
+            <div class="row lg-12 justify-content-center">
+              <!-- Recipe Details -->
+              <div class="col lg-8 md-12">
+                <div class="col-lg-12 justify-content-left rounded-5" data-aos="fade-up" data-aos-delay="200">
+                  <div class="icon-box d-flex flex-column align-items-center rounded-5 bg-body-secondary">
                     <i class="bi bi-card-checklist"></i>
-                    <h4>Corporis voluptates officia eiusmod</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                    <h3 th:text="${recipe.name}"></h3>
+                    <p>added on <span id="dateAdded" th:text="${recipe.dateAdded}"></span></p>
+                    <p>by <span id="getAuthorName" th:text="${recipe.authorName}"></span></p>
+                    <hr class="bg-hero hr-2"/>
+
+                    <p>Category: <span id="category" th:text="${recipe.category}"></span></p>
+                    <p>SCORE: <span id="rating" th:text="${recipe.rating}"></span></p>
+                    <input value="0" type="hidden" class="rating" data-glyphicon="0"
+                           th:text="${recipe.rating}">
+
+                    <section class="route-description text-center">
+                      <h4>Description:</h4>
+                      <p id="description" th:text="${recipe.description}">Description: </p>
+                    </section>
                   </div>
                 </div><!-- End Icon Box -->
               </div>
-              <div class="col lg-6 md-12">
+              <!-- Post new comment -->
+              <div class="col-lg-4 justify-content-center  rounded-5" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box d-flex flex-column align-items-center rounded-5 bg-body-secondary">
+                  <i class="bi bi-pencil-fill"></i>
+                  <div>
+                    <!-- Comments submission -->
+                    <form id="commentForm" method="POST"
+                          th:action="@{/save-comment/{id}(id=${recipe.id})}">
 
-                <!-- Latest 3 Comments -->
-                <div class="col-lg-12 justify-content-center  rounded-5" data-aos="fade-up" data-aos-delay="200">
-                  <div class="icon-box d-flex flex-column align-items-center rounded-5">
-                    <i class="bi bi-star-half"></i>
-                    <h4>Corporis voluptates officia eiusmod</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                      <div class="rate text-bg-body-primary rounded-3">
+                        <h6 class="mb-0">Rate this recipe</h6>
+                        <div class="rating">
+                          <input type="radio" name="rating" th:value="5" id="5"><label for="5">☆</label>
+                          <input type="radio" name="rating" th:value="4" id="4"><label for="4">☆</label>
+                          <input type="radio" name="rating" th:value="3" id="3"><label for="3">☆</label>
+                          <input type="radio" name="rating" th:value="2" id="2"><label for="2">☆</label>
+                          <input type="radio" name="rating" th:value="1" id="1"><label for="1">☆</label>
+                        </div>
+                      </div>
+
+                      <div class="form-group mt-3">
+
+                        <h4>Leave a comment</h4>
+                        <label for="text"></label>
+                        <textarea name="text"
+                                  id="text"
+                                  cols="30"
+                                  rows="5"
+                                  class="form-control"
+                                  placeholder="Message..."
+                                  style="background-color: white;"></textarea>
+                        <small id="messageError" class="invalid-feedback">
+                          Message should be at least 5 characters.
+                        </small>
+                      </div>
+
+                      <div class="form-group mt-2">
+                        <input type="submit"
+                               class="btn"
+                               id="postComment"
+                               value="Post Comment"/>
+                      </div>
+                    </form>
+                    <!-- Comments submission -->
                   </div>
-                </div><!-- End Icon Box -->
+                </div>
+              </div><!-- End Icon Box -->
+              <div class="row lg-12 justify-content-center">
+                <!-- ======= Testimonials Section ======= -->
 
-                <!-- Post new comment -->
-                <div class="col-lg-12 justify-content-center  rounded-5" data-aos="fade-up" data-aos-delay="200">
-                  <div class="icon-box d-flex flex-column align-items-center rounded-5">
-                    <i class="bi bi-pencil-fill"></i>
-                    <h4>Corporis voluptates officia eiusmod</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                <section id="testimonials" class="testimonials section-bg" th:if="${!comments.isEmpty()}">
+                  <div class="container" data-aos="fade-up">
+
+                    <div class="section-header">
+                      <p>What Others said <span>About This Recipe</span></p>
+                    </div>
+
+                    <div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
+                      <div class="swiper-wrapper" >
+
+                        <div class="swiper-slide" th:each="comment:${comments}">
+                          <div class="testimonial-item">
+                            <div class="row gy-4 justify-content-center">
+                              <div class="col-lg-6">
+                                <div class="testimonial-content">
+                                  <p>
+                                    <i class="bi bi-quote quote-icon-left"></i>
+                                  <h3><i>
+                                    <span th:text="${comment.text}"></span>
+                                  </i>
+                                  </h3>
+                                  <i class="bi bi-quote quote-icon-right"></i>
+                                  </p>
+                                  <hr class="bg-hero hr-2 w-25 bg-body-secondary"/>
+                                  <h6 th:text="${comment.author.username}"></h6>
+                                  <h6 th:text="${comment.getDate()}"></h6>
+                                  <h6><span>Rating: </span> <span th:text="${comment.rating}"></span></h6>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div><!-- End testimonial item -->
+                      </div>
+                      <div class="swiper-pagination"></div>
+                    </div>
                   </div>
-                </div><!-- End Icon Box -->
-
+                  <div class="container d-flex align-items-center justify-content-center mt-3">
+                    <a class="btn-light"
+                       href="#" th:href="@{/comments/{id}(id=${recipe.id})}">All comments </a>
+                  </div>
+                </section><!-- End Testimonials Section -->
               </div>
-            </div>
         </div>
       </div>
     </section>
-
-
-
-
-
-
-
   </main><!-- End #main -->
-
   <!-- ======= Footer ======= -->
   <footer>
     <th:block th:include="~{fragments/footer}"></th:block>
   </footer>
-
 </body>
-
 </html>

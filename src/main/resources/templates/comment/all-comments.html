@@ -20,42 +20,60 @@
 
         <div class="d-flex justify-content-between align-items-center">
           <h2 data-aos="fade-up">
-
             <div class="section-header align-content-center">
-              <p > <span>Login</span>
+              <p > <span th:text="${recipe.name}"></span>
               </p>
             </div>
-
           </h2>
           <ol>
-            <li><a th:href="@{/home}">Home</a></li>
-            <li>Recipe Details</li>
+            <li><a th:href="@{/recipe/{id}(id=*{id})}"> Back to Recipe </a></li>
+            <li>Recipe Comments</li>
           </ol>
         </div>
-
+        <input type="hidden" name="recipeId" th:field="*{id}">
       </div>
     </div><!-- End Breadcrumbs -->
 
+    <!-- ======= Testimonials Section ======= -->
 
-    <section id="why-us" class="why-us section-bg">
-      <div class="container justify-content-center" data-aos="fade-up">
+    <section id="testimonials" class="testimonials section-bg" th:if="${!comments.isEmpty()}">
+      <div class="container" data-aos="fade-up">
 
-        <div class="col-lg-12 justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        <div class="section-header">
+          <p>All Comments <span>About This Recipe</span></p>
+        </div>
 
-            <div class="row lg-12 justify-content-center">
-              <div class="col-lg-6 justify-content-center rounded-5" data-aos="fade-up" data-aos-delay="200">
-                <div class="icon-box d-flex flex-column align-items-center rounded-5 ">
+        <div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper" >
 
-                  <h4>Corporis voluptates officia eiusmod</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+            <div class="swiper-slide" th:each="comment:${comments}">
+              <div class="testimonial-item">
+                <div class="row gy-4 justify-content-center">
+                  <div class="col-lg-6">
+                    <div class="testimonial-content">
+                      <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                      <h3><i>
+                        <span th:text="${comment.text}"></span>
+                      </i>
+                      </h3>
+                      <i class="bi bi-quote quote-icon-right"></i>
+                      </p>
+                      <hr class="bg-hero hr-2 w-25 bg-body-secondary"/>
+                      <h6 th:text="${comment.author.username}"></h6>
+                      <h6 th:text="${comment.getDate()}"></h6>
+                      <h6><span>Rating: </span> <span th:text="${comment.rating}"></span></h6>
+
+                    </div>
+                  </div>
                 </div>
-              </div><!-- End Icon Box -->
-
-
-            </div>
+              </div>
+            </div><!-- End testimonial item -->
+          </div>
+          <div class="swiper-pagination"></div>
         </div>
       </div>
-    </section>
+    </section><!-- End Testimonials Section -->
 
 
 
