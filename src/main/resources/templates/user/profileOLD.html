@@ -18,7 +18,7 @@
                 <div class="profile-card p-3 py-4">
                     <div class="text-center">
 <!--                        DEFAULT PICTURE-->
-                        <img th:if="${pictureUrl != null}" th:src="${pictureUrl}" width="100" class="rounded-circle" alt="picture"> </div>
+                        <img th:if="${pictureUrl != null}" th:src="${pictureUrl}" width="100" class="rounded-circle" alt="picture">
                             <img th:unless="${pictureUrl != null}" th:src="@{'/images/default-user-pic.jpg'}" width="100" />
 
                     <div class="text-center mt-3" th:object="${user}">
@@ -33,9 +33,6 @@
                             <h4 class="mt-2 mb-0">Role</h4>
                             <span class="logo-home-text" th:text="${user.userRole}"></span>
                             </div>
-                    <hr class="bg-hero hr-2"/>
-                    <a th:href="@{/home}"
-                       class="btn btn-light text-white">Back to home</a>
                     </div>
                 </div>
             </div>

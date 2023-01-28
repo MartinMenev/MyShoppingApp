@@ -29,7 +29,7 @@
           </h2>
           <ol>
             <li><a th:href="@{/home}">Home</a></li>
-            <li>Recipe Details</li>
+            <li>Update Profile</li>
           </ol>
         </div>
 
@@ -45,9 +45,48 @@
             <div class="row lg-12 justify-content-center">
               <div class="col-lg-6 justify-content-center rounded-5" data-aos="fade-up" data-aos-delay="200">
                 <div class="icon-box d-flex flex-column align-items-center rounded-5 ">
-                 
-                  <h4>Corporis voluptates officia eiusmod</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                  <div class="profile-card p-3 py-4">
+                    <section class="my-5">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-md-8 mx-auto">
+                            <h4>Upload Image</h4>
+                            <p th:text="${message}" th:if="${message ne null}" class="alert alert-primary"></p>
+                            <form method="post" th:action="@{/upload}" enctype="multipart/form-data">
+                              <div class="form-group">
+                                <input type="file" name="image" accept="image/*" class="form-control-file">
+                              </div>
+                              <button type="submit" class="btn btn-info col-5">Upload image</button>
+                            </form>
+                            <span th:if="${msg != null}" th:text="${msg}"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+
+                    <form action="#" th:action="@{/update-user}" th:object="${user}" th:method="PUT">
+
+                      <div class="text-center mt-3" th:object="${user}">
+                        <h4 class="mt-4 mb-0">Username</h4>
+                        <input type="text" th:field="*{username}" class="form-control mb-4 col-4">
+                        <h4 class="mt-2 mb-0">Password</h4>
+                        <input type="text" th:field="*{password}" class="form-control mb-4 col-4">
+                        <h4 class="mt-2 mb-0">Email</h4>
+                        <input type="text" th:field="*{email}" class="form-control mb-4 col-4">
+                      </div>
+                      <button type="submit" class="btn btn-info col-5"> Update </button>
+                    </form>
+                    <hr class="bg-hero hr-2"/>
+                    <a th:href="@{/delete-profile/{id}(id=${user.id})}"
+                       class="btn btn-light text-danger">Delete profile</a>
+                    <hr class="bg-hero hr-2"/>
+                    <a th:href="@{/home}"
+                       class="btn btn-light text-white">Back to home</a>
+                  </div>
+
+
+
                 </div>
               </div><!-- End Icon Box -->
 
