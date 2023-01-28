@@ -56,21 +56,21 @@
                     <tbody>
                     <tr   th:each="product:${products}">
                       <td  >
-                        <a th:href="@{#}" class="btn btn-light "> <i class="fa-regular fa-circle-check"></i> </a>
+                        <a class="bi-check2-circle" href="#" th:href="@{#}"></a>
                         <a th:href="@{#}" class="btn btn-light " th:text="${product.name}"> </a>
                       </td>
                       <td>
 
                                               <!--               moveUp Product-->
-                        <a th:href="@{/moveUpProduct/{position}(position=${product.position})}" class="btn btn-light"> <i class="fa-regular fa-circle-up"></i> </a>
+                        <a th:href="@{/moveUpProduct/{position}(position=${product.position})}" class="btn btn-light"> <i class="bi bi-arrow-up"></i> </a>
 
 
                           <!--                moveDown Product-->
-                        <a th:href="@{/moveDownProduct/{position}(position=${product.position})}" class="btn btn-light "> <i class="fa-regular fa-circle-down"></i> </a>
+                        <a th:href="@{/moveDownProduct/{position}(position=${product.position})}" class="btn btn-light "> <i class="bi bi-arrow-down"></i> </a>
 
 
                           <!--                update Product&ndash;&gt;-->
-                        <a th:href="@{/product/updateProduct/{id}(id=${product.id})}" class="btn btn-light "> <i class="fa-regular fa-pen-to-square"></i> </a>
+                        <a th:href="@{/product/updateProduct/{id}(id=${product.id})}" class="btn btn-light "> <i class="bi bi-pencil-square"></i> </a>
 
 
 

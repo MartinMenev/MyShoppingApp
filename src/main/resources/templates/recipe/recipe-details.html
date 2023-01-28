@@ -23,7 +23,22 @@
           <h2 data-aos="fade-up">
 
             <div class="section-header">
-              <p  th:text="${recipe.name}"></p>
+
+              <button class="btn glow-button rounded-1" >
+                <a th:href="@{#}"
+                   class="btn btn-light"> <i class="bi bi-heart-fill"> Add to Favorites </i> </a>
+              </button>
+
+              <button class="btn glow-button rounded-1" >
+                <a th:href="@{/edit-recipe/{Id}(Id=*{id})}"
+                   class="btn btn-light"> <i class="bi bi-pencil-square"> Edit </i> </a>
+              </button>
+
+              <button class="btn glow-button rounded-1" >
+                <a th:href="${recipe.url}"
+                   class="btn btn-light"> <i class="bi bi-link-45deg"> Link </i> </a>
+              </button>
+
             </div>
 
           </h2>
@@ -41,8 +56,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>gallery</h2>
-          <p><span>Gallery</span></p>
+          <p  th:text="${recipe.name}"></p>
         </div>
 <!--            for each picture...-->
         <div class="gallery-slider swiper">
@@ -69,23 +83,39 @@
 
         <div class="col-lg-12 justify-content-center" data-aos="fade-up" data-aos-delay="100">
 
-            <div class="row lg-12 justify-content-center">
-              <div class="col-lg-6 justify-content-center rounded-5" data-aos="fade-up" data-aos-delay="200">
-                <div class="icon-box d-flex flex-column align-items-center rounded-5 ">
-                  <i class="bi bi-clipboard-data"></i>
-                  <h4>Corporis voluptates officia eiusmod</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                </div>
-              </div><!-- End Icon Box -->
+            <div class="row lg-11 justify-content-center">
+              <div class="col lg-6 md-12">
 
-              <div class="col-lg-6 justify-content-center  rounded-5" data-aos="fade-up" data-aos-delay="200">
-                <div class="icon-box d-flex flex-column align-items-center rounded-5">
-                  <i class="bi bi-clipboard-data"></i>
-                  <h4>Corporis voluptates officia eiusmod</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                </div>
-              </div><!-- End Icon Box -->
+                <!-- Recipe Details -->
+                <div class="col-lg-12 justify-content-center rounded-5" data-aos="fade-up" data-aos-delay="200">
+                  <div class="icon-box d-flex flex-column align-items-center rounded-5 ">
+                    <i class="bi bi-card-checklist"></i>
+                    <h4>Corporis voluptates officia eiusmod</h4>
+                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                  </div>
+                </div><!-- End Icon Box -->
+              </div>
+              <div class="col lg-6 md-12">
 
+                <!-- Latest 3 Comments -->
+                <div class="col-lg-12 justify-content-center  rounded-5" data-aos="fade-up" data-aos-delay="200">
+                  <div class="icon-box d-flex flex-column align-items-center rounded-5">
+                    <i class="bi bi-star-half"></i>
+                    <h4>Corporis voluptates officia eiusmod</h4>
+                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                  </div>
+                </div><!-- End Icon Box -->
+
+                <!-- Post new comment -->
+                <div class="col-lg-12 justify-content-center  rounded-5" data-aos="fade-up" data-aos-delay="200">
+                  <div class="icon-box d-flex flex-column align-items-center rounded-5">
+                    <i class="bi bi-pencil-fill"></i>
+                    <h4>Corporis voluptates officia eiusmod</h4>
+                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                  </div>
+                </div><!-- End Icon Box -->
+
+              </div>
             </div>
         </div>
       </div>
