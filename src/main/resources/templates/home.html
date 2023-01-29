@@ -93,9 +93,9 @@
 
     <!-- ======= Recipes Section ======= -->
     <section id="events" class="events" th:if="${!recipes.isEmpty()}" >
-      <div class="container-fluid" data-aos="fade-up">
+      <div class="container" data-aos="fade-up">
 
-        <div class="section-header">
+        <div class="section-header align-content-center">
           <h2>Recipes</h2>
           <p>Latest Recipes <span>You might like</span> </p>
           <button class="btn glow-button rounded-1" >
@@ -104,7 +104,7 @@
           </button>
         </div>
 
-        <div class="slides-3 swiper w-75 rounded-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="slides-3 swiper rounded-1" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
             <div class="swiper-slide event-item d-flex flex-column justify-content-end"
                  th:each="recipe : ${recipes}"

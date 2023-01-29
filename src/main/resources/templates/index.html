@@ -107,14 +107,14 @@
 
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials section-bg" th:if="${!comments.isEmpty()}">
-      <div class="container" data-aos="fade-up">
+      <div class="container w-75" data-aos="fade-up">
 
         <div class="section-header">
           <h2>Testimonials</h2>
           <p>What Are They Saying<span> About Our Recipes</span></p>
         </div>
 
-        <div class="slides-1 swiper w-75" data-aos="fade-up" data-aos-delay="100">
+        <div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
 
             <div class="swiper-slide" th:each="comment:${comments}">
@@ -123,13 +123,13 @@
                   <div class="col-lg-6">
                     <div class="testimonial-content">
                       <p>
-                        <i class="bi bi-quote quote-icon-left"></i>
-                        <span th:text="${comment.text}"></span>
-                        <i class="bi bi-quote quote-icon-right"></i>
+                        <i class="bi bi-chat-right-quote">
+                          <span th:text="${comment.text}"></span> </i>
                       </p>
-                      <h4 th:text="${comment.author.username}"></h4>
+                      <h4 th:text="${comment.author.username}"> </h4>
                       <h6 th:text="${comment.getDate()}"></h6>
                       <hr class="bg-hero hr-2 w-25 bg-body-secondary"/>
+                      <h6 th:text="${comment.getRecipeName()}"></h6>
                       <div class="stars">
                         <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                       </div>

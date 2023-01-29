@@ -38,4 +38,7 @@ public class OutputCommentDTO {
         return "/images/"+ picture.getUrl();
     }
 
+    public String getRecipeName() {
+        return this.recipe.getName();
+    }
 }
