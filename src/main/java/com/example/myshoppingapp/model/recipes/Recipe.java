@@ -61,6 +61,9 @@ public class Recipe extends BaseEntity {
           cascade = CascadeType.ALL)
    private List<Product> productList;
 
+  @ManyToMany
+  private List<User> fan;
+
   @Column
   private long position;
 

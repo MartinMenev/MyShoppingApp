@@ -1,6 +1,7 @@
 package com.example.myshoppingapp.service;
 
 import com.example.myshoppingapp.model.enums.UserRole;
+import com.example.myshoppingapp.model.products.OutputProductDTO;
 import com.example.myshoppingapp.model.products.Product;
 import com.example.myshoppingapp.model.users.*;
 import com.example.myshoppingapp.repository.ProductRepository;
@@ -89,6 +90,18 @@ public class UserService {
         }
         this.userRepository.deleteById(id);
     }
+
+    public void addBoughtProductToUser(Product product) {
+        User user = this.userRepository.findByUsername(getLoggedInUser()).orElseThrow(NoSuchElementException::new);
+        user.getBoughtProducts().add(product);
+        this.userRepository.saveAndFlush(user);
+    }
+
+    public User getLoggedUser (){
+        return this.userRepository.findByUsername(getLoggedInUser()).orElseThrow(NoSuchElementException::new);
+    }
+
+
 }
 
 

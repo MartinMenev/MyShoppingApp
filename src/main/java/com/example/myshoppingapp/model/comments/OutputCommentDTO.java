@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.text.DateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -24,6 +26,7 @@ public class OutputCommentDTO {
     private User author;
     private Recipe recipe;
 
+    private LocalDate boughtOn;
     public String getDate(){
         return this.dateAdded.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }

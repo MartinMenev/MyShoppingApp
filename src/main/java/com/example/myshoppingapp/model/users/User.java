@@ -3,16 +3,18 @@ package com.example.myshoppingapp.model.users;
 import com.example.myshoppingapp.model.BaseEntity;
 import com.example.myshoppingapp.model.enums.UserRole;
 import com.example.myshoppingapp.model.pictures.Picture;
+import com.example.myshoppingapp.model.products.Product;
+import com.example.myshoppingapp.model.recipes.Recipe;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
@@ -31,6 +33,17 @@ public class User extends BaseEntity {
 
     @OneToOne
     private Picture picture;
+
+    @OneToMany (mappedBy = "buyer",cascade = CascadeType.REMOVE)
+    private List<Product> boughtProducts;
+
+    @ManyToMany (mappedBy = "fan",cascade = CascadeType.REMOVE)
+    private List<Recipe> favoriteRecipes;
+
+    public User() {
+        this.boughtProducts = new ArrayList<>();
+        this.favoriteRecipes = new ArrayList<>();
+    }
 
     public User setUsername(String username) {
         this.username = username;
