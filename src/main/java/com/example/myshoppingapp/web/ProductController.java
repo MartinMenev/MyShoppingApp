@@ -7,10 +7,7 @@ import com.example.myshoppingapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +31,7 @@ public class ProductController {
         }
         List<OutputProductDTO> products = this.productService.getListedProducts();
         model.addAttribute("products", products);
+        model.addAttribute("boughtProducts", this.productService.showBoughtProducts());
         return "product/product-list";
     }
 
@@ -74,6 +72,18 @@ public class ProductController {
     @GetMapping("/deleteProduct/{id}")
     public String deleteById(@PathVariable(value = "id") long id) {
         productService.deleteById(id);
+        return "redirect:/product-list";
+    }
+
+    @GetMapping("/buy-product/{id}")
+    public String buyProduct(@PathVariable(value = "id") long id) {
+        productService.buyProduct(id);
+        return "redirect:/product-list";
+    }
+
+    @GetMapping("/reuse-product/{id}")
+    public String reuseProduct(@PathVariable(value = "id") long id) {
+        productService.reuseProduct(id);
         return "redirect:/product-list";
     }
 

@@ -40,4 +40,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Product findFirstByPositionLessThanAndUserIdOrderByPositionDesc(Long position, Long userId);
 
+
+    Optional<List<Product>> findAllByBuyerId(Long userId);
+
 }

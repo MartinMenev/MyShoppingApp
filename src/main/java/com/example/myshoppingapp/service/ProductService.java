@@ -5,6 +5,7 @@ import com.example.myshoppingapp.model.products.OutputProductDTO;
 import com.example.myshoppingapp.model.products.Product;
 import com.example.myshoppingapp.model.users.User;
 import com.example.myshoppingapp.repository.ProductRepository;
+import com.example.myshoppingapp.repository.UserRepository;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -20,6 +22,7 @@ import java.util.stream.Collectors;
 @Service
 public class ProductService {
     private final UserService userService;
+
 
 
     private final ProductRepository productRepository;
@@ -37,6 +40,7 @@ public class ProductService {
         User user = userService.findByUsername(userService.getLoggedInUser());
         Product product = this.modelMapper.map(inputProductDTO, Product.class);
         product.setUser(user);
+        product.setBoughtOn(null);
         this.productRepository.saveAndFlush(product);
         product.setPosition(product.getId());
         this.productRepository.saveAndFlush(product);
@@ -62,6 +66,7 @@ public class ProductService {
         List<OutputProductDTO> outputProductDTOS = this.productRepository.findAllByUserId(currentUserId)
                 .orElseThrow(NoSuchElementException::new)
                 .stream()
+                .filter(product -> product.getBoughtOn() ==null)
                 .map(product -> this.modelMapper.map(product, OutputProductDTO.class))
                 .toList();
 
@@ -104,6 +109,36 @@ public class ProductService {
                     findFirstByPositionLessThanAndUserIdOrderByPositionDesc(position, userId).getPosition();
             this.productRepository.swapProductOrder(position, newPosition);
         }
+    }
+
+    @Transactional
+    @Modifying
+    public void buyProduct(long id) {
+        Product product = this.productRepository.getProductById(id).orElseThrow(NoSuchElementException::new);
+        product.setBoughtOn(LocalDate.now());
+        User user = this.userService.getLoggedUser();
+        product.setBuyer(user);
+        this.productRepository.save(product);
+    }
+
+    public List<OutputProductDTO> showBoughtProducts() {
+        Long userId = this.userService.getLoggedUserId();
+        return this.productRepository.findAllByBuyerId(userId)
+                .orElseThrow(NoSuchElementException::new)
+                .stream()
+                .map(p -> modelMapper.map(p, OutputProductDTO.class))
+                .toList();
+    }
+
+    @Transactional
+    @Modifying
+    public void reuseProduct(long id) {
+        Product product = this.productRepository
+                .getProductById(id)
+                .orElseThrow(NoSuchElementException::new);
+         product.setBoughtOn(null)
+                .setBuyer(null);
+        this.productRepository.saveAndFlush(product);
     }
 }
 

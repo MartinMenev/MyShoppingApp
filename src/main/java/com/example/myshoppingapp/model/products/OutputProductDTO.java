@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,6 +18,8 @@ public class OutputProductDTO implements Serializable{
         private String name;
 
         private Long position;
+
+    private LocalDate boughtOn;
 
     @Override
     public String toString() {

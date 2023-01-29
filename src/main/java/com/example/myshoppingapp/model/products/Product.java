@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.time.LocalDate;
 
 @Getter
 @AllArgsConstructor
@@ -27,6 +29,11 @@ public class Product extends BaseEntity {
 
     @ManyToOne
     private Recipe recipe;
+    @Column
+    private LocalDate boughtOn;
+
+    @ManyToOne
+    private User buyer;
 
     public Product() {
     }
@@ -34,6 +41,16 @@ public class Product extends BaseEntity {
     public Product(String name) {
         this();
         this.name = name;
+    }
+
+    public Product setBuyer(User buyer) {
+        this.buyer = buyer;
+        return this;
+    }
+
+    public Product setBoughtOn(LocalDate boughtOn) {
+        this.boughtOn = boughtOn;
+        return this;
     }
 
     public Product setName(String name) {
