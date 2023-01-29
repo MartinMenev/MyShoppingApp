@@ -91,6 +91,36 @@
       </div>
     </section>
 
+    <!-- ======= Recipes Section ======= -->
+    <section id="events" class="events" th:if="${!recipes.isEmpty()}" >
+      <div class="container-fluid" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Recipes</h2>
+          <p>Latest Recipes <span>You might like</span> </p>
+          <button class="btn glow-button rounded-1" >
+            <a th:href="@{/all-recipes}"
+               class="btn btn-light"> <i class="bi bi-link-45deg"> OPEN ALL </i> </a>
+          </button>
+        </div>
+
+        <div class="slides-3 swiper w-75 rounded-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end"
+                 th:each="recipe : ${recipes}"
+                 th:style="'background-image:url(' + ${recipe.imageUrl} + ');'">
+
+              <h3 th:text="${recipe.name}"></h3>
+              <div class="price align-self-start" th:text="${recipe.authorName}"></div>
+              <p class="description" th:text="${recipe.description}"> </p>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section><!-- End Recipes Section -->
+
+
 
 
 

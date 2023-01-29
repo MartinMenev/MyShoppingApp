@@ -45,13 +45,102 @@
             <div class="row lg-12 justify-content-center">
               <div class="col-lg-6 justify-content-center rounded-5" data-aos="fade-up" data-aos-delay="200">
                 <div class="icon-box d-flex flex-column align-items-center rounded-5 ">
-                  <i class="bi bi-clipboard-data"></i>
-                  <h4>Corporis voluptates officia eiusmod</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                  <i class="bi bi-file-earmark-plus"></i>
+                  <div class="row justify-content-center ">
+                    <form id="add-route-form" class="rounded text-white mt-5"
+                          th:action="@{/add-recipe}"
+                          th:method="POST" enctype="multipart/form-data">
+                      <h1 class="logo-home-text">Add recipe</h1>
+                      <hr class="bg-hero hr-2"/>
+                      <div>
+                        <div class="form-group">
+                          <label for="inputName" class="col-form-label ">Name</label>
+                        </div>
+                        <div class="form-group">
+                          <input name="name"
+                                 placeholder="add name"
+                                 required minlength="5" maxlength="100"
+                                 type="text"
+                                 id="inputName"
+                                 class="form-control"
+                                 aria-describedby="inputNameError">
+                          <small id="inputNameError"
+                                 class="invalid-feedback bg-danger rounded">Name length must be more than 3 characters</small>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label for="inputDescription" class="col-form-label ">Description</label>
+                        </div>
+                        <div class="form-group">
+                    <textarea name="description"
+                              placeholder="Short description"
+                              required minlength="5"
+                              id="inputDescription"
+                              class="form-control"
+                              aria-describedby="inputDescriptionError"></textarea>
+                              <small id="inputDescriptionError" class="invalid-feedback  form-text bg-danger rounded">
+                                Description length must be more than 5 characters</small>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label for="image" class="col-form-label ">Picture</label>
+                        </div>
+                        <div class="form-group">
+                          <input type="file" name="image"
+                                 id="image"
+                                 accept="image/*"
+                                 class="form-control-file"
+                                 aria-describedby="imageError">
+                          <small id="imageError"
+                                 class="invalid-feedback  form-text bg-danger rounded">Invalid picture</small>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label for="level">Level</label>
+                          <select id="level" class="custom-select">
+                            <option value="" selected>Select level</option>
+                            <option value="1" text="ADVANCED">Select level</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div>
+
+                        <div class="form-group">
+                          <label for="url">Recipe Url</label>
+                          <input id="url" type="text"
+                                 name="url"
+                                 class="form-control" placeholder="Recipe link ...">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="category" class="col-form-label ">Category</label>
+                      </div>
+                      <div class="form-group">
+                        <input name="category"
+                               placeholder="Add category"
+                               required minlength="3" maxlength="20"
+                               type="text"
+                               id="category"
+                               class="form-control"
+                               aria-describedby="inputNameError">
+                      </div>
+                      <div class="form-group">
+                        <label for="imageUrl">Picture Url</label>
+                        <input id="imageUrl" type="text"
+                               name="imageUrl"
+                               class="form-control" placeholder="Optional picture link ...">
+                      </div>
+                      <div class="d-flex justify-content-center mt-4">
+                        <button class="btn btn-primary w-50 text-dark" type="submit">Save</button>
+                      </div>
+                    </form>
+                  </div>
+
                 </div>
               </div><!-- End Icon Box -->
-
-
             </div>
         </div>
       </div>
