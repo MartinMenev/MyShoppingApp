@@ -51,13 +51,13 @@ public class RecipeService {
 
     }
 
-    public List<OutputRecipeDTO> showLast3Recipes() {
+    public List<OutputRecipeDTO> showLast5Recipes() {
         return this.recipeRepository
                 .findAll()
                 .stream()
                 .map(recipe -> modelMapper.map(recipe, OutputRecipeDTO.class))
                 .sorted((a, b) -> b.getId().compareTo(a.getId()))
-                .limit(3)
+                .limit(5)
                 .toList();
     }
 

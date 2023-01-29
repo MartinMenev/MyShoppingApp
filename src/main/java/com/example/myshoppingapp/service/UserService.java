@@ -35,6 +35,7 @@ public class UserService {
     }
 
     public User login(LoginDTO loginDTO) {
+        this.setLoggedInUser(null);
         User user = this.userRepository
                 .findByUsernameAndPassword(loginDTO.getUsername(), loginDTO.getPassword()).orElseThrow(NoSuchElementException::new);
         this.loggedInUser = user.getUsername();

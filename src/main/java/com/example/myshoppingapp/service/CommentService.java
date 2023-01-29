@@ -3,6 +3,7 @@ package com.example.myshoppingapp.service;
 import com.example.myshoppingapp.model.comments.Comment;
 import com.example.myshoppingapp.model.comments.InputCommentDTO;
 import com.example.myshoppingapp.model.comments.OutputCommentDTO;
+import com.example.myshoppingapp.model.recipes.OutputRecipeDTO;
 import com.example.myshoppingapp.model.recipes.Recipe;
 import com.example.myshoppingapp.model.users.User;
 import com.example.myshoppingapp.repository.CommentRepository;
@@ -56,6 +57,16 @@ public class CommentService {
         return showAllComments(recipeId)
                 .stream()
                 .limit(3)
+                .toList();
+    }
+
+    public List<OutputCommentDTO> showTopRatedComments() {
+        return this.commentRepository
+                .findAll()
+                .stream()
+                .map(comment -> modelMapper.map(comment, OutputCommentDTO.class))
+                .sorted((a, b) -> b.getRating().compareTo(a.getRating()))
+                .limit(4)
                 .toList();
     }
 }

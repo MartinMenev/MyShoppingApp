@@ -53,17 +53,13 @@
                     <div class="testimonial-content">
                       <p>
                         <i class="bi bi-quote quote-icon-left"></i>
-                      <h3><i>
                         <span th:text="${comment.text}"></span>
-                      </i>
-                      </h3>
                       <i class="bi bi-quote quote-icon-right"></i>
                       </p>
                       <hr class="bg-hero hr-2 w-25 bg-body-secondary"/>
                       <h6 th:text="${comment.author.username}"></h6>
                       <h6 th:text="${comment.getDate()}"></h6>
                       <h6><span>Rating: </span> <span th:text="${comment.rating}"></span></h6>
-
                     </div>
                   </div>
                 </div>

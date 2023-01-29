@@ -1,5 +1,8 @@
 package com.example.myshoppingapp.web;
 
+import com.example.myshoppingapp.model.recipes.OutputRecipeDTO;
+import com.example.myshoppingapp.model.recipes.Recipe;
+import com.example.myshoppingapp.service.CommentService;
 import com.example.myshoppingapp.service.ProductService;
 import com.example.myshoppingapp.service.RecipeService;
 import com.example.myshoppingapp.service.UserService;
@@ -14,19 +17,22 @@ public class HomeController {
     private final UserService userService;
     private final ProductService productService;
     private final RecipeService recipeService;
+    private final CommentService commentService;
 
     @Autowired
-    public HomeController(UserService userService, ProductService productService, RecipeService recipeService) {
+    public HomeController(UserService userService, ProductService productService, RecipeService recipeService, CommentService commentService) {
         this.userService = userService;
         this.productService = productService;
         this.recipeService = recipeService;
+        this.commentService = commentService;
     }
 
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("username", userService.getLoggedInUser());
-        model.addAttribute("recipes", recipeService.showLast3Recipes());
-        this.userService.setLoggedInUser(null);
+        model.addAttribute("recipes", recipeService.showLast5Recipes());
+        model.addAttribute("comments", commentService.showTopRatedComments());
+
         return "index";
     }
 
