@@ -37,7 +37,7 @@ public class User extends BaseEntity {
     @OneToMany (mappedBy = "buyer",cascade = CascadeType.REMOVE)
     private List<Product> boughtProducts;
 
-    @ManyToMany (mappedBy = "fan",cascade = CascadeType.REMOVE)
+    @ManyToMany (mappedBy = "fan", cascade = CascadeType.REMOVE)
     private List<Recipe> favoriteRecipes;
 
     public User() {

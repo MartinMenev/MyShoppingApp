@@ -26,7 +26,7 @@ public class UserOutputDTO implements Serializable {
     private UserRole userRole;
     private Picture picture;
 
-    private List<Product> boughtProducts;
 
-    private List<Recipe> favoriteRecipes;
+
+
 }
