@@ -46,7 +46,18 @@
               <div class="col-lg-6 justify-content-center rounded-5" >
                 <div class="icon-box d-flex flex-column align-items-center rounded-5 ">
                   <h2>My shopping list</h2>
-                  <table class="table table-responsive-sm  rounded-3 bg-white" >
+                  <h6 th:if="${products.isEmpty()}">
+                    <hr class="bg-hero hr-4 bg-body-secondary aos-animate"/>
+                    Nothing yet. <br>
+                    Add your first product <br>
+                    <i class="bi bi-box-arrow-in-down-left"></i>
+                  <div class="col-lg-8 justify-content-center">
+                    <form  th:method="post" th:action="@{/add-product}">
+                      <input type="text" class="form-control" id="addItem" placeholder="Add item . . ." name="name">
+                    </form>
+                  </div>
+                  </h6>
+                  <table class="table table-responsive-sm  rounded-3 bg-white"  th:if="${!products.isEmpty()}">
                     <thead>
                     <tr>
                       <th></th>
@@ -104,7 +115,7 @@
           <div class="row lg-12 justify-content-center">
             <div class="col-lg-6 justify-content-center rounded-5" >
               <div class="icon-box d-flex flex-column align-items-center rounded-5 bg-body-secondary">
-                <h4><i>History of bought products</i></h4>
+                <h4><i>You might want them again</i></h4>
                 <table class="table table-responsive-sm  rounded-3 bg-body-secondary" >
                   <thead>
                   <tr>
