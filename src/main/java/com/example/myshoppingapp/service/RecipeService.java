@@ -75,4 +75,9 @@ public class RecipeService {
         recipe.addRating(rating);
         this.recipeRepository.saveAndFlush(recipe);
     }
+
+    public List<Recipe> showRecipesByLoggedUser() {
+        return this.recipeRepository
+                .findAllByAuthorOrderByIdDesc(this.userService.getLoggedUser());
+    }
 }

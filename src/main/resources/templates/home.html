@@ -42,51 +42,142 @@
 
     <section id="why-us" class="why-us section-bg" th:if="${username != null}">
       <div class="container justify-content-center" data-aos="fade-up">
-
         <div class="col-lg-12 justify-content-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="row lg-12 justify-content-center">
 
-            <div class="row lg-12 justify-content-center">
-              <div class="col-lg-4 justify-content-center rounded-5" data-aos="fade-up" data-aos-delay="200">
-                <div class="icon-box d-flex flex-column align-items-center rounded-5 ">
-                 <i class="fa-solid fa-bars-staggered"></i>
+            <div class="col-lg-4   rounded-5" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon-box  rounded-5">
+                <i class="bi bi-basket"></i>
+                <article>
+                  <section class="box-info lead-box pt-3">
+                    <article class="box-head align-content-center">
+                      <h3 class="box-title">My Shopping List</h3>
+                      <hr class="bg-hero hr-4 bg-body-secondary aos-animate"/>
+                    </article>
+                    <article class="box-body pt-2 pb-2 align-content-start align-text-top">
+                      <section class="scroll-holder">
+                        <ul class="list-unstyled justify-content-left"
+                            th:if="${!products.isEmpty()}" th:each="product:${products}">
+                          <li class="info-item aos-animate" >
+                            <a th:href="@{/product-list}" class="info-link" th:text="${product.name}">
+                            </a>
+                            <span>
+                              <i class="bi bi-pin-angle"></i>
+                            </span>
+                          </li>
+                        </ul>
+                        <p th:if="${products.isEmpty()}">
+                          Nothing yet. <br>
+                          Add your first product <br>
+                          <i class="bi bi-box-arrow-in-down-left"></i>
+                        <div class="col-lg-8 justify-content-center">
+                          <form  th:method="post" th:action="@{/add-product}">
+                            <input type="text" class="form-control" id="addItem" placeholder="Add item . . ." name="name">
+                          </form>
+                        </div>
+                        </p>
+                      </section>
+                    </article>
+                    <article class="bottom-nav h-25">
+                      <a class="button bg-body-secondary rounded-5" th:href="@{/product-list}">  Open Your Shopping list
+                      </a>
+                    </article>
+                  </section>
+                </article>
+              </div>
+            </div><!-- End Icon Box -->
 
-                  <div  class="text-bg-success m-4 rounded-5 align-content-center" th:if="${username != null}">
-                    <h5>
-                      Here you can easily manage your shopping items
-                      and get inspired by delicious recipe ideas!
-                    </h5>
-                  </div>
-                  <p th:if="${username != null}">
-                    <button>
-                      <a th:if="${username != null}" th:href="@{/add-recipe}"
-                         class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
-                    </button>
-                    <!--                Modal button from navbar fragment-->
-                    <button th:if="${username != null}" data-bs-toggle="modal" data-bs-target="#exampleModal"> Add product
-                    </button>
-                  </p>
-                </div>
-                </div><!-- End Icon Box -->
-
-              <div class="col-lg-4 justify-content-center  rounded-5" data-aos="fade-up" data-aos-delay="200">
-                <div class="icon-box d-flex flex-column align-items-center rounded-5">
-                  <i class="bi bi-clipboard-data"></i>
 
 
 
-                </div>
-              </div><!-- End Icon Box -->
 
-              <div class="col-lg-4 justify-content-center  rounded-5" data-aos="fade-up" data-aos-delay="200">
-                <div class="icon-box d-flex flex-column align-items-center rounded-5">
-                  <i class="bi bi-clipboard-data"></i>
+            <div class="col-lg-4   rounded-5" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon-box  rounded-5">
+                <i class="bi bi-card-list"></i>
+                <article>
+                  <section class="box-info lead-box pt-3">
+                    <article class="box-head align-content-center">
+                      <h3 class="box-title">My Recipes</h3>
+                      <hr class="bg-hero hr-4 bg-body-secondary aos-animate"/>
+                    </article>
+                    <article class="box-body pt-2 pb-2 align-content-start align-text-top">
+                      <section class="scroll-holder">
+                        <ul class="list-unstyled justify-content-left"
+                            th:if="${!myRecipes.isEmpty()}" th:each="myRecipe:${myRecipes}">
+                          <li class="info-item aos-animate" >
+                            <a th:href="@{/recipe/{id}(id=${myRecipe.id})}" class="info-link" th:text="${myRecipe.name}">
+                            </a>
+                            <span>
+                              <i class="bi bi-pin-angle"></i>
+                            </span>
+                          </li>
+                        </ul>
+                        <p th:if="${myRecipes.isEmpty()}">
+                          Nothing yet. <br>
+                          Add your first recipe <br>
+                          <i class="bi bi-box-arrow-in-down-left"></i>
+                        <div class="col-lg-8 justify-content-center">
+                        <button class="btn glow-button rounded-5" >
+                          <a th:href="@{/add-recipe}"
+                             class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
+                        </button>
+                        </div>
+                        </p>
+                      </section>
+                    </article>
+                    <article class="bottom-nav h-25">
+                      <a class="button bg-body-secondary rounded-5" th:href="@{/product-list}">  Open Your Recipes (TBA!)
+                      </a>
+                    </article>
+                  </section>
+                </article>
+              </div>
+            </div><!-- End Icon Box -->
 
+            <div class="col-lg-4   rounded-5" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon-box  rounded-5">
+                <i class="bi bi-suit-heart-fill"></i>
+                <article>
+                  <section class="box-info lead-box pt-3">
+                    <article class="box-head align-content-center">
+                      <h3 class="box-title">You might like our recently added recipes</h3>
+                      <hr class="bg-hero hr-4 bg-body-secondary aos-animate"/>
+                    </article>
+                    <article class="box-body pt-2 pb-2 align-content-start align-text-top">
+                      <section class="scroll-holder">
+                        <ul class="list-unstyled justify-content-left"
+                            th:if="${!recipes.isEmpty()}" th:each="recipe:${recipes}">
+                          <li class="info-item aos-animate" >
+                            <a th:href="@{/recipe/{id}(id=${recipe.id})}" class="info-link" th:text="${recipe.name}">
+                            </a>
+                            <span>
+                              <i class="bi bi-pin-angle"></i>
+                            </span>
+                          </li>
+                        </ul>
+                        <h3 th:if="${recipes.isEmpty()}">
+                          No recipes yet. <br>
+                          But you can add your first recipe <br>
+                          <i class="bi bi-box-arrow-in-down-left"></i>
+                        <div class="col-lg-8 justify-content-center">
+                          <button class="btn glow-button rounded-5" >
+                            <a th:href="@{/add-recipe}"
+                               class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
+                          </button>
+                        </div>
+                        </h3>
+                      </section>
+                    </article>
+                    <article class="bottom-nav h-25">
+                      <a class="button bg-body-secondary rounded-5" th:href="@{/all-recipes}">  Open All Recipes
+                      </a>
+                    </article>
+                  </section>
+                </article>
+              </div>
+            </div><!-- End Icon Box -->
 
-
-                </div>
-              </div><!-- End Icon Box -->
-
-            </div>
+          </div>
         </div>
       </div>
     </section>

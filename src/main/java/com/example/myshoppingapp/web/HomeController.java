@@ -45,6 +45,7 @@ public class HomeController {
             model.addAttribute("products", productService.getListedProducts());
         }
         model.addAttribute("recipes", recipeService.showLast5Recipes());
+        model.addAttribute("myRecipes", recipeService.showRecipesByLoggedUser());
         return "home";
     }
 }
