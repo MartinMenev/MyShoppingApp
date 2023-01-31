@@ -1,10 +1,9 @@
 package com.example.myshoppingapp.repository;
 
-import com.example.myshoppingapp.model.comments.Comment;
+import com.example.myshoppingapp.domain.comments.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 

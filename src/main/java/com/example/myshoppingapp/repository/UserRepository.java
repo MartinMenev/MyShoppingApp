@@ -1,15 +1,12 @@
 package com.example.myshoppingapp.repository;
 
-import com.example.myshoppingapp.model.products.Product;
-import com.example.myshoppingapp.model.users.User;
+import com.example.myshoppingapp.domain.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.lang.annotation.Native;
-import java.util.List;
 import java.util.Optional;
 
 @Repository

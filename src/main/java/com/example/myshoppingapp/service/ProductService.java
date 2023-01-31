@@ -1,11 +1,11 @@
 package com.example.myshoppingapp.service;
 
-import com.example.myshoppingapp.model.products.InputProductDTO;
-import com.example.myshoppingapp.model.products.OutputProductDTO;
-import com.example.myshoppingapp.model.products.Product;
-import com.example.myshoppingapp.model.users.User;
+import com.example.myshoppingapp.domain.beans.LoggedUser;
+import com.example.myshoppingapp.domain.products.InputProductDTO;
+import com.example.myshoppingapp.domain.products.OutputProductDTO;
+import com.example.myshoppingapp.domain.products.Product;
+import com.example.myshoppingapp.domain.users.User;
 import com.example.myshoppingapp.repository.ProductRepository;
-import com.example.myshoppingapp.repository.UserRepository;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,22 +22,21 @@ import java.util.stream.Collectors;
 @Service
 public class ProductService {
     private final UserService userService;
-
-
-
     private final ProductRepository productRepository;
     private final ModelMapper modelMapper;
+    private final LoggedUser loggedUser;
 
     @Autowired
-    public ProductService(UserService userService, ProductRepository productRepository, ModelMapper modelMapper) {
+    public ProductService(UserService userService, ProductRepository productRepository, ModelMapper modelMapper, LoggedUser loggedUser) {
         this.userService = userService;
         this.productRepository = productRepository;
         this.modelMapper = modelMapper;
+        this.loggedUser = loggedUser;
     }
 
     @Modifying
     public void addProduct(InputProductDTO inputProductDTO) {
-        User user = userService.findByUsername(userService.getLoggedInUser());
+        User user = userService.findByUsername(this.loggedUser.getUsername());
         Product product = this.modelMapper.map(inputProductDTO, Product.class);
         product.setUser(user);
         product.setBoughtOn(null);
@@ -48,7 +47,7 @@ public class ProductService {
     }
 
     public String getAllProducts() {
-        String currentUsername = this.userService.getLoggedInUser();
+        String currentUsername = this.loggedUser.getUsername();
         Long currentUserId = this.userService.findByUsername(currentUsername).getId();
 
         return this.productRepository.findAllByUserId(currentUserId)
@@ -60,7 +59,7 @@ public class ProductService {
     }
 
     public List<OutputProductDTO> getListedProducts() {
-        String currentUsername = this.userService.getLoggedInUser();
+        String currentUsername = this.loggedUser.getUsername();
         Long currentUserId = this.userService.findByUsername(currentUsername).getId();
 
         List<OutputProductDTO> outputProductDTOS = this.productRepository.findAllByUserId(currentUserId)

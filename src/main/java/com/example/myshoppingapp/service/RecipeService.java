@@ -1,9 +1,10 @@
 package com.example.myshoppingapp.service;
 
-import com.example.myshoppingapp.model.recipes.InputRecipeDTO;
-import com.example.myshoppingapp.model.recipes.OutputRecipeDTO;
-import com.example.myshoppingapp.model.recipes.Recipe;
-import com.example.myshoppingapp.model.users.User;
+import com.example.myshoppingapp.domain.beans.LoggedUser;
+import com.example.myshoppingapp.domain.recipes.InputRecipeDTO;
+import com.example.myshoppingapp.domain.recipes.OutputRecipeDTO;
+import com.example.myshoppingapp.domain.recipes.Recipe;
+import com.example.myshoppingapp.domain.users.User;
 import com.example.myshoppingapp.repository.RecipeRepository;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
@@ -23,17 +24,19 @@ public class RecipeService {
     private final RecipeRepository recipeRepository;
     private final UserService userService;
     private final ModelMapper modelMapper;
+    private final LoggedUser loggedUser;
 
     @Autowired
-    public RecipeService(RecipeRepository recipeRepository, UserService userService, ModelMapper modelMapper) {
+    public RecipeService(RecipeRepository recipeRepository, UserService userService, ModelMapper modelMapper, LoggedUser loggedUser) {
         this.recipeRepository = recipeRepository;
         this.userService = userService;
         this.modelMapper = modelMapper;
+        this.loggedUser = loggedUser;
     }
 
 
     public void addRecipe(InputRecipeDTO inputRecipeDTO) {
-        User authorId = this.userService.findByUsername(userService.getLoggedInUser());
+        User authorId = this.userService.findByUsername(loggedUser.getUsername());
         if (inputRecipeDTO.getImageUrl().isBlank()) {
             inputRecipeDTO.setImageUrl("https://images.pexels.com/photos/4033165/pexels-photo-4033165.jpeg?auto=compress&cs=tinysrgb&w=1600");
         }

@@ -1,10 +1,10 @@
-package com.example.myshoppingapp.model.users;
+package com.example.myshoppingapp.domain.users;
 
-import com.example.myshoppingapp.model.BaseEntity;
-import com.example.myshoppingapp.model.enums.UserRole;
-import com.example.myshoppingapp.model.pictures.Picture;
-import com.example.myshoppingapp.model.products.Product;
-import com.example.myshoppingapp.model.recipes.Recipe;
+import com.example.myshoppingapp.domain.BaseEntity;
+import com.example.myshoppingapp.domain.enums.UserRole;
+import com.example.myshoppingapp.domain.pictures.Picture;
+import com.example.myshoppingapp.domain.products.Product;
+import com.example.myshoppingapp.domain.recipes.Recipe;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

@@ -1,8 +1,8 @@
-package com.example.myshoppingapp.model.recipes;
+package com.example.myshoppingapp.domain.recipes;
 
-import com.example.myshoppingapp.model.comments.Comment;
-import com.example.myshoppingapp.model.enums.Category;
-import com.example.myshoppingapp.model.pictures.Picture;
+import com.example.myshoppingapp.domain.comments.Comment;
+import com.example.myshoppingapp.domain.enums.Category;
+import com.example.myshoppingapp.domain.pictures.Picture;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

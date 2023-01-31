@@ -1,8 +1,9 @@
 package com.example.myshoppingapp.service;
 
-import com.example.myshoppingapp.model.pictures.OutputPictureDTO;
-import com.example.myshoppingapp.model.pictures.Picture;
-import com.example.myshoppingapp.model.users.User;
+import com.example.myshoppingapp.domain.beans.LoggedUser;
+import com.example.myshoppingapp.domain.pictures.OutputPictureDTO;
+import com.example.myshoppingapp.domain.pictures.Picture;
+import com.example.myshoppingapp.domain.users.User;
 import com.example.myshoppingapp.repository.PictureRepository;
 import com.example.myshoppingapp.repository.UserRepository;
 import lombok.Getter;
@@ -20,13 +21,15 @@ public class PictureService {
     private final UserRepository userRepository;
     private final UserService userService;
     private final ModelMapper modelMapper;
+    private final LoggedUser loggedUser;
     @Autowired
     public PictureService(PictureRepository pictureRepository, UserRepository userRepository,
-                          UserService userService, ModelMapper modelMapper) {
+                          UserService userService, ModelMapper modelMapper, LoggedUser loggedUser) {
         this.pictureRepository = pictureRepository;
         this.userRepository = userRepository;
         this.userService = userService;
         this.modelMapper = modelMapper;
+        this.loggedUser = loggedUser;
     }
 
 
@@ -38,11 +41,11 @@ public class PictureService {
 
         } else {
             picture = new Picture();
-            picture.setAuthor(this.userService.findByUsername(userService.getLoggedInUser()));
+            picture.setAuthor(this.userService.findByUsername(this.loggedUser.getUsername()));
             picture.setUrl(pictureUrl);
             this.pictureRepository.saveAndFlush(picture);
         }
-        User user = this.userService.findByUsername(this.userService.getLoggedInUser());
+        User user = this.userService.findByUsername(this.loggedUser.getUsername());
         user.setPicture(picture);
         this.userRepository.saveAndFlush(user);
 

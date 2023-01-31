@@ -1,7 +1,5 @@
 package com.example.myshoppingapp.web;
 
-import com.example.myshoppingapp.model.recipes.OutputRecipeDTO;
-import com.example.myshoppingapp.model.recipes.Recipe;
 import com.example.myshoppingapp.service.CommentService;
 import com.example.myshoppingapp.service.ProductService;
 import com.example.myshoppingapp.service.RecipeService;
@@ -29,7 +27,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("username", userService.getLoggedInUser());
         model.addAttribute("recipes", recipeService.showLast5Recipes());
         model.addAttribute("comments", commentService.showTopRatedComments());
 
@@ -40,10 +37,8 @@ public class HomeController {
 
     @GetMapping("home")
     public String home(Model model) {
-        model.addAttribute("username", userService.getLoggedInUser());
-        if (userService.getLoggedInUser() !=null) {
-            model.addAttribute("products", productService.getListedProducts());
-        }
+        model.addAttribute("username", userService.getLoggedUserDTO().getUsername());
+        model.addAttribute("products", productService.getListedProducts());
         model.addAttribute("recipes", recipeService.showLast5Recipes());
         model.addAttribute("myRecipes", recipeService.showRecipesByLoggedUser());
         return "home";

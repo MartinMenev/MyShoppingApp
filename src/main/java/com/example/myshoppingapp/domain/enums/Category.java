@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.model.enums;
+package com.example.myshoppingapp.domain.enums;
 
 public enum Category {
     BREAKFAST,

@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.model;
+package com.example.myshoppingapp.domain;
 
 
 import javax.persistence.GeneratedValue;

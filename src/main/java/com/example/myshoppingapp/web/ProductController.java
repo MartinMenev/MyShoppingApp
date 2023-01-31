@@ -1,7 +1,7 @@
 package com.example.myshoppingapp.web;
 
-import com.example.myshoppingapp.model.products.InputProductDTO;
-import com.example.myshoppingapp.model.products.OutputProductDTO;
+import com.example.myshoppingapp.domain.products.InputProductDTO;
+import com.example.myshoppingapp.domain.products.OutputProductDTO;
 import com.example.myshoppingapp.service.ProductService;
 import com.example.myshoppingapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +26,6 @@ public class ProductController {
     // show all products in table (html):
     @GetMapping("/product-list")
     public String showProductListPage(Model model) {
-        if (this.userService.getLoggedInUser() == null) {
-            return "index2";
-        }
         List<OutputProductDTO> products = this.productService.getListedProducts();
         model.addAttribute("products", products);
         model.addAttribute("boughtProducts", this.productService.showBoughtProducts());

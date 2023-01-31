@@ -1,9 +1,9 @@
 package com.example.myshoppingapp.service;
 
-import com.example.myshoppingapp.model.enums.UserRole;
-import com.example.myshoppingapp.model.products.OutputProductDTO;
-import com.example.myshoppingapp.model.products.Product;
-import com.example.myshoppingapp.model.users.*;
+import com.example.myshoppingapp.domain.beans.LoggedUser;
+import com.example.myshoppingapp.domain.enums.UserRole;
+import com.example.myshoppingapp.domain.products.Product;
+import com.example.myshoppingapp.domain.users.*;
 import com.example.myshoppingapp.repository.ProductRepository;
 import com.example.myshoppingapp.repository.UserRepository;
 import lombok.Getter;
@@ -25,34 +25,36 @@ public class UserService {
     private UserRepository userRepository;
     private ProductRepository productRepository;
     private final ModelMapper modelMapper;
-    private String loggedInUser;
+    private final LoggedUser loggedUser;
 
     @Autowired
-    public UserService(UserRepository userRepository, ProductRepository productRepository, ModelMapper modelMapper) {
+    public UserService(UserRepository userRepository, ProductRepository productRepository, ModelMapper modelMapper, LoggedUser loggedUser) {
         this.userRepository = userRepository;
         this.productRepository = productRepository;
         this.modelMapper = modelMapper;
-        this.loggedInUser = null;
+        this.loggedUser = loggedUser;
+
     }
 
-    public User login(LoginDTO loginDTO) {
-        this.setLoggedInUser(null);
+    public LoggedUser login(LoginDTO loginDTO) {
         User user = this.userRepository
                 .findByUsernameAndPassword(loginDTO.getUsername(), loginDTO.getPassword()).orElseThrow(NoSuchElementException::new);
-        this.loggedInUser = user.getUsername();
-        return user;
+
+        this.loggedUser
+                .setId(user.getId())
+                .setUsername(user.getUsername())
+                .setUserRole(user.getUserRole());
+        return loggedUser;
     }
 
     @Modifying
-    public Boolean register(RegisterUserDTO registerUserDTO) {
+    public void register(RegisterUserDTO registerUserDTO) {
         User user = this.modelMapper.map(registerUserDTO, User.class);
 
         if (this.userRepository.count() == 0) {
             user.setUserRole(UserRole.ADMIN);
         } else user.setUserRole(UserRole.USER);
         this.userRepository.save(user);
-        this.setLoggedInUser(user.getUsername());
-        return true;
     }
 
     public User findByUsername(String username) {
@@ -60,12 +62,11 @@ public class UserService {
     }
 
     public Long getLoggedUserId() {
-        return this.userRepository.findByUsername(getLoggedInUser()).get().getId();
+        return this.loggedUser.getId();
     }
 
     public UserOutputDTO getLoggedUserDTO() {
-        User currentuser = this.findByUsername(getLoggedInUser());
-        return this.modelMapper.map(currentuser, UserOutputDTO.class);
+        return this.modelMapper.map(this.loggedUser, UserOutputDTO.class);
     }
 
     public void updateUser(UserInputDTO userInputDTO) {
@@ -73,8 +74,8 @@ public class UserService {
         String newUsername = userInputDTO.getUsername();
         String newPassword = userInputDTO.getPassword();
         String newEmail = userInputDTO.getEmail();
-        if (!newUsername.equals(this.loggedInUser)) {
-            this.loggedInUser = newUsername;
+        if (!newUsername.equals(this.loggedUser.getUsername())) {
+            this.loggedUser.setUsername(newUsername);
         }
         this.userRepository.updateUser(idToUpdate, newUsername, newPassword, newEmail);
 
@@ -92,13 +93,13 @@ public class UserService {
     }
 
     public void addBoughtProductToUser(Product product) {
-        User user = this.userRepository.findByUsername(getLoggedInUser()).orElseThrow(NoSuchElementException::new);
+        User user = this.userRepository.findByUsername(this.loggedUser.getUsername()).orElseThrow(NoSuchElementException::new);
         user.getBoughtProducts().add(product);
         this.userRepository.saveAndFlush(user);
     }
 
     public User getLoggedUser (){
-        return this.userRepository.findByUsername(getLoggedInUser()).orElseThrow(NoSuchElementException::new);
+        return this.userRepository.findByUsername(this.loggedUser.getUsername()).orElseThrow(NoSuchElementException::new);
     }
 
 

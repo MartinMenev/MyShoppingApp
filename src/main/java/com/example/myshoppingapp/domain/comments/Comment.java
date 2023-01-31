@@ -1,11 +1,10 @@
-package com.example.myshoppingapp.model.comments;
+package com.example.myshoppingapp.domain.comments;
 
-import com.example.myshoppingapp.model.BaseEntity;
-import com.example.myshoppingapp.model.recipes.Recipe;
-import com.example.myshoppingapp.model.users.User;
+import com.example.myshoppingapp.domain.BaseEntity;
+import com.example.myshoppingapp.domain.recipes.Recipe;
+import com.example.myshoppingapp.domain.users.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

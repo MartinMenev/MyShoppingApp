@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.model.products;
+package com.example.myshoppingapp.domain.users;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,8 +11,12 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class InputProductDTO implements Serializable {
-    private Long id;
+public class RegisterUserDTO implements Serializable {
 
-    private String name;
+    private String username;
+
+    private String password;
+
+    private String email;
+
 }

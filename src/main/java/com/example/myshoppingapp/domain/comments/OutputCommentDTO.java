@@ -1,14 +1,13 @@
-package com.example.myshoppingapp.model.comments;
+package com.example.myshoppingapp.domain.comments;
 
-import com.example.myshoppingapp.model.pictures.Picture;
-import com.example.myshoppingapp.model.recipes.Recipe;
-import com.example.myshoppingapp.model.users.User;
+import com.example.myshoppingapp.domain.pictures.Picture;
+import com.example.myshoppingapp.domain.recipes.Recipe;
+import com.example.myshoppingapp.domain.users.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

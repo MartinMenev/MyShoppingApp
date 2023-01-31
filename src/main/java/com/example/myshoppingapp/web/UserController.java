@@ -1,6 +1,7 @@
 package com.example.myshoppingapp.web;
 
-import com.example.myshoppingapp.model.users.*;
+import com.example.myshoppingapp.domain.beans.LoggedUser;
+import com.example.myshoppingapp.domain.users.*;
 import com.example.myshoppingapp.service.PictureService;
 import com.example.myshoppingapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,8 @@ public class UserController {
     }
 
     @PostMapping("/users/login")
-    public String doLogin(LoginDTO loginDTO) throws NoSuchFieldException {
-//        this.userService.setLoggedInUser(null);
-        User user = userService.login(loginDTO);
+    public String doLogin(LoginDTO loginDTO)  {
+        LoggedUser user = userService.login(loginDTO);
 
         if (user != null) {
             return "redirect:/home";
@@ -47,12 +47,8 @@ public class UserController {
 
     @PostMapping("/users/register")
     public String doRegister(RegisterUserDTO registerUserDTO) {
-       Boolean successfulRegistration = userService.register(registerUserDTO);
-
-        if (successfulRegistration) {
-            return "redirect:/users/login";
-        }
-        return "user/register";
+       userService.register(registerUserDTO);
+        return "redirect:/user/login";
     }
 
     @GetMapping("user/profile")

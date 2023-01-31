@@ -1,7 +1,7 @@
 package com.example.myshoppingapp.web;
 
-import com.example.myshoppingapp.model.comments.InputCommentDTO;
-import com.example.myshoppingapp.model.recipes.OutputRecipeDTO;
+import com.example.myshoppingapp.domain.comments.InputCommentDTO;
+import com.example.myshoppingapp.domain.recipes.OutputRecipeDTO;
 import com.example.myshoppingapp.service.CommentService;
 import com.example.myshoppingapp.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;

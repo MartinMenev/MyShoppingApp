@@ -1,6 +1,6 @@
-package com.example.myshoppingapp.model.pictures;
+package com.example.myshoppingapp.domain.pictures;
 
-import com.example.myshoppingapp.model.users.User;
+import com.example.myshoppingapp.domain.users.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

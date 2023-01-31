@@ -1,17 +1,13 @@
-package com.example.myshoppingapp.model.users;
+package com.example.myshoppingapp.domain.users;
 
-import com.example.myshoppingapp.model.enums.UserRole;
-import com.example.myshoppingapp.model.pictures.Picture;
-import com.example.myshoppingapp.model.products.Product;
-import com.example.myshoppingapp.model.recipes.Recipe;
+import com.example.myshoppingapp.domain.enums.UserRole;
+import com.example.myshoppingapp.domain.pictures.Picture;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.OneToMany;
 import java.io.Serializable;
-import java.util.List;
 
 @Setter
 @Getter

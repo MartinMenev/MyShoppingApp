@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.model.products;
+package com.example.myshoppingapp.domain.products;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

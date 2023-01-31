@@ -1,11 +1,11 @@
 package com.example.myshoppingapp.service;
 
-import com.example.myshoppingapp.model.comments.Comment;
-import com.example.myshoppingapp.model.comments.InputCommentDTO;
-import com.example.myshoppingapp.model.comments.OutputCommentDTO;
-import com.example.myshoppingapp.model.recipes.OutputRecipeDTO;
-import com.example.myshoppingapp.model.recipes.Recipe;
-import com.example.myshoppingapp.model.users.User;
+import com.example.myshoppingapp.domain.beans.LoggedUser;
+import com.example.myshoppingapp.domain.comments.Comment;
+import com.example.myshoppingapp.domain.comments.InputCommentDTO;
+import com.example.myshoppingapp.domain.comments.OutputCommentDTO;
+import com.example.myshoppingapp.domain.recipes.Recipe;
+import com.example.myshoppingapp.domain.users.User;
 import com.example.myshoppingapp.repository.CommentRepository;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
@@ -22,21 +22,23 @@ public class CommentService {
     private final ModelMapper modelMapper;
     private final UserService userService;
     private final RecipeService recipeService;
+    private final LoggedUser loggedUser;
 
 
     @Autowired
-    public CommentService(CommentRepository commentRepository, ModelMapper modelMapper, UserService userService, RecipeService recipeService) {
+    public CommentService(CommentRepository commentRepository, ModelMapper modelMapper, UserService userService, RecipeService recipeService, LoggedUser loggedUser) {
         this.commentRepository = commentRepository;
         this.modelMapper = modelMapper;
         this.userService = userService;
         this.recipeService = recipeService;
+        this.loggedUser = loggedUser;
     }
 
 
     public void addComment(InputCommentDTO inputCommentDTO, Long recipeId) {
         inputCommentDTO.setId(null);
         Comment comment = modelMapper.map(inputCommentDTO, Comment.class);
-        User author = this.userService.findByUsername(userService.getLoggedInUser());
+        User author = this.userService.findByUsername(this.loggedUser.getUsername());
         Recipe recipe = this.recipeService.getRecipeRepository().getById(recipeId);
         comment.setRecipe(recipe);
         if (author != null) {
