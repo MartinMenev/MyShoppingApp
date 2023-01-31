@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <th:block th:include="~{fragments/head}"></th:block>
@@ -86,12 +86,7 @@
                 </article>
               </div>
             </div><!-- End Icon Box -->
-
-
-
-
-
-            <div class="col-lg-4   rounded-5" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-4   rounded-5" data-aos="fade-up" data-aos-delay="200" >
               <div class="icon-box  rounded-5">
                 <i class="bi bi-card-list"></i>
                 <article>
@@ -133,7 +128,6 @@
                 </article>
               </div>
             </div><!-- End Icon Box -->
-
             <div class="col-lg-4   rounded-5" data-aos="fade-up" data-aos-delay="200">
               <div class="icon-box  rounded-5">
                 <i class="bi bi-suit-heart-fill"></i>
@@ -176,7 +170,6 @@
                 </article>
               </div>
             </div><!-- End Icon Box -->
-
           </div>
         </div>
       </div>
@@ -185,7 +178,6 @@
     <!-- ======= Recipes Section ======= -->
     <section id="events" class="events" th:if="${!recipes.isEmpty()}" >
       <div class="container" data-aos="fade-up">
-
         <div class="section-header align-content-center">
           <h2>Recipes</h2>
           <p>Latest Recipes <span>You might like</span> </p>

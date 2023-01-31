@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <th:block th:include="~{fragments/head}"></th:block>
@@ -29,7 +29,7 @@
           </h2>
           <ol>
             <li><a th:href="@{/home}">Home</a></li>
-            <li>Recipe Details</li>
+            <li>All listed products</li>
           </ol>
         </div>
 
@@ -46,8 +46,11 @@
               <div class="col-lg-6 justify-content-center rounded-5" data-aos="fade-up" data-aos-delay="200">
                 <div class="icon-box d-flex flex-column align-items-center rounded-5 ">
 
-                  <h4>Corporis voluptates officia eiusmod</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                  <h1>
+                    All my products so far:
+                  </h1>
+                  <textarea class="form-control" id="export-project-textarea" rows="10" th:text="${showAllProducts}" readonly>
+                    </textarea>
                 </div>
               </div><!-- End Icon Box -->
 
