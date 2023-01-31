@@ -40,6 +40,12 @@ public class UserController {
         return "user/login";
     }
 
+    @PostMapping("/users/logout")
+    public String doLogout(){
+        this.userService.logout();
+        return "redirect:/users/login";
+    }
+
     @GetMapping("/users/register")
     public String register() {
         return "user/register";

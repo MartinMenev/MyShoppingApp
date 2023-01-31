@@ -47,6 +47,10 @@ public class UserService {
         return loggedUser;
     }
 
+    public void logout() {
+        this.loggedUser.clearFields();
+    }
+
     @Modifying
     public void register(RegisterUserDTO registerUserDTO) {
         User user = this.modelMapper.map(registerUserDTO, User.class);

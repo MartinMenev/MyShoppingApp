@@ -38,4 +38,10 @@ public class LoggedUser {
         this.userRole = userRole;
         return this;
     }
+
+    public void clearFields() {
+        this.id = null;
+        this.username = null;
+        this.userRole = null;
+    }
 }
