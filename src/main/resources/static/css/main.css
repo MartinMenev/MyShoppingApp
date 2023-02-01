@@ -42,7 +42,7 @@ a {
 }
 
 a:hover {
-  color: #ec2727;
+  color: #b7dcbf;
   text-decoration: none;
 }
 
@@ -60,11 +60,11 @@ h6 {
 --------------------------------------------------------------*/
 section {
   overflow: hidden;
-  padding: 80px 0;
+  padding: 60px 0;
 }
 
 .section-bg {
-  background-color: #eee;
+  background: #d3d3d3 url("../images/app-images/bg7.jpg") no-repeat center 51%;
 }
 
 .section-header {
@@ -177,7 +177,7 @@ section {
 }
 
 .scroll-top:hover {
-  background: #ec2727;
+  background: #defdd7;
   color: #fff;
 }
 
@@ -354,7 +354,7 @@ section {
     font-family: var(--font-secondary);
     font-size: 16px;
     font-weight: 600;
-    color: #7f7f90;
+    color: #414d41;
     white-space: nowrap;
     transition: 0.3s;
     position: relative;
@@ -376,7 +376,6 @@ section {
     left: 0;
     background-color: var(--color-primary);
     visibility: hidden;
-    width: 0px;
     transition: all 0.3s ease-in-out 0s;
   }
 
@@ -391,7 +390,7 @@ section {
   .navbar .active,
   .navbar .active:focus,
   .navbar li:hover>a {
-    color: #000;
+    color: #4db2b7;
   }
 
   .navbar .dropdown ul {
@@ -1043,12 +1042,14 @@ section {
 # Events Section
 --------------------------------------------------------------*/
 .events .container-fluid {
+  background-color: #FFF9F3 ;
   padding: 0;
 }
 
 .events .event-item {
   background-size: cover;
-  background-position: cente;
+
+  background-position: center;
   min-height: 600px;
   padding: 30px;
 }
@@ -1208,6 +1209,8 @@ section {
   right: 8px;
   opacity: 1;
 }
+
+
 
 /*--------------------------------------------------------------
 # Book A Table Section
@@ -1540,10 +1543,10 @@ section {
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  background-size: cover;
+  background-color: #D7D2D2;
   position: relative;
-  min-height: 60vh;
-  padding: 80px 0 20px 0;
+  min-height: 30vh;
+  padding: 120px 0 20px 0;
 }
 
 
@@ -1745,7 +1748,7 @@ table > tbody {
 }
 
 /*--------------------------------------------------------------
-# Shopping Section
+# Input Rating Section
 --------------------------------------------------------------*/
 
 .rate{
@@ -1813,3 +1816,10 @@ table > tbody {
 
   color: #fff;
 }
+
+body .recipes {
+  background: #d7d2d2 url("../images/app-images/bg6.png") no-repeat center 51%;
+}
+
+
+
