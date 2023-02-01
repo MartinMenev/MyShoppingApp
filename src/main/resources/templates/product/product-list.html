@@ -39,11 +39,8 @@
 
     <section id="why-us" class="why-us section-bg">
       <div class="container justify-content-center" >
-
-        <div class="col-lg-12 justify-content-center">
-
-            <div class="row lg-12 justify-content-center">
-              <div class="col-lg-6 justify-content-center rounded-5" >
+        <div class="row justify-content-center">
+              <div class="col-lg-7 justify-content-center rounded-5" >
                 <div class="icon-box d-flex flex-column align-items-center rounded-5 ">
                   <h2>My shopping list</h2>
                   <h6 th:if="${products.isEmpty()}">
@@ -99,56 +96,40 @@
                 </div>
               </div><!-- End Icon Box -->
 
+              <div class="col-lg-5 justify-content-center rounded-5" th:if="${!boughtProducts.isEmpty()}">
+                <div class="icon-box d-flex flex-column align-items-center rounded-5 bg-body-secondary">
+                  <h4><i>You might want them again</i></h4>
+                  <table class="table table-responsive-sm  rounded-3 bg-body-secondary" >
+                    <thead>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr   th:each="product:${boughtProducts}">
+                      <td  >
+                        <a class="bi bi-arrow-clockwise" href="#" th:href="@{/reuse-product/{id}(id=${product.id})}"></a>
+                        <a th:href="@{#}" class="btn bg-body-secondary " th:text="${product.name}"> </a>
+                      </td>
+                      <td>
 
-            </div>
-        </div>
-      </div>
-    </section>
+                        <a th:href="@{#}" class="btn bg-body-secondary " th:text="${product.boughtOn}"> </a>
 
-
-
-    <section id="why-us" class="why-us section-bg" th:if="${!boughtProducts.isEmpty()}">
-      <div class="container justify-content-center" >
-
-        <div class="col-lg-12 justify-content-center">
-
-          <div class="row lg-12 justify-content-center">
-            <div class="col-lg-6 justify-content-center rounded-5" >
-              <div class="icon-box d-flex flex-column align-items-center rounded-5 bg-body-secondary">
-                <h4><i>You might want them again</i></h4>
-                <table class="table table-responsive-sm  rounded-3 bg-body-secondary" >
-                  <thead>
-                  <tr>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr   th:each="product:${boughtProducts}">
-                    <td  >
-                      <a class="bi bi-arrow-clockwise" href="#" th:href="@{/reuse-product/{id}(id=${product.id})}"></a>
-                      <a th:href="@{#}" class="btn bg-body-secondary " th:text="${product.name}"> </a>
-                    </td>
-                    <td>
-
-                      <a th:href="@{#}" class="btn bg-body-secondary " th:text="${product.boughtOn}"> </a>
-
-                      <!--                remove Product-->
-                      <a th:href="@{/deleteProduct/{id}(id=${product.id})}" class="btn btn-light bg-body-secondary"><i class="fa-solid fa-xmark bg-body-secondary"></i></a>
+                        <!--                remove Product-->
+                        <a th:href="@{/deleteProduct/{id}(id=${product.id})}" class="btn btn-light bg-body-secondary"><i class="fa-solid fa-xmark bg-body-secondary"></i></a>
 
 
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
 
 
 
-              </div>
-            </div><!-- End Icon Box -->
+                </div>
+              </div><!-- End Icon Box -->
 
-
-          </div>
         </div>
       </div>
     </section>
