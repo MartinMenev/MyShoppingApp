@@ -65,6 +65,7 @@ section {
 
 .section-bg {
   background: #d3d3d3 url("../images/app-images/bg7.jpg") no-repeat center 51%;
+  min-height: 50rem;
 }
 
 .section-header {
