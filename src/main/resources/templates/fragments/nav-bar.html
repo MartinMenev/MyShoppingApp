@@ -29,14 +29,16 @@
                             <li><a th:href="@{/update-user}">Edit profile</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <form th:if="${@loggedUser.id}" th:action="@{/users/logout}" method="post">
+                            <button type="submit" class="btn bg-body-primary" name="button">Logout</button>
+                        </form>
+                    </li>
                 </ul>
             </th:block>
         </nav>
         <!-- .navbar -->
         <a th:unless="${@loggedUser.id}"   class="btn-book-a-table" th:href="@{/users/login}">login</a>
-        <form class="btn-book-a-table" th:if="${@loggedUser.id}" th:action="@{/users/logout}" method="post">
-            <button type="submit" class="btn bg-body-primary" name="button">logout</button>
-        </form>
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"> </i>
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
     </div>

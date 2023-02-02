@@ -70,7 +70,8 @@ public class UserService {
     }
 
     public UserOutputDTO getLoggedUserDTO() {
-        return this.modelMapper.map(this.loggedUser, UserOutputDTO.class);
+        User user = this.userRepository.findByUsername(this.loggedUser.getUsername()).orElseThrow(NoSuchElementException::new);
+        return this.modelMapper.map(user, UserOutputDTO.class);
     }
 
     public void updateUser(UserInputDTO userInputDTO) {

@@ -8,12 +8,16 @@ public class LoggedUser {
 
     private UserRole userRole;
 
+    private String email;
+
     public LoggedUser() {
     }
 
     public Long getId() {
         return id;
     }
+
+
 
     public LoggedUser setId(Long id) {
         this.id = id;
