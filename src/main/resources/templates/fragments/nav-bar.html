@@ -39,8 +39,8 @@
         </nav>
         <!-- .navbar -->
         <a th:unless="${@loggedUser.id}"   class="btn-book-a-table" th:href="@{/users/login}">login</a>
-        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"> </i>
-        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+        <i th:if="${@loggedUser.id}" class="mobile-nav-toggle mobile-nav-show bi bi-list"> </i>
+        <i th:if="${@loggedUser.id}" class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
     </div>
 
     <!-- Adding Product with Modal box -->
