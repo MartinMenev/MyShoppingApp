@@ -50,15 +50,12 @@
                   th:object="${registerUserDTO}">
                     <input type="hidden" name="_csrf" value="c95ccb2b-1afa-47bd-bf7b-a5b72739470b">
                     <div class="form-group p-2">
-                      <label for="username" class="text-black mb-1">Username</label>
-                      <input type="text" class="form-control" id="username" placeholder="Username..." name="username"
+                      <label for="inputUsername" class="text-black mb-1">Username</label>
+                      <input type="text" class="form-control" id="inputUsername" placeholder="Username..." name="username"
                              th:field="*{username}"
                              th:errorclass="is-invalid"
                              required
                              minlength="5" maxlength="20"
-                             type="text"
-                             id="inputUsername"
-                             class="form-control"
                              aria-describedby="usernameHelpInline" >
                       <small id="usernameError"
                              class="invalid-feedback bg-danger rounded">Username length must be between 4 and 20 characters</small>
@@ -67,13 +64,10 @@
                              class=" bg-danger rounded">Username is already occupied</small>
                     </div>
                     <div class="form-group p-2">
-                      <label for="password" class="text-black mb-1">Password</label>
-                      <input type="password" class="form-control" id="password" placeholder="Password..." name="password"
+                      <label for="inputPassword" class="text-black mb-1">Password</label>
+                      <input type="password" class="form-control" id="inputPassword" placeholder="Password..." name="password"
                              th:field="*{password}"
                              required minlength="5" maxlength="20"
-                             type="password"
-                             id="inputPassword"
-                             class="form-control"
                              aria-describedby="passwordHelpInline">
                       <small id="passwordError"
                              class="invalid-feedback  form-text bg-danger rounded">
@@ -81,14 +75,11 @@
                       </small>
                     </div>
                     <div class="form-group p-2">
-                      <label for="confirmPassword" class="text-black mb-1">Confirm Password</label>
-                      <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password..."
+                      <label for="inputConfirmPassword" class="text-black mb-1">Confirm Password</label>
+                      <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password..."
                              name="confirmPassword"
                              th:field="*{confirmPassword}"
                              required minlength="5" maxlength="20"
-                             type="password"
-                             id="inputConfirmPassword"
-                             class="form-control"
                              aria-describedby="confirmPasswordHelpInline"/>
                       <small id="confirmPasswordError"
                              class="invalid-feedback  form-text bg-danger rounded">
@@ -96,12 +87,9 @@
                       </small>
                     </div>
                     <div class="form-group p-2">
-                      <label for="email" class="text-black mb-1">Email</label>
-                      <input type="email" class="form-control" id="email" placeholder="Email..." name="email"
+                      <label for="inputEmail" class="text-black mb-1">Email</label>
+                      <input type="email" class="form-control" id="inputEmail" placeholder="Email..." name="email"
                              th:field="*{email}"
-                             type="email"
-                             id="inputEmail"
-                             class="form-control"
                              aria-describedby="emailHelpInline"/>
                       <small th:if="${#fields.hasErrors('email')}"
                              id="emailError"
