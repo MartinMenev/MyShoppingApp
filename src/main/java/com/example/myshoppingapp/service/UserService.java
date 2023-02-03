@@ -53,8 +53,16 @@ public class UserService {
 
     @Modifying
     public void register(RegisterUserDTO registerUserDTO) {
-        User user = this.modelMapper.map(registerUserDTO, User.class);
+        if (!registerUserDTO.getPassword().equals(registerUserDTO.getConfirmPassword())) {
+            throw new RuntimeException("passwords.match");
+        }
 
+        Optional<User> byEmail = this.userRepository.findByEmail(registerUserDTO.getEmail());
+        if (byEmail.isPresent()) {
+            throw new RuntimeException("email.used");
+        }
+
+        User user = this.modelMapper.map(registerUserDTO, User.class);
         if (this.userRepository.count() == 0) {
             user.setUserRole(UserRole.ADMIN);
         } else user.setUserRole(UserRole.USER);
