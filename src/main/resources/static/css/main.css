@@ -20,7 +20,7 @@
 :root {
   --color-default: #212529;
   --color-primary: #1F8186;
-  --color-secondary: #6f866b;
+  --color-secondary: #334232;
 }
 
 /* Smooth scroll behavior */
@@ -280,7 +280,6 @@ section {
 }
 
 .header.sticked {
-  border-color: #fff;
   border-color: #eee;
 }
 

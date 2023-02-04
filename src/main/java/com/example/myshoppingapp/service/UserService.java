@@ -62,6 +62,11 @@ public class UserService {
             throw new RuntimeException("email.used");
         }
 
+        Optional<User> byUsername = this.userRepository.findByUsername(registerUserDTO.getUsername());
+        if (byUsername.isPresent()) {
+            throw new RuntimeException("username.occupied");
+        }
+
         User user = this.modelMapper.map(registerUserDTO, User.class);
         if (this.userRepository.count() == 0) {
             user.setUserRole(UserRole.ADMIN);

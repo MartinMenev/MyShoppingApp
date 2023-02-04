@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -47,19 +48,25 @@ public class UserController {
         return "redirect:/users/login";
     }
 
+    @ModelAttribute("registerUserDTO")
+    public RegisterUserDTO initForm() {
+        return new RegisterUserDTO();
+    }
+
     @GetMapping("/users/register")
-    public String register(@ModelAttribute("registerUserDTO") RegisterUserDTO registerUserDTO) {
+    public String register() {
         return "user/register";
     }
 
     @PostMapping("/users/register")
     public String doRegister(@Valid RegisterUserDTO registerUserDTO,
                              BindingResult bindingResult,
-                             RedirectAttributes redirectAttributes) {
+                             RedirectAttributes redirectAttributes ) {
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("registerUserDTO", registerUserDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerUserDTO", bindingResult);
+            redirectAttributes.addFlashAttribute("registerUserDTO", registerUserDTO);
+
 
             return "redirect:/register";
         }

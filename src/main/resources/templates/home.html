@@ -54,9 +54,9 @@
                       <h3 class="box-title">My Shopping List</h3>
                       <hr class="bg-hero hr-4 bg-body-secondary aos-animate"/>
                     </article>
-                    <article class="box-body pt-2 pb-2 align-content-start align-text-top">
-                      <section class="scroll-holder">
-                        <ul class="list-unstyled justify-content-left"
+                    <article class="box-body pt-2 pb-2 justify-content-lg-evenly">
+                      <section class="scroll-holder" >
+                        <ul class="list-unstyled"
                             th:if="${!products.isEmpty()}" th:each="product:${products}">
                           <li class="info-item aos-animate" >
                             <a th:href="@{/product-list}" class="info-link" th:text="${product.name}">

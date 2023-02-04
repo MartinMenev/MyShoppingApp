@@ -1,5 +1,7 @@
 package com.example.myshoppingapp.domain.users;
 
+import com.example.myshoppingapp.domain.validation.FieldMatch;
+import com.example.myshoppingapp.domain.validation.UniqueUserEmail;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,18 +17,24 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldMatch(
+        first = "password",
+        second = "confirmPassword",
+        message = "Passwords do not match."
+)
 public class RegisterUserDTO implements Serializable {
 @NotBlank
 @Size(min = 5, max = 20)
     private String username;
-    @NotNull
-    @Email
+    @NotBlank(message = "User email should be provided.")
+    @Email (message = "User email should be valid.")
+    @UniqueUserEmail(message = "User email should be unique.")
     private String email;
-    @NotNull
+    @NotBlank (message = "password should be provided.")
     @Size(min = 5, max = 20)
     private String password;
 
-    @NotNull
+    @NotBlank (message = "you should confirm your password")
     @Size(min = 5, max = 20)
     private String confirmPassword;
 
