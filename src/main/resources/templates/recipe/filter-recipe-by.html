@@ -22,10 +22,23 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2 data-aos="fade-up">Inspiration</h2>
 
-          <button th:if="${@loggedUser.id}"  class="btn glow-button rounded-5" >
+          <button th:if="${@loggedUser.id}"  class="btn bg-body-secondary rounded-5" >
             <a  th:href="@{/add-recipe}"
                class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
           </button>
+          <form  th:method="get" th:action="@{/search-recipes}">
+            <input type="text" class="form-control" id="searchRecipe" placeholder="Search recipe . . ." name="text">
+          </form>
+          <form  th:method="get" th:action="@{/filter-recipes}"
+                 th:if="${@loggedUser.id}"  class="btn bg-body-secondary rounded-5" >
+            <select class="form-control-color w-75" name = "category" onchange="this.form.submit()">
+              <option value="">  Filter by  </option>
+              <option th:each="category : ${T(com.example.myshoppingapp.domain.enums.Category).values()}"
+                      th:text="${category}"
+                      th:value="${category}">
+              </option>
+            </select>
+          </form>
 
           <ol>
             <li><a th:href="@{/all-recipes}">Go back</a></li>

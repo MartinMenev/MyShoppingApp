@@ -9,7 +9,6 @@
         <nav id="navbar" class="navbar">
             <th:block th:if="${@loggedUser.id}">
                 <ul>
-                    <li><a th:href="@{/home}">Home</a></li>
                     <li>
                     <span type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Add item
@@ -20,11 +19,7 @@
                             <input type="text" class="form-control" id="addItem" placeholder="Add item . . ." name="name">
                         </form>
                     </li>
-                    <li>
-                        <form  th:method="get" th:action="@{/search-recipes}">
-                            <input type="text" class="form-control" id="searchRecipe" placeholder="Search recipe . . ." name="text">
-                        </form>
-                    </li>
+                    <li><a th:href="@{/home}">Home</a></li>
                     <li><a th:href="@{/product-list}">Item list</a></li>
                     <li><a th:href="@{/all-recipes}">Recipes</a></li>
                     <li><a th:href="@{/export/export-all-products}">Print</a></li>
