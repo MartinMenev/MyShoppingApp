@@ -63,8 +63,8 @@ public class RecipeController {
         return "recipe/recipe-details";
     }
 
-    @GetMapping("/filter-by/{category}")
-    public String reviewRecipe(@PathVariable(value = "category") String category, Model model) {
+    @GetMapping("/filter-recipes")
+    public String reviewRecipe(@RequestParam(value = "category") String category, Model model) {
         List<OutputRecipeDTO> recipeDTOList = this.recipeService.getRecipesByCategory(category);
         model.addAttribute("recipes", recipeDTOList);
         model.addAttribute("allRecipes", recipeService.showLast5Recipes());
