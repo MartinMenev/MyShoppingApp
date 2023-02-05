@@ -60,9 +60,25 @@ public class RecipeController {
         OutputRecipeDTO outputRecipeDTO = recipeService.getRecipeById(id);
         model.addAttribute("recipe", outputRecipeDTO);
         model.addAttribute("comments", commentService.showLatestComments(id));
-//        List<OutputPictureDTO> allPics = this.pictureService.getAllPictures();
-//        model.addAttribute("pictures", allPics);
         return "recipe/recipe-details";
+    }
+
+    @GetMapping("/filter-by/{category}")
+    public String reviewRecipe(@PathVariable(value = "category") String category, Model model) {
+        List<OutputRecipeDTO> recipeDTOList = this.recipeService.getRecipesByCategory(category);
+        model.addAttribute("recipes", recipeDTOList);
+        model.addAttribute("allRecipes", recipeService.showLast5Recipes());
+        model.addAttribute("category", category);
+        return "recipe/filter-recipe-by";
+    }
+
+    @GetMapping("/search-recipes")
+    public String searchRecipes(@RequestParam(value = "text") String text, Model model) {
+        List<OutputRecipeDTO> recipeDTOList = this.recipeService.getRecipesByTextContent(text);
+        model.addAttribute("recipes", recipeDTOList);
+        model.addAttribute("allRecipes", recipeService.showLast5Recipes());
+        model.addAttribute("text", text);
+        return "recipe/search-recipes";
     }
 
 }

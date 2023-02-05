@@ -1,6 +1,7 @@
 package com.example.myshoppingapp.service;
 
 import com.example.myshoppingapp.domain.beans.LoggedUser;
+import com.example.myshoppingapp.domain.enums.Category;
 import com.example.myshoppingapp.domain.recipes.InputRecipeDTO;
 import com.example.myshoppingapp.domain.recipes.OutputRecipeDTO;
 import com.example.myshoppingapp.domain.recipes.Recipe;
@@ -82,5 +83,18 @@ public class RecipeService {
     public List<Recipe> showRecipesByLoggedUser() {
         return this.recipeRepository
                 .findAllByAuthorOrderByIdDesc(this.userService.getLoggedUser());
+    }
+
+    public List<OutputRecipeDTO> getRecipesByCategory(String category) {
+        return this.recipeRepository.findAllByCategory(Category.valueOf(category)).orElseThrow(null)
+                .stream().map(recipe -> (modelMapper.map(recipe, OutputRecipeDTO.class)))
+                .toList();
+    }
+
+    public List<OutputRecipeDTO> getRecipesByTextContent(String text) {
+        return this.recipeRepository.findAllContainingSearchText(text).orElseThrow(null)
+                .stream().map(recipe -> (modelMapper.map(recipe, OutputRecipeDTO.class)))
+                .toList();
+
     }
 }
