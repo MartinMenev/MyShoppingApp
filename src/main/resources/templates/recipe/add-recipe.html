@@ -99,11 +99,21 @@
                       </div>
                       <div>
                         <div class="form-group">
-                          <label for="level">Level</label>
-                          <select id="level" class="custom-select">
-                            <option value="" selected>Select level</option>
-                            <option value="1" text="ADVANCED">Select level</option>
+                          <label class="text-center text-white font-weight-bold" for="category">Category</label>
+                          <select id="category"
+                                  name="category"
+                                  class="form-control-color w-75">
+                            <option value="">Select category</option>
+                            <option th:each="c : ${T(com.example.myshoppingapp.domain.enums.Category).values()}"
+                            th:text="${c}"
+                            th:value="${c}"
+                            th:selected="${e} == *{category}">
+                            Category type
+                            </option>
                           </select>
+                          <p class="invalid-feedback errors alert alert-danger">
+                            Category type is required.
+                          </p>
                         </div>
                       </div>
                       <div>
@@ -115,18 +125,18 @@
                                  class="form-control" placeholder="Recipe link ...">
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label for="category" class="col-form-label ">Category</label>
-                      </div>
-                      <div class="form-group">
-                        <input name="category"
-                               placeholder="Add category"
-                               required minlength="3" maxlength="20"
-                               type="text"
-                               id="category"
-                               class="form-control"
-                               aria-describedby="inputNameError">
-                      </div>
+<!--                      <div class="form-group">-->
+<!--                        <label for="category" class="col-form-label ">Category</label>-->
+<!--                      </div>-->
+<!--&lt;!&ndash;                      <div class="form-group">&ndash;&gt;-->
+<!--                        <input name="category"-->
+<!--                               placeholder="Add category"-->
+<!--                               required minlength="3" maxlength="20"-->
+<!--                               type="text"-->
+<!--                               id="category"-->
+<!--                               class="form-control"-->
+<!--                               aria-describedby="inputNameError">-->
+<!--                      </div>-->
                       <div class="form-group">
                         <label for="imageUrl">Picture Url</label>
                         <input id="imageUrl" type="text"
