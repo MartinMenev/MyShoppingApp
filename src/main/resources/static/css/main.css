@@ -1077,7 +1077,7 @@ section {
 }
 
 .events .event-item .price {
-  color: #fff;
+  color: #ebf2f6;
   border-bottom: 2px solid var(--color-primary);
   font-size: 32px;
   font-weight: 700;
@@ -1122,7 +1122,7 @@ section {
   overflow: hidden;
   text-align: center;
   border-radius: 5px;
-  background: #fff;
+  background: #ebf2f6;
   box-shadow: 0px 0 30px rgba(55, 55, 63, 0.08);
   transition: 0.3s;
 }
@@ -1258,7 +1258,7 @@ section {
 
 .book-a-table .php-email-form .error-message {
   display: none;
-  color: #fff;
+  color: #ebf2f6;
   background: #df1529;
   text-align: left;
   padding: 15px;
@@ -1823,5 +1823,8 @@ table > tbody {
   background-size: 100%;
 
 }
+
+
+
 
 
