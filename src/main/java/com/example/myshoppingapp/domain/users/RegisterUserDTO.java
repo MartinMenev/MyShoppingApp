@@ -23,18 +23,18 @@ import java.io.Serializable;
         message = "Passwords do not match."
 )
 public class RegisterUserDTO implements Serializable {
-@NotBlank
+@NotNull
 @Size(min = 5, max = 20)
     private String username;
     @NotNull(message = "User email should be provided.")
     @Email (message = "User email should be valid.")
-    @UniqueUserEmail(message = "User email should be unique.")
+//    @UniqueUserEmail(message = "User email should be unique.")
     private String email;
-    @NotBlank (message = "password should be provided.")
+    @NotNull (message = "password should be provided.")
     @Size(min = 5, max = 20)
     private String password;
 
-    @NotBlank (message = "you should confirm your password")
+    @NotNull (message = "you should confirm your password")
     @Size(min = 5, max = 20)
     private String confirmPassword;
 
