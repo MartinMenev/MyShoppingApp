@@ -36,15 +36,15 @@ public class UserService {
 
     }
 
-    public LoggedUser login(LoginDTO loginDTO) {
-        User user = this.userRepository
-                .findByUsernameAndPassword(loginDTO.getUsername(), loginDTO.getPassword()).orElseThrow(NoSuchElementException::new);
+    public void login(LoginDTO loginDTO) {
+
+        User user = userRepository.findByUsername(loginDTO.getUsername()).get();
 
         this.loggedUser
                 .setId(user.getId())
                 .setUsername(user.getUsername())
                 .setUserRole(user.getUserRole());
-        return loggedUser;
+
     }
 
     public void logout() {
