@@ -9,14 +9,10 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Constraint(validatedBy = FieldMatchValidator.class)
-public @interface FieldMatch {
+@Constraint(validatedBy = LoginUserValidator.class)
+public @interface ValidateLoginUser {
 
-  String first();
-
-  String second();
-
-  String message() default "Password mismatch";
+  String message() default "Username or Password doesn't match";
 
   Class<?>[] groups() default {};
 
