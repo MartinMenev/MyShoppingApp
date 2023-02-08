@@ -26,7 +26,7 @@ public class RegisterUserDTO implements Serializable {
 @NotBlank
 @Size(min = 5, max = 20)
     private String username;
-    @NotBlank(message = "User email should be provided.")
+    @NotNull(message = "User email should be provided.")
     @Email (message = "User email should be valid.")
     @UniqueUserEmail(message = "User email should be unique.")
     private String email;
