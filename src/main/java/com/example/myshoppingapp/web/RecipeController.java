@@ -12,10 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -61,6 +58,27 @@ public class RecipeController {
         model.addAttribute("recipe", outputRecipeDTO);
         model.addAttribute("comments", commentService.showLatestComments(id));
         return "recipe/recipe-details";
+    }
+
+    @GetMapping("/edit-recipe/{id}")
+    public String editRecipe(@PathVariable(value = "id") Long id, Model model) {
+        OutputRecipeDTO outputRecipeDTO = recipeService.getRecipeById(id);
+        model.addAttribute("recipe", outputRecipeDTO);
+        return "recipe/update-recipe";
+    }
+
+    @PutMapping("/update-recipe/{id}")
+    public String doEditRecipe(@PathVariable(value = "id") Long id, Model model, InputRecipeDTO inputRecipeDTO) {
+        OutputRecipeDTO outputRecipeDTO = recipeService.getRecipeById(id);
+        model.addAttribute("recipe", outputRecipeDTO);
+        recipeService.updateRecipe(inputRecipeDTO);
+        return "redirect:/recipe/{id}";
+    }
+
+    @GetMapping("/delete-recipe/{id}")
+    public String deleteById(@PathVariable(value = "id") long id) {
+        recipeService.deleteById(id);
+        return "redirect:/all-recipes";
     }
 
     @GetMapping("/filter-recipes")

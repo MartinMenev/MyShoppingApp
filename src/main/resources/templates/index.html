@@ -151,7 +151,7 @@
     <section id="events" class="events">
       <div class="container-fluid" data-aos="fade-up">
 
-        <div class="section-header">
+        <div class="section-header" th:if="${!comments.isEmpty()}">
           <h2>Recipes</h2>
           <p>Save <span>Your Favorite</span> Recipes</p>
         </div>

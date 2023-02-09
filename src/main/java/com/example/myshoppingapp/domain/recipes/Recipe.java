@@ -8,6 +8,8 @@ import com.example.myshoppingapp.domain.products.Product;
 import com.example.myshoppingapp.domain.users.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -45,15 +47,16 @@ public class Recipe extends BaseEntity {
    @JoinColumn
    private User author;
 
-   @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+   @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
    @JoinColumn
-   private Picture picture;
+   private List<Picture> pictureList;
 
    @Column(columnDefinition = "TEXT")
    private String imageUrl;
 
    @OneToMany(targetEntity = Comment.class, mappedBy= "recipe",
-           fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+           cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+   @LazyCollection(LazyCollectionOption.FALSE)
    private List<Comment> commentList;
 
   @OneToMany(targetEntity = Product.class, mappedBy = "recipe",
@@ -71,6 +74,7 @@ public class Recipe extends BaseEntity {
       this.commentList = new ArrayList<>();
       this.productList = new ArrayList<>();
       this.ratingList = new ArrayList<>();
+      this.pictureList = new ArrayList<>();
   }
 
   public boolean hasImageUrl(){
@@ -121,8 +125,8 @@ public class Recipe extends BaseEntity {
         return this;
     }
 
-    public Recipe setPicture(Picture picture) {
-        this.picture = picture;
+    public Recipe addPicture(Picture picture) {
+        this.pictureList.add(picture);
         return this;
     }
 

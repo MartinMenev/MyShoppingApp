@@ -41,22 +41,12 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>gallery</h2>
-          <p><span>Gallery</span></p>
+          <p th:text="${recipe.name}"></p>
         </div>
 <!--            for each picture...-->
         <div class="gallery-slider swiper">
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" th:href="${recipe.imageUrl}" ><img th:src="${recipe.imageUrl}" class="img-fluid rounded-5" alt="" src=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" th:href="${recipe.imageUrl}" ><img th:src="${recipe.imageUrl}" class="img-fluid rounded-5" alt="" src=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" th:href="${recipe.imageUrl}" ><img th:src="${recipe.imageUrl}" class="img-fluid rounded-5" alt="" src=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" th:href="${recipe.imageUrl}" ><img th:src="${recipe.imageUrl}" class="img-fluid rounded-5" alt="" src=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" th:href="${recipe.imageUrl}" ><img th:src="${recipe.imageUrl}" class="img-fluid rounded-5" alt="" src=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" th:href="${recipe.imageUrl}" ><img th:src="${recipe.imageUrl}" class="img-fluid rounded-5" alt="" src=""></a></div>
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" th:href="${recipe.imageUrl}" ><img th:src="${recipe.imageUrl}" class="img-fluid rounded-5" alt="" src=""></a></div>
-
-
-
+          <div class="swiper-wrapper align-items-center" th:each="picture:${recipe.pictureList}">
+            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" th:href="${picture.url}" ><img th:src="${picture.url}" class="img-fluid rounded-5" alt="" src=""></a></div>
           </div>
           <div class="swiper-pagination m-3"></div>
         </div>
@@ -71,20 +61,42 @@
 
             <div class="row lg-12 justify-content-center">
               <div class="col-lg-6 justify-content-center rounded-5" data-aos="fade-up" data-aos-delay="200">
-                <div class="icon-box d-flex flex-column align-items-center rounded-5 ">
-                  <i class="bi bi-clipboard-data"></i>
-                  <h4>Corporis voluptates officia eiusmod</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                </div>
-              </div><!-- End Icon Box -->
+                <form action="#" th:action="@{/update-recipe/{id}(id=*{id})}" th:object="${recipe}" th:method="PUT">
 
-              <div class="col-lg-6 justify-content-center  rounded-5" data-aos="fade-up" data-aos-delay="200">
-                <div class="icon-box d-flex flex-column align-items-center rounded-5">
-                  <i class="bi bi-clipboard-data"></i>
-                  <h4>Corporis voluptates officia eiusmod</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                </div>
-              </div><!-- End Icon Box -->
+                  <div class="text-center mt-3" >
+                    <h4 class="mt-4 mb-0">Recipe name</h4>
+                    <input type="text" th:field="*{name}" class="form-control mb-4 col-4">
+                    <h4 class="mt-2 mb-0">Description</h4>
+                    <input type="text" th:field="*{description}" class="form-control mb-4 col-4">
+                    <h4 class="mt-2 mb-0">Category</h4>
+                    <select id="category"
+                            name="category"
+                            class="form-control-color w-75">
+                      <option value="">Select category</option>
+                      <option th:each="c : ${T(com.example.myshoppingapp.domain.enums.Category).values()}"
+                              th:text="${c}"
+                              th:value="${c}"
+                              th:field="*{category}"
+                              th:selected="${e} == *{category}">
+                        Category type
+                      </option>
+                    </select>
+
+
+                    <h4 class="mt-2 mb-0">Add additional picture url</h4>
+                    <input type="text"  class="form-control mb-4 col-4"
+                           id="imageUrl"
+                           name="imageUrl">
+                  </div>
+                  <button type="submit" class="btn btn-info col-5"> Update </button>
+                </form>
+                <hr class="bg-hero hr-2"/>
+                <a th:href="@{/delete-recipe/{id}(id=*{id})}"
+                   class="btn btn-light text-danger">Delete recipe</a>
+                <hr class="bg-hero hr-2"/>
+                <a th:href="@{/home}"
+                   class="btn btn-light text-white">Back to home</a>
+              </div>
 
             </div>
         </div>

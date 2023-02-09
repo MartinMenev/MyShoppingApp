@@ -2,6 +2,7 @@ package com.example.myshoppingapp.service;
 
 import com.example.myshoppingapp.domain.beans.LoggedUser;
 import com.example.myshoppingapp.domain.enums.Category;
+import com.example.myshoppingapp.domain.pictures.Picture;
 import com.example.myshoppingapp.domain.recipes.InputRecipeDTO;
 import com.example.myshoppingapp.domain.recipes.OutputRecipeDTO;
 import com.example.myshoppingapp.domain.recipes.Recipe;
@@ -41,8 +42,10 @@ public class RecipeService {
         if (inputRecipeDTO.getImageUrl().isBlank()) {
             inputRecipeDTO.setImageUrl("https://images.pexels.com/photos/4033165/pexels-photo-4033165.jpeg?auto=compress&cs=tinysrgb&w=1600");
         }
+
         Recipe recipe = this.modelMapper.map(inputRecipeDTO, Recipe.class);
         recipe.setAuthor(authorId);
+        recipe.addPicture(new Picture(inputRecipeDTO.getImageUrl(), authorId));
         this.recipeRepository.save(recipe);
         recipe.setPosition(recipe.getId());
         this.recipeRepository.saveAndFlush(recipe);
@@ -97,4 +100,36 @@ public class RecipeService {
                 .toList();
 
     }
+
+    @Modifying
+    @Transactional
+    public void deleteById(long id) {
+        this.recipeRepository.deleteById(id);
+    }
+
+    @Modifying
+    @Transactional
+    public void updateRecipe(InputRecipeDTO inputRecipeDTO) {
+        Recipe recipeToUpdate = this.recipeRepository.getRecipeById(inputRecipeDTO.getId()).get();
+        recipeToUpdate
+                .setName(inputRecipeDTO.getName())
+                .setDescription(inputRecipeDTO.getDescription())
+                .setCategory(inputRecipeDTO.getCategory());
+//        boolean isNewImageUrl = true;
+//        String tempUrl = inputRecipeDTO.getImageUrl();
+//        for (Picture picture : recipeToUpdate.getPictureList()) {
+//            if (picture.getUrl().equals(tempUrl)) {
+//                isNewImageUrl = false;
+//                break;
+//            }
+//        }
+//        if (isNewImageUrl) {
+            Picture picture = new Picture(inputRecipeDTO.getImageUrl(), recipeToUpdate.getAuthor());
+            recipeToUpdate.addPicture(picture);
+//        }
+
+        this.recipeRepository.save(recipeToUpdate);
+
+    }
+
 }
