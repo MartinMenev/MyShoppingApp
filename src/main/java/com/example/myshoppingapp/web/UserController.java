@@ -34,7 +34,7 @@ public class UserController {
     }
 
     @PostMapping("/users/login")
-    public String doLogin(@Valid @ModelAttribute(name = "loginDTO") LoginDTO loginDTO,
+    public String doLogin(@Valid LoginDTO loginDTO,
                           BindingResult bindingResult,
                           RedirectAttributes redirectAttributes)  {
 
@@ -56,7 +56,7 @@ public class UserController {
         return "redirect:/users/login";
     }
 
-    @ModelAttribute(name = "loginDTO")
+    @ModelAttribute("loginDTO")
     public LoginDTO initLoginDTO() {
         return new LoginDTO();
     }
@@ -71,7 +71,7 @@ public class UserController {
     }
 
     @PostMapping("/users/register")
-    public String doRegister(@Valid @ModelAttribute(name= "registerUserDTO") RegisterUserDTO registerUserDTO,
+    public String doRegister(@Valid  RegisterUserDTO registerUserDTO,
                              BindingResult bindingResult,
                              RedirectAttributes redirectAttributes ) {
 
@@ -79,11 +79,11 @@ public class UserController {
             redirectAttributes.addFlashAttribute("registerUserDTO", registerUserDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerUserDTO",
                     bindingResult);
-
-
-            return "redirect:/register";
+            return "redirect:/users/register";
         }
-       userService.register(registerUserDTO);
+
+        this.userService.register(registerUserDTO);
+
         return "redirect:/users/login";
     }
 
