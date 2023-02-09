@@ -9,10 +9,10 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-@Constraint(validatedBy = UniqueUserEmailValidator.class)
-public @interface UniqueUserEmail {
+@Constraint(validatedBy = UniqueUsernameValidator.class)
+public @interface UniqueUsername {
 
-  String message() default "Email already in use";
+  String message() default "Username already in use";
 
   Class<?>[] groups() default {};
 

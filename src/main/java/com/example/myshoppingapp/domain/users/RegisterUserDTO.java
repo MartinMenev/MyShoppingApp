@@ -25,7 +25,7 @@ public class RegisterUserDTO implements Serializable {
     @Size(min = 5, max = 20)
     private String username;
     @NotNull
-    @UniqueUserEmail
+    @Email
     private String email;
     @NotNull
     @Size(min = 5, max = 20)
