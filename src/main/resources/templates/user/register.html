@@ -20,12 +20,10 @@
 
         <div class="d-flex justify-content-between align-items-center">
           <h2 data-aos="fade-up">
-
             <div class="section-header align-content-center">
               <p > <span>Register</span>
               </p>
             </div>
-
           </h2>
           <ol>
             <li><a th:href="@{/users/login}">Go back</a></li>
@@ -66,11 +64,11 @@
                       <input type="password" class="form-control" id="inputPassword" placeholder="Password..." name="password"
                              th:field="*{password}"
                              th:errorclass="is-invalid"
-                             required minlength="5" maxlength="20"
+                             required minlength="8" maxlength="20"
                              aria-describedby="passwordHelpInline">
                       <small id="passwordError" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
                              class="text-danger">
-                        Password length must be between 5 and 20 characters and passwords should match.
+                        Password length must be between 8 and 20 characters and passwords should match.
                       </small>
 
 
@@ -81,11 +79,11 @@
                              name="confirmPassword"
                              th:field="*{confirmPassword}"
                              th:errorclass="is-invalid"
-                             required minlength="5" maxlength="20"
+                             required minlength="8" maxlength="20"
                              aria-describedby="confirmPasswordHelpInline"/>
                       <small id="confirmPasswordError" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"
                              class="text-danger">
-                        Password length must be between 5 and 20 characters and passwords should match.
+                        Password length must be between 8 and 20 characters and passwords should match.
                       </small>
                     </div>
                     <div class="form-group p-2">
@@ -93,7 +91,7 @@
                       <input type="text" class="form-control" id="inputEmail" placeholder="Email..." name="email"
                              th:field="*{email}"
                              th:errorclass="is-invalid"
-                             required minlength="5" maxlength="50"
+                             required
                              aria-describedby="emailHelpInline"/>
 
                       <small id="emailError" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
