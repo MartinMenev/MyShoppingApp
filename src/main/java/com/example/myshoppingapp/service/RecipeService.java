@@ -37,6 +37,8 @@ public class RecipeService {
     }
 
 
+    @Transactional
+    @Modifying
     public void addRecipe(InputRecipeDTO inputRecipeDTO) {
         User authorId = this.userService.findByUsername(loggedUser.getUsername());
         if (inputRecipeDTO.getImageUrl().isBlank()) {
@@ -44,8 +46,9 @@ public class RecipeService {
         }
 
         Recipe recipe = this.modelMapper.map(inputRecipeDTO, Recipe.class);
-        recipe.setAuthor(authorId);
-        recipe.addPicture(new Picture(inputRecipeDTO.getImageUrl(), authorId));
+        recipe
+                .setAuthor(authorId)
+                .addPicture(new Picture(inputRecipeDTO.getImageUrl(), authorId));
         this.recipeRepository.save(recipe);
         recipe.setPosition(recipe.getId());
         this.recipeRepository.saveAndFlush(recipe);
