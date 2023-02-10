@@ -106,7 +106,7 @@
 
 
     <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg" th:if="${!comments.isEmpty()}">
+    <section id="testimonials" class="testimonials section-bg" th:unless="${comments.isEmpty()}">
       <div class="container w-75" data-aos="fade-up">
 
         <div class="section-header">
@@ -151,7 +151,7 @@
     <section id="events" class="events">
       <div class="container-fluid" data-aos="fade-up">
 
-        <div class="section-header" th:if="${!comments.isEmpty()}">
+        <div class="section-header" th:unless="${recipes.isEmpty()}">
           <h2>Recipes</h2>
           <p>Save <span>Your Favorite</span> Recipes</p>
         </div>
