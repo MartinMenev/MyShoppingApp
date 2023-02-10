@@ -35,7 +35,7 @@ public class Comment extends BaseEntity {
 
     public String getAuthorPicUrl() {
 
-        String url = this.getAuthor().getPicture().getUrl();
+        String url = this.getAuthor().getPicture().getPictureUrl();
         if (url == null) {
             return "/images/default-user-pic.jpg";
         }
