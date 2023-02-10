@@ -47,7 +47,7 @@ public class Recipe extends BaseEntity {
    @JoinColumn
    private User author;
 
-   @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+   @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.MERGE})
    @JoinColumn
    private List<Picture> pictureList;
 

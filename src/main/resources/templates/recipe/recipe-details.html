@@ -59,9 +59,11 @@
           <p  th:text="${recipe.name}"></p>
         </div>
 <!--            for each picture...-->
-        <div class="gallery-slider swiper">
-          <div class="swiper-wrapper align-items-center" th:each="picture:${recipe.pictureList}">
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" th:href="${picture.url}" ><img th:src="${picture.url}" class="img-fluid rounded-5" alt="" src=""></a></div>
+        <div class="gallery-slider swiper" >
+          <div class="swiper-wrapper align-items-center" >
+            <div class="swiper-slide" th:each="picture :${pictures}">
+              <a class="glightbox" data-gallery="images-gallery" th:href="${picture.pictureUrl}" ><img th:src="${picture.pictureUrl}" class="img-fluid rounded-5" alt="" src=""></a>
+            </div>
           </div>
           <div class="swiper-pagination m-3"></div>
         </div>

@@ -57,6 +57,7 @@ public class RecipeController {
         OutputRecipeDTO outputRecipeDTO = recipeService.getRecipeById(id);
         model.addAttribute("recipe", outputRecipeDTO);
         model.addAttribute("comments", commentService.showLatestComments(id));
+        model.addAttribute("pictures", outputRecipeDTO.getPictureList());
         return "recipe/recipe-details";
     }
 
@@ -64,13 +65,12 @@ public class RecipeController {
     public String editRecipe(@PathVariable(value = "id") Long id, Model model) {
         OutputRecipeDTO outputRecipeDTO = recipeService.getRecipeById(id);
         model.addAttribute("recipe", outputRecipeDTO);
+        model.addAttribute("pictures", outputRecipeDTO.getPictureList());
         return "recipe/update-recipe";
     }
 
     @PutMapping("/update-recipe/{id}")
     public String doEditRecipe(@PathVariable(value = "id") Long id, Model model, InputRecipeDTO inputRecipeDTO) {
-        OutputRecipeDTO outputRecipeDTO = recipeService.getRecipeById(id);
-        model.addAttribute("recipe", outputRecipeDTO);
         recipeService.updateRecipe(inputRecipeDTO);
         return "redirect:/recipe/{id}";
     }

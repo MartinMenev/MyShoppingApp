@@ -45,8 +45,10 @@
         </div>
 <!--            for each picture...-->
         <div class="gallery-slider swiper">
-          <div class="swiper-wrapper align-items-center" th:each="picture:${recipe.pictureList}">
-            <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery" th:href="${picture.url}" ><img th:src="${picture.url}" class="img-fluid rounded-5" alt="" src=""></a></div>
+          <div class="swiper-wrapper align-items-center" >
+            <div class="swiper-slide" th:each="picture:${pictures}">
+              <a class="glightbox" data-gallery="images-gallery" th:href="${picture.getPictureUrl}" ><img th:src="${picture.getPictureUrl}" class="img-fluid rounded-5" alt="" src=""></a>
+            </div>
           </div>
           <div class="swiper-pagination m-3"></div>
         </div>
@@ -82,11 +84,16 @@
                       </option>
                     </select>
 
-
-                    <h4 class="mt-2 mb-0">Add additional picture url</h4>
+                    <h4 class="mt-2 mb-0">Update Recipe url</h4>
+                    <input type="text"  class="form-control mb-4 col-4"
+                           id="url"
+                           name="url"
+                           th:field="*{url}">
+                    <h4 class="mt-2 mb-0">Add additional picture</h4>
                     <input type="text"  class="form-control mb-4 col-4"
                            id="imageUrl"
-                           name="imageUrl">
+                           name="imageUrl"
+                           placeholder="Additional picture link ...">
                   </div>
                   <button type="submit" class="btn btn-info col-5"> Update </button>
                 </form>

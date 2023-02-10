@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OutputPictureDTO {
     private Long id;
-    private String url;
+    private String pictureUrl;
     private User author;
 
 }

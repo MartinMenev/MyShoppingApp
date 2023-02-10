@@ -37,7 +37,7 @@ public class OutputCommentDTO {
             return null;
         }
 
-        return "/images/"+ picture.getUrl();
+        return "/images/"+ picture.getPictureUrl();
     }
 
     public String getRecipeName() {

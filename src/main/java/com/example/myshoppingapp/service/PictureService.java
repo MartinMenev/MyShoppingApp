@@ -36,13 +36,13 @@ public class PictureService {
     public void addPicture(String pictureUrl) {
         Picture picture = this.pictureRepository.findByAuthorId(userService.getLoggedUserId()).orElse(null);
         if (picture != null) {
-            picture.setUrl(pictureUrl);
+            picture.setPictureUrl(pictureUrl);
             this.pictureRepository.saveAndFlush(picture);
 
         } else {
             picture = new Picture();
             picture.setAuthor(this.userService.findByUsername(this.loggedUser.getUsername()));
-            picture.setUrl(pictureUrl);
+            picture.setPictureUrl(pictureUrl);
             this.pictureRepository.saveAndFlush(picture);
         }
         User user = this.userService.findByUsername(this.loggedUser.getUsername());
@@ -53,7 +53,7 @@ public class PictureService {
 
     public String getPictureUrlByLoggedUser(){
        Optional<Picture> picture = this.pictureRepository.findByAuthorId(this.userService.getLoggedUserId());
-        String picUrl = picture.map(Picture::getUrl).orElse(null);
+        String picUrl = picture.map(Picture::getPictureUrl).orElse(null);
         if (picUrl != null) {
             picUrl = "/images/"+picUrl;
         }
@@ -62,7 +62,7 @@ public class PictureService {
 
     public String getPictureUrlByUserId(Long userId){
         Optional<Picture> picture = this.pictureRepository.findByAuthorId(userId);
-        String picUrl = picture.map(Picture::getUrl).orElse(null);
+        String picUrl = picture.map(Picture::getPictureUrl).orElse(null);
         if (picUrl != null) {
             picUrl = "/images/"+picUrl;
         }

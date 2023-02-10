@@ -113,20 +113,14 @@ public class RecipeService {
         Recipe recipeToUpdate = this.recipeRepository.getRecipeById(inputRecipeDTO.getId()).get();
         recipeToUpdate
                 .setName(inputRecipeDTO.getName())
+                .setUrl(inputRecipeDTO.getUrl())
                 .setDescription(inputRecipeDTO.getDescription())
                 .setCategory(inputRecipeDTO.getCategory());
-//        boolean isNewImageUrl = true;
-//        String tempUrl = inputRecipeDTO.getImageUrl();
-//        for (Picture picture : recipeToUpdate.getPictureList()) {
-//            if (picture.getUrl().equals(tempUrl)) {
-//                isNewImageUrl = false;
-//                break;
-//            }
-//        }
-//        if (isNewImageUrl) {
+
+      if (!inputRecipeDTO.getImageUrl().isEmpty()) {
             Picture picture = new Picture(inputRecipeDTO.getImageUrl(), recipeToUpdate.getAuthor());
             recipeToUpdate.addPicture(picture);
-//        }
+       }
 
         this.recipeRepository.save(recipeToUpdate);
 
