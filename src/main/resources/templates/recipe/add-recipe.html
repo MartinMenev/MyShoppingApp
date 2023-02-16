@@ -107,7 +107,7 @@
                             <option th:each="c : ${T(com.example.myshoppingapp.domain.enums.Category).values()}"
                             th:text="${c}"
                             th:value="${c}"
-                            th:selected="${e} == *{category}">
+                            th:selected="${c} == *{category}">
                             Category type
                             </option>
                           </select>

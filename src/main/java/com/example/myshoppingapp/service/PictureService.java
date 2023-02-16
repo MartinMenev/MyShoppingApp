@@ -52,7 +52,7 @@ public class PictureService {
     }
 
     public String getPictureUrlByLoggedUser(){
-       Optional<Picture> picture = this.pictureRepository.findByAuthorId(this.userService.getLoggedUserId());
+       Optional<Picture> picture = this.pictureRepository.findByAuthorId(this.userService.getLoggedUser().getId());
         String picUrl = picture.map(Picture::getPictureUrl).orElse(null);
         if (picUrl != null) {
             picUrl = "/images/"+picUrl;

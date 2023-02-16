@@ -90,8 +90,9 @@ public class UserController {
     @GetMapping("user/profile")
     public String ShowUserProfile(Model model){
         UserOutputDTO userOutputDTO = this.userService.getLoggedUserDTO();
-        String currentUrl = this.pictureService.getPictureUrlByLoggedUser();
-        model.addAttribute("pictureUrl", currentUrl);
+        //TODO
+//        String currentUrl = this.pictureService.getPictureUrlByLoggedUser();
+//        model.addAttribute("pictureUrl", currentUrl);
         model.addAttribute("user", userOutputDTO);
         return "user/profile";
     }

@@ -98,7 +98,7 @@
                       <hr class="bg-hero hr-4 bg-body-secondary aos-animate"/>
                     </article>
                     <article class="box-body pt-2 pb-2 align-content-start">
-                      <div class="list-group overflow-auto" th:if="${!myRecipes.isEmpty()}" th:each="myRecipe:${myRecipes}">
+                      <div class="list-group overflow-auto" th:unless="${myRecipes.isEmpty()}" th:each="myRecipe:${myRecipes}">
                         <a class="list-group-item list-group-item-action active bg-transparent border-0"  aria-current="true"
                            th:href="@{/recipe/{id}(id=${myRecipe.id})}" >
                           <div class="d-flex w-100 justify-content-between">
@@ -143,7 +143,7 @@
                       <hr class="bg-hero hr-4 bg-body-secondary aos-animate"/>
                     </article>
                     <article class="box-body pt-2 pb-2 align-content-start align-text-top">
-                      <div class="list-group overflow-auto" th:if="${!recipes.isEmpty()}" th:each="recipe:${recipes}">
+                      <div class="list-group overflow-auto" th:unless="${recipes.isEmpty()}" th:each="recipe:${recipes}">
                         <a class="list-group-item list-group-item-action active bg-transparent border-0"  aria-current="true"
                            th:href="@{/recipe/{id}(id=${recipe.id})}" >
                           <div class="d-flex w-100 justify-content-between">

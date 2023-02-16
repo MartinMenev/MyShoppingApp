@@ -69,7 +69,9 @@
                     <h4 class="mt-4 mb-0">Recipe name</h4>
                     <input type="text" th:field="*{name}" class="form-control mb-4 col-4">
                     <h4 class="mt-2 mb-0">Description</h4>
-                    <input type="text" th:field="*{description}" class="form-control mb-4 col-4">
+                    <textarea type="text" th:field="*{description}" class="form-control mb-4 col-4" rows="5">
+                    </textarea>
+
                     <h4 class="mt-2 mb-0">Category</h4>
                     <select id="category"
                             name="category"
