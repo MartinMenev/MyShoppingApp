@@ -37,46 +37,8 @@ public class UserService {
 
     }
 
-    public void login(LoginDTO loginDTO) {
 
-        User user = userRepository.findByUsernameAndPassword(loginDTO.getUsername(), loginDTO.getPassword()).get();
 
-        this.loggedUser
-                .setId(user.getId())
-                .setUsername(user.getUsername())
-                .setUserRole(user.getUserRole());
-
-    }
-
-    public void logout() {
-        this.loggedUser.clearFields();
-    }
-
-    @Modifying
-    public boolean register(RegisterUserDTO registerUserDTO) {
-//        if (!registerUserDTO.getPassword().equals(registerUserDTO.getConfirmPassword())) {
-//            return false;
-//        }
-//
-//        Optional<User> byEmail = this.userRepository.findByEmail(registerUserDTO.getEmail());
-//        if (byEmail.isPresent()) {
-//            return false;
-//        }
-//
-//        Optional<User> byUsername = this.userRepository.findByUsername(registerUserDTO.getUsername());
-//        if (byUsername.isPresent()) {
-//            return false;
-//        }
-
-        User user = this.modelMapper.map(registerUserDTO, User.class);
-        if (this.userRepository.count() == 0) {
-            user.setUserRole(UserRole.ADMIN);
-        } else {
-            user.setUserRole(UserRole.USER);
-        }
-        this.userRepository.save(user);
-        return true;
-    }
 
     public User findByUsername(String username) {
         return this.userRepository.findByUsername(username).orElseThrow(NoSuchElementException::new);

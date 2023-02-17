@@ -1,6 +1,5 @@
 package com.example.myshoppingapp.web;
 
-import com.example.myshoppingapp.domain.beans.LoggedUser;
 import com.example.myshoppingapp.domain.users.*;
 import com.example.myshoppingapp.service.PictureService;
 import com.example.myshoppingapp.service.UserService;
@@ -11,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -19,6 +17,7 @@ public class UserController {
 
     private final UserService userService;
     private final PictureService pictureService;
+
 
     @Autowired
     public UserController(UserService userService, PictureService pictureService) {
@@ -28,64 +27,6 @@ public class UserController {
 
 
 
-    @GetMapping("/users/login")
-    public String login() {
-        return "user/login";
-    }
-
-    @PostMapping("/users/login")
-    public String doLogin(@Valid LoginDTO loginDTO,
-                          BindingResult bindingResult,
-                          RedirectAttributes redirectAttributes)  {
-
-        if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("loginDTO", loginDTO);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.loginDTO",
-                    bindingResult);
-            return "user/login";
-        }
-
-        userService.login(loginDTO);
-            return "redirect:/home";
-        }
-
-
-    @PostMapping("/users/logout")
-    public String doLogout(){
-        this.userService.logout();
-        return "redirect:/users/login";
-    }
-
-    @ModelAttribute("loginDTO")
-    public LoginDTO initLoginDTO() {
-        return new LoginDTO();
-    }
-    @ModelAttribute(name = "registerUserDTO")
-    public RegisterUserDTO initRegisterUserDTO() {
-        return new RegisterUserDTO();
-    }
-
-    @GetMapping("/users/register")
-    public String register() {
-        return "user/register";
-    }
-
-    @PostMapping("/users/register")
-    public String doRegister(@Valid  RegisterUserDTO registerUserDTO,
-                             BindingResult bindingResult,
-                             RedirectAttributes redirectAttributes ) {
-
-        if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("registerUserDTO", registerUserDTO);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerUserDTO",
-                    bindingResult);
-            return "redirect:/users/register";
-        }
-
-        this.userService.register(registerUserDTO);
-
-        return "redirect:/users/login";
-    }
 
     @GetMapping("user/profile")
     public String ShowUserProfile(Model model){
