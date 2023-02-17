@@ -37,8 +37,7 @@ public class RecipeService {
     }
 
 
-    @Transactional
-    @Modifying
+
     public void addRecipe(InputRecipeDTO inputRecipeDTO) {
         User authorId = this.userService.findByUsername(loggedUser.getUsername());
         if (inputRecipeDTO.getImageUrl().isBlank()) {
@@ -49,9 +48,8 @@ public class RecipeService {
         recipe
                 .setAuthor(authorId)
                 .addPicture(new Picture(inputRecipeDTO.getImageUrl(), authorId));
-        this.recipeRepository.save(recipe);
-        recipe.setPosition(recipe.getId());
         this.recipeRepository.saveAndFlush(recipe);
+
     }
 
     public Page<OutputRecipeDTO> showAllRecipes(Pageable pageable) {

@@ -12,8 +12,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -35,10 +38,26 @@ public class RecipeController {
     }
 
     @PostMapping("/add-recipe")
-    public String doAddRecipe(InputRecipeDTO inputRecipeDTO){
+    public String doAddRecipe(@Valid @ModelAttribute(name = "recipeAddModel") InputRecipeDTO inputRecipeDTO,
+                              BindingResult bindingResult,
+                              RedirectAttributes redirectAttributes){
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("recipeAddModel", inputRecipeDTO)
+                    .addFlashAttribute("org.springframework.validation.BindingResult.recipeAddModel",
+                            bindingResult);
+            return "redirect:/add-recipe";
+        }
+
             recipeService.addRecipe(inputRecipeDTO);
         return "redirect:/all-recipes";
     }
+
+    @ModelAttribute(name = "recipeAddModel")
+    public InputRecipeDTO initInputRecipeDTO() {
+        return new InputRecipeDTO();
+    }
+
     @GetMapping("/all-recipes")
     public String showRecipes(
         Model model,

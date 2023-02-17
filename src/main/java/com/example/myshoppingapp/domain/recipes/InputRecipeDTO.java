@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,15 +18,17 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class InputRecipeDTO implements Serializable {
-    private Long id;
+    private long id;
+   @NotNull
+   @Size(min = 5, max = 100)
     private String name;
     private String url;
+
     private String description;
+    @NotNull
     private Category category;
-    private double rating;
-    private long position;
+
     private String imageUrl;
 
-    private List<Comment> commentList;
 
 }
