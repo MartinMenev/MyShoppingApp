@@ -59,8 +59,7 @@ public class Recipe extends BaseEntity {
    @LazyCollection(LazyCollectionOption.FALSE)
    private List<Comment> commentList;
 
-  @OneToMany(targetEntity = Product.class, mappedBy = "recipe",
-          cascade = CascadeType.ALL)
+  @ManyToMany (cascade = CascadeType.DETACH)
   @LazyCollection(LazyCollectionOption.FALSE)
    private List<Product> productList;
 

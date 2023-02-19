@@ -8,6 +8,8 @@ import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
@@ -25,8 +27,8 @@ public class Product extends BaseEntity {
     @Column
     private long position;
 
-    @ManyToOne
-    private Recipe recipe;
+    @ManyToMany (cascade = CascadeType.DETACH)
+    private List<Recipe> recipeList;
     @Column
     private LocalDate boughtOn;
 
@@ -34,6 +36,7 @@ public class Product extends BaseEntity {
     private User buyer;
 
     public Product() {
+        this.recipeList = new ArrayList<>();
     }
 
     public Product(String name) {
@@ -66,8 +69,5 @@ public class Product extends BaseEntity {
         return this;
     }
 
-    public Product setRecipe(Recipe recipe) {
-        this.recipe = recipe;
-        return this;
-    }
+
 }

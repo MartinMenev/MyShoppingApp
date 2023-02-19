@@ -1,6 +1,7 @@
 package com.example.myshoppingapp.web;
 
 import com.example.myshoppingapp.domain.enums.Category;
+import com.example.myshoppingapp.domain.products.InputProductDTO;
 import com.example.myshoppingapp.domain.recipes.InputRecipeDTO;
 import com.example.myshoppingapp.domain.recipes.OutputRecipeDTO;
 import com.example.myshoppingapp.service.CommentService;
@@ -87,6 +88,27 @@ public class RecipeController {
         model.addAttribute("pictures", outputRecipeDTO.getPictureList());
         return "recipe/update-recipe";
     }
+
+    @PostMapping("/add-product-to-recipe/{id}")
+    public String addProductToRecipe(@PathVariable(value = "id") Long id,
+                                     @RequestParam(value = "productName") String productName) {
+        this.recipeService.addProductToRecipe(id, productName);
+        return "redirect:/edit-recipe/{id}";
+    }
+
+    @GetMapping("/add-product-to-shopping-list/{name}")
+    public String addProductToMyList(@PathVariable(value = "name") String name) {
+        this.recipeService.addProductToMyList(name);
+        return "redirect:/product-list";
+    }
+
+    @GetMapping("/delete-product-from-recipe/{id}/{productId}")
+    public String deleteProductFromRecipe(@PathVariable(value = "productId") Long productId,
+                                          @PathVariable(value = "id") Long id) {
+        this.recipeService.deleteProductFromRecipe(id, productId);
+        return "redirect:/edit-recipe/{id}";
+    }
+
 
     @PutMapping("/update-recipe/{id}")
     public String doEditRecipe(@PathVariable(value = "id") Long id, Model model, InputRecipeDTO inputRecipeDTO) {

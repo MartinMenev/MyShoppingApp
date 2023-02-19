@@ -139,5 +139,29 @@ public class ProductService {
                 .setBuyer(null);
         this.productRepository.saveAndFlush(product);
     }
+
+    public void saveProduct(Product product) {
+        this.productRepository.saveAndFlush(product);
+    }
+
+    @Transactional
+    @Modifying
+    public void addProductToMyList(String name) {
+       Product product = new Product(name);
+        User user = userService.findByUsername(this.loggedUser.getUsername());
+        product.setUser(user);
+        product.setBoughtOn(null);
+        this.productRepository.saveAndFlush(product);
+        product.setPosition(product.getId());
+        this.productRepository.saveAndFlush(product);
+    }
+
+    public Product getProductByName(String productName) {
+        return this.productRepository.findByName(productName);
+    }
+
+    public Product findProductById(Long productId) {
+        return this.productRepository.getProductById(productId).orElseThrow(NoSuchElementException::new);
+    }
 }
 

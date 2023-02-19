@@ -3,6 +3,7 @@ package com.example.myshoppingapp.service;
 import com.example.myshoppingapp.domain.beans.LoggedUser;
 import com.example.myshoppingapp.domain.enums.Category;
 import com.example.myshoppingapp.domain.pictures.Picture;
+import com.example.myshoppingapp.domain.products.Product;
 import com.example.myshoppingapp.domain.recipes.InputRecipeDTO;
 import com.example.myshoppingapp.domain.recipes.OutputRecipeDTO;
 import com.example.myshoppingapp.domain.recipes.Recipe;
@@ -28,12 +29,15 @@ public class RecipeService {
     private final ModelMapper modelMapper;
     private final LoggedUser loggedUser;
 
+    private final ProductService productService;
+
     @Autowired
-    public RecipeService(RecipeRepository recipeRepository, UserService userService, ModelMapper modelMapper, LoggedUser loggedUser) {
+    public RecipeService(RecipeRepository recipeRepository, UserService userService, ModelMapper modelMapper, LoggedUser loggedUser, ProductService productService) {
         this.recipeRepository = recipeRepository;
         this.userService = userService;
         this.modelMapper = modelMapper;
         this.loggedUser = loggedUser;
+        this.productService = productService;
     }
 
 
@@ -128,4 +132,30 @@ public class RecipeService {
 
     }
 
+    @Transactional
+    @Modifying
+    public void addProductToRecipe(Long id, String productName) {
+        Product product = new Product(productName);
+        this.productService.saveProduct(product);
+
+        Recipe recipeToUpdate = this.recipeRepository.findById(id).get();
+        recipeToUpdate.getProductList().add(product);
+        this.recipeRepository.saveAndFlush(recipeToUpdate);
+    }
+
+    @Transactional
+    @Modifying
+    public void addProductToMyList(String name) {
+        this.productService.addProductToMyList(name);
+    }
+
+    @Transactional
+    @Modifying
+    public void deleteProductFromRecipe(Long id, Long productId) {
+        Product product = this.productService.findProductById(productId);
+        Recipe recipe = this.recipeRepository.findById(id).get();
+        recipe.getProductList().remove(product);
+        this.recipeRepository.saveAndFlush(recipe);
+
+    }
 }
