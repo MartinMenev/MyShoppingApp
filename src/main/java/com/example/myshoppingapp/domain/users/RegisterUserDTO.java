@@ -1,15 +1,13 @@
 package com.example.myshoppingapp.domain.users;
 
-import com.example.myshoppingapp.domain.validation.FieldMatch;
-import com.example.myshoppingapp.domain.validation.UniqueUserEmail;
-import com.example.myshoppingapp.domain.validation.UniqueUsername;
+import com.example.myshoppingapp.validation.FieldMatch;
+import com.example.myshoppingapp.validation.UniqueUsername;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;

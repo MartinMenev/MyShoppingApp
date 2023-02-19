@@ -3,6 +3,7 @@ package com.example.myshoppingapp.domain.recipes;
 import com.example.myshoppingapp.domain.comments.Comment;
 import com.example.myshoppingapp.domain.enums.Category;
 import com.example.myshoppingapp.domain.pictures.Picture;
+import com.example.myshoppingapp.domain.products.Product;
 import com.example.myshoppingapp.domain.users.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +29,8 @@ public class OutputRecipeDTO {
     private String imageUrl;
     private User author;
     private List<Comment> commentList;
+
+    private List<Product> productList;
 
     private LocalDate dateAdded;
 

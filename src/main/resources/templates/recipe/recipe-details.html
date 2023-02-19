@@ -149,7 +149,49 @@
               <div class="row lg-12 justify-content-center">
                 <!-- ======= Testimonials Section ======= -->
 
-                <section id="testimonials" class="testimonials section-bg" th:if="${!comments.isEmpty()}">
+                <div class="col-lg-5 justify-content-center rounded-5 mt-10" >
+                  <div class="icon-box d-flex flex-column align-items-center rounded-5 mt-10">
+                    <h4>Needed products</h4>
+                    <h6 th:if="${recipe.productList.isEmpty()}">
+                      <hr class="bg-hero hr-4 bg-body-secondary aos-animate"/>
+                      No product added for this recipe yet <br>
+                      Add the first needed product <br>
+                      <i class="bi bi-box-arrow-in-down-left"></i>
+                      <div class="col-lg-8 justify-content-center">
+                        <form  th:method="post" th:action="@{/add-product-to-recipe/{id}(id = ${recipe.id})}">
+                          <input type="text" class="form-control" id="addItem" placeholder="Add item . . ." name="name">
+                        </form>
+                      </div>
+                    </h6>
+                    <table class="table table-responsive-sm  rounded-3 bg-white"  th:unless="${recipe.productList.isEmpty()}">
+                      <thead>
+                      <tr>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr   th:each="product:${recipe.productList}">
+                        <td  >
+                          <a class="bi-check2-circle" href="#" th:href="@{/add-product-to-shopping-list/{id}(id=${recipe.id})}"></a>
+                          <a th:href="@{#}" class="btn btn-light " th:text="${product.name}"> </a>
+                        </td>
+                        <td>
+                          <!--                remove Product-->
+                          <a th:href="@{/deleteProduct/{id}(id=${product.id})}" class="btn btn-light "><i class="fa-solid fa-xmark"></i></a>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div><!-- End Icon Box -->
+
+
+
+
+
+
+                <section id="testimonials" class="testimonials section-bg" th:unless="${comments.isEmpty()}">
                   <div class="container" data-aos="fade-up">
 
                     <div class="section-header">

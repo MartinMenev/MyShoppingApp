@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.domain.validation;
+package com.example.myshoppingapp.validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,10 +9,10 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-@Constraint(validatedBy = UniqueUserEmailValidator.class)
-public @interface UniqueUserEmail {
+@Constraint(validatedBy = UniqueUsernameValidator.class)
+public @interface UniqueUsername {
 
-  String message() default "Email already in use";
+  String message() default "Username already in use";
 
   Class<?>[] groups() default {};
 

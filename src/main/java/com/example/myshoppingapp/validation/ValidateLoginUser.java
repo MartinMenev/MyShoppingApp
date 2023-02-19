@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.domain.validation;
+package com.example.myshoppingapp.validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -8,11 +8,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-@Constraint(validatedBy = UniqueUsernameValidator.class)
-public @interface UniqueUsername {
+@Target(ElementType.TYPE)
+@Constraint(validatedBy = LoginUserValidator.class)
+public @interface ValidateLoginUser {
 
-  String message() default "Username already in use";
+  String message() default "Username or Password doesn't match";
 
   Class<?>[] groups() default {};
 

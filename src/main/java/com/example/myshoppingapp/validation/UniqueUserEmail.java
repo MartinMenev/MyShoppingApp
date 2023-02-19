@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.domain.validation;
+package com.example.myshoppingapp.validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -8,15 +8,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-@Constraint(validatedBy = FieldMatchValidator.class)
-public @interface FieldMatch {
+@Target(ElementType.FIELD)
+@Constraint(validatedBy = UniqueUserEmailValidator.class)
+public @interface UniqueUserEmail {
 
-  String first();
-
-  String second();
-
-  String message() default "Password mismatch";
+  String message() default "Email already in use";
 
   Class<?>[] groups() default {};
 

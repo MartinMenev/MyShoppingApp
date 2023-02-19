@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.domain.validation;
+package com.example.myshoppingapp.validation;
 
 import com.example.myshoppingapp.domain.users.LoginDTO;
 import com.example.myshoppingapp.domain.users.User;

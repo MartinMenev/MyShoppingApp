@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.domain.validation;
+package com.example.myshoppingapp.validation;
 
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.PropertyAccessorFactory;

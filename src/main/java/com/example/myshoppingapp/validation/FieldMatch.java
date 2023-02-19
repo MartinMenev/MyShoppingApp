@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.domain.validation;
+package com.example.myshoppingapp.validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -9,10 +9,14 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Constraint(validatedBy = LoginUserValidator.class)
-public @interface ValidateLoginUser {
+@Constraint(validatedBy = FieldMatchValidator.class)
+public @interface FieldMatch {
 
-  String message() default "Username or Password doesn't match";
+  String first();
+
+  String second();
+
+  String message() default "Password mismatch";
 
   Class<?>[] groups() default {};
 

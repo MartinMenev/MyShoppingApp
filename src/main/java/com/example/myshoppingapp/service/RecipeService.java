@@ -69,6 +69,7 @@ public class RecipeService {
                 .toList();
     }
 
+    @Transactional
     public OutputRecipeDTO getRecipeById(Long id) {
         Recipe recipe = this.recipeRepository
                 .getRecipeById(id)

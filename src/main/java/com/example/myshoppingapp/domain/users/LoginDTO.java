@@ -1,7 +1,6 @@
 package com.example.myshoppingapp.domain.users;
 
-import com.example.myshoppingapp.domain.enums.UserRole;
-import com.example.myshoppingapp.domain.validation.ValidateLoginUser;
+import com.example.myshoppingapp.validation.ValidateLoginUser;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
