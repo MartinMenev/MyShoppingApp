@@ -96,10 +96,17 @@ public class RecipeController {
         return "redirect:/edit-recipe/{id}";
     }
 
-    @GetMapping("/add-product-to-shopping-list/{name}")
-    public String addProductToMyList(@PathVariable(value = "name") String name) {
+    @GetMapping("/add-product-to-shopping-list/{id}/{name}")
+    public String addProductToMyList(@PathVariable(value = "name") String name,
+                                     @PathVariable(value = "id") Long id) {
         this.recipeService.addProductToMyList(name);
-        return "redirect:/product-list";
+        return "redirect:/recipe/{id}";
+    }
+
+    @GetMapping("/add-all-products-to-shopping-list/{id}")
+    public String addAllProductToMyList(@PathVariable(value = "id") Long id) {
+        this.recipeService.addAllProductsToMyList(id);
+        return "redirect:/recipe/{id}";
     }
 
     @GetMapping("/delete-product-from-recipe/{id}/{productId}")

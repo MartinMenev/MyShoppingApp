@@ -152,6 +152,8 @@
                 <div class="col-lg-3 justify-content-center rounded-5 mt-10" th:unless="${recipe.productList.isEmpty()}">
                   <div class="icon-box d-flex flex-column align-items-center rounded-5 mt-10">
                     <h4>Needed products</h4>
+
+                    <a th:href="@{/add-all-products-to-shopping-list/{id}(id =${recipe.id})}" class="btn btn-light " > Add all needed products to your Shopping list</a>
                     <table class="table table-responsive-sm  rounded-3 bg-white"  >
                       <thead>
                       <tr>
@@ -162,7 +164,7 @@
                       <tbody>
                       <tr   th:each="product:${recipe.productList}">
                         <td  >
-                          <a class="bi bi-cart-plus" href="#" th:href="@{/add-product-to-shopping-list/{name}(name =${product.name})}"></a>
+                          <a class="bi bi-cart-plus" href="#" th:href="@{/add-product-to-shopping-list/{id}/{name}(id = ${recipe.id}, name =${product.name})}"></a>
                           <a th:href="@{#}" class="btn btn-light " th:text="${product.name}"> </a>
                         </td>
                       </tr>
@@ -220,6 +222,7 @@
                 </section><!-- End Testimonials Section -->
               </div>
         </div>
+      </div>
       </div>
     </section>
   </main><!-- End #main -->

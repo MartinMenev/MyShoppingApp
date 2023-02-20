@@ -158,4 +158,14 @@ public class RecipeService {
         this.recipeRepository.saveAndFlush(recipe);
 
     }
+
+    public void addAllProductsToMyList(Long id) {
+        List<Product> allRecipeProducts = this.recipeRepository
+                .getRecipeById(id).get()
+                .getProductList();
+
+        for (Product product : allRecipeProducts) {
+            this.productService.addProductToMyList(product.getName());
+        }
+    }
 }

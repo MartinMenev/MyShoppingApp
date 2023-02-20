@@ -23,7 +23,6 @@ public class ProductController {
         this.userService = userService;
     }
 
-    // show all products in table (html):
     @GetMapping("/product-list")
     public String showProductListPage(Model model) {
         List<OutputProductDTO> products = this.productService.getListedProducts();
