@@ -7,6 +7,8 @@ import com.example.myshoppingapp.domain.products.Product;
 import com.example.myshoppingapp.domain.recipes.Recipe;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 
 import javax.persistence.*;
@@ -38,6 +40,7 @@ public class User extends BaseEntity {
     private List<Product> boughtProducts;
 
     @ManyToMany (mappedBy = "fan", cascade = CascadeType.REMOVE)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Recipe> favoriteRecipes;
 
     public User() {

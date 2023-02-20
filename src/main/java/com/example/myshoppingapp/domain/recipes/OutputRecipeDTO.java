@@ -25,8 +25,10 @@ public class OutputRecipeDTO {
     private Category category;
     private double rating;
     private List<Picture> pictureList;
-    private long position;
+
     private String imageUrl;
+
+    private long numberOfSaves;
     private User author;
     private List<Comment> commentList;
 

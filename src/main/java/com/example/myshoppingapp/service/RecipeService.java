@@ -8,6 +8,7 @@ import com.example.myshoppingapp.domain.recipes.InputRecipeDTO;
 import com.example.myshoppingapp.domain.recipes.OutputRecipeDTO;
 import com.example.myshoppingapp.domain.recipes.Recipe;
 import com.example.myshoppingapp.domain.users.User;
+import com.example.myshoppingapp.domain.users.UserInputDTO;
 import com.example.myshoppingapp.repository.RecipeRepository;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
@@ -63,6 +64,7 @@ public class RecipeService {
 
     }
 
+    @Transactional
     public List<OutputRecipeDTO> showLast5Recipes() {
         return this.recipeRepository
                 .findAll()
@@ -90,8 +92,14 @@ public class RecipeService {
     }
 
     public List<Recipe> showRecipesByLoggedUser() {
-        return this.recipeRepository
+        List<Recipe> myRecipes = this.recipeRepository
                 .findAllByAuthorOrderByIdDesc(this.userService.getLoggedUser());
+
+        List<Recipe> myFavorites = userService.loggedUserFavoriteList();
+        if ((long) myFavorites.size() != 0) {
+            myRecipes.addAll(myFavorites);
+        }
+        return myRecipes;
     }
 
     public List<OutputRecipeDTO> getRecipesByCategory(String category) {
@@ -167,5 +175,12 @@ public class RecipeService {
         for (Product product : allRecipeProducts) {
             this.productService.addProductToMyList(product.getName());
         }
+    }
+
+    public void saveRecipeToMyFavoriteList(Long id) {
+        Recipe recipe = this.recipeRepository.findById(id).get();
+        recipe.setNumberOfSaves(recipe.getNumberOfSaves() + 1);
+        this.recipeRepository.saveAndFlush(recipe);
+       this.userService.updateUserFavoriteList(recipe);
     }
 }

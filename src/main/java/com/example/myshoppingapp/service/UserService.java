@@ -3,6 +3,7 @@ package com.example.myshoppingapp.service;
 import com.example.myshoppingapp.domain.beans.LoggedUser;
 import com.example.myshoppingapp.domain.enums.UserRole;
 import com.example.myshoppingapp.domain.products.Product;
+import com.example.myshoppingapp.domain.recipes.Recipe;
 import com.example.myshoppingapp.domain.users.*;
 import com.example.myshoppingapp.repository.ProductRepository;
 import com.example.myshoppingapp.repository.UserRepository;
@@ -22,6 +23,7 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+
     private UserRepository userRepository;
     private ProductRepository productRepository;
     private final ModelMapper modelMapper;
@@ -34,7 +36,6 @@ public class UserService {
         this.productRepository = productRepository;
         this.modelMapper = modelMapper;
         this.loggedUser = loggedUser;
-
     }
 
 
@@ -87,6 +88,15 @@ public class UserService {
     }
 
 
+    public void updateUserFavoriteList(Recipe recipe) {
+        User user = getLoggedUser();
+        user.getFavoriteRecipes().add(recipe);
+        this.userRepository.saveAndFlush(user);
+    }
+
+    public List<Recipe> loggedUserFavoriteList () {
+       return this.getLoggedUser().getFavoriteRecipes();
+    }
 }
 
 

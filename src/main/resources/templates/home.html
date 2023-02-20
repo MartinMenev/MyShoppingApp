@@ -144,6 +144,8 @@
                     </article>
                     <article class="box-body pt-2 pb-2 align-content-start align-text-top">
                       <div class="list-group overflow-auto" th:unless="${recipes.isEmpty()}" th:each="recipe:${recipes}">
+
+                        <a th:href="@{/save-recipe-to-favorites/{id}(id=${recipe.id})}"><i class="bi bi-bookmark-heart"></i> <span th:text="${recipe.numberOfSaves}" > Saves </span></a>
                         <a class="list-group-item list-group-item-action active bg-transparent border-0"  aria-current="true"
                            th:href="@{/recipe/{id}(id=${recipe.id})}" >
                           <div class="d-flex w-100 justify-content-between">

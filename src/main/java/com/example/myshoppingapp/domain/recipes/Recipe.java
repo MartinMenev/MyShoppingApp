@@ -63,11 +63,15 @@ public class Recipe extends BaseEntity {
   @LazyCollection(LazyCollectionOption.FALSE)
    private List<Product> productList;
 
+  @Column
+  private long numberOfSaves;
+
+    @Column
+    private long position;
+
   @ManyToMany
   private List<User> fan;
 
-  @Column
-  private long position;
 
   public Recipe() {
       this.dateAdded = LocalDate.now();
@@ -75,6 +79,7 @@ public class Recipe extends BaseEntity {
       this.productList = new ArrayList<>();
       this.ratingList = new ArrayList<>();
       this.pictureList = new ArrayList<>();
+      this.numberOfSaves = 0;
   }
 
   public boolean hasImageUrl(){
@@ -135,8 +140,7 @@ public class Recipe extends BaseEntity {
         return this;
     }
 
-    public Recipe setPosition(long position) {
-        this.position = position;
-        return this;
+    public void setNumberOfSaves(long numberOfSaves) {
+        this.numberOfSaves = numberOfSaves;
     }
 }

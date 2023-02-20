@@ -72,6 +72,12 @@ public class RecipeController {
             return "recipe/all-recipes";
     }
 
+    @GetMapping("/save-recipe-to-favorites/{id}")
+    public String saveRecipeToMyFavorites(@PathVariable(value = "id") Long id) {
+        this.recipeService.saveRecipeToMyFavoriteList(id);
+        return "redirect:/home";
+    }
+
     @GetMapping("/recipe/{id}")
     public String reviewRecipe(@PathVariable(value = "id") Long id, Model model) {
         OutputRecipeDTO outputRecipeDTO = recipeService.getRecipeById(id);
