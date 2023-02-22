@@ -64,26 +64,26 @@
                     <tbody>
                     <tr   th:each="product:${products}">
                       <td  >
-                        <a class="bi-check2-circle" href="#" th:href="@{/buy-product/{id}(id=${product.id})}"></a>
+                        <a title="Mark as Done" class="bi-check2-circle" href="#" th:href="@{/buy-product/{id}(id=${product.id})}"></a>
                         <a th:href="@{#}" class="btn btn-light " th:text="${product.name}"> </a>
                       </td>
                       <td>
 
                                               <!--               moveUp Product-->
-                        <a th:href="@{/moveUpProduct/{position}(position=${product.position})}" class="btn btn-light"> <i class="bi bi-arrow-up"></i> </a>
+                        <a  title="Move up" th:href="@{/moveUpProduct/{position}(position=${product.position})}" class="btn btn-light"> <i class="bi bi-arrow-up"></i> </a>
 
 
                           <!--                moveDown Product-->
-                        <a th:href="@{/moveDownProduct/{position}(position=${product.position})}" class="btn btn-light "> <i class="bi bi-arrow-down"></i> </a>
+                        <a  title="Move down" th:href="@{/moveDownProduct/{position}(position=${product.position})}" class="btn btn-light "> <i class="bi bi-arrow-down"></i> </a>
 
 
                           <!--                update Product&ndash;&gt;-->
-                        <a th:href="@{/product/updateProduct/{id}(id=${product.id})}" class="btn btn-light "> <i class="bi bi-pencil-square"></i> </a>
+                        <a title="Edit item" th:href="@{/product/updateProduct/{id}(id=${product.id})}" class="btn btn-light "> <i class="bi bi-pencil-square"></i> </a>
 
 
 
                           <!--                remove Product-->
-                        <a th:href="@{/deleteProduct/{id}(id=${product.id})}" class="btn btn-light "><i class="fa-solid fa-xmark"></i></a>
+                        <a title="Delete item" th:href="@{/deleteProduct/{id}(id=${product.id})}" class="btn btn-light "><i class="fa-solid fa-xmark"></i></a>
 
 
                       </td>
@@ -109,15 +109,15 @@
                     <tbody>
                     <tr   th:each="product:${boughtProducts}">
                       <td  >
-                        <a class="bi bi-arrow-clockwise" href="#" th:href="@{/reuse-product/{id}(id=${product.id})}"></a>
+                        <a title="Return item to my Shopping list" class="bi bi-arrow-clockwise" href="#" th:href="@{/reuse-product/{id}(id=${product.id})}"></a>
                         <a th:href="@{#}" class="btn bg-body-secondary " th:text="${product.name}"> </a>
                       </td>
                       <td>
 
-                        <a th:href="@{#}" class="btn bg-body-secondary " th:text="${product.boughtOn}"> </a>
+                        <a  th:href="@{#}" class="btn bg-body-secondary " th:text="${product.boughtOn}"> </a>
 
                         <!--                remove Product-->
-                        <a th:href="@{/deleteProduct/{id}(id=${product.id})}" class="btn btn-light bg-body-secondary"><i class="fa-solid fa-xmark bg-body-secondary"></i></a>
+                        <a title="Delete item" th:href="@{/deleteProduct/{id}(id=${product.id})}" class="btn btn-light bg-body-secondary"><i class="fa-solid fa-xmark bg-body-secondary"></i></a>
 
 
                       </td>
