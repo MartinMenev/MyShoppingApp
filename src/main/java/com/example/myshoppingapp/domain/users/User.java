@@ -39,7 +39,7 @@ public class User extends BaseEntity {
     @OneToMany (mappedBy = "buyer",cascade = CascadeType.REMOVE)
     private List<Product> boughtProducts;
 
-    @ManyToMany (mappedBy = "fan", cascade = CascadeType.REMOVE)
+    @ManyToMany (cascade = CascadeType.REMOVE)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Recipe> favoriteRecipes;
 

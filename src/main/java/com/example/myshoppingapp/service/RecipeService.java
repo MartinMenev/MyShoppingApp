@@ -8,8 +8,8 @@ import com.example.myshoppingapp.domain.recipes.InputRecipeDTO;
 import com.example.myshoppingapp.domain.recipes.OutputRecipeDTO;
 import com.example.myshoppingapp.domain.recipes.Recipe;
 import com.example.myshoppingapp.domain.users.User;
-import com.example.myshoppingapp.domain.users.UserInputDTO;
 import com.example.myshoppingapp.repository.RecipeRepository;
+import com.example.myshoppingapp.repository.UserRepository;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,11 @@ public class RecipeService {
 
     private final ProductService productService;
 
+
     @Autowired
-    public RecipeService(RecipeRepository recipeRepository, UserService userService, ModelMapper modelMapper, LoggedUser loggedUser, ProductService productService) {
+    public RecipeService(RecipeRepository recipeRepository, UserService userService,
+                         ModelMapper modelMapper, LoggedUser loggedUser,
+                         ProductService productService) {
         this.recipeRepository = recipeRepository;
         this.userService = userService;
         this.modelMapper = modelMapper;
@@ -54,6 +57,7 @@ public class RecipeService {
                 .setAuthor(authorId)
                 .addPicture(new Picture(inputRecipeDTO.getImageUrl(), authorId));
         this.recipeRepository.saveAndFlush(recipe);
+
 
     }
 
@@ -95,8 +99,8 @@ public class RecipeService {
         List<Recipe> myRecipes = this.recipeRepository
                 .findAllByAuthorOrderByIdDesc(this.userService.getLoggedUser());
 
-        List<Recipe> myFavorites = userService.loggedUserFavoriteList();
-        if ((long) myFavorites.size() != 0) {
+        List<Recipe> myFavorites = userService.getLoggedUserFavoriteList();
+        if (myFavorites.size() != 0) {
             myRecipes.addAll(myFavorites);
         }
         return myRecipes;
@@ -167,6 +171,8 @@ public class RecipeService {
 
     }
 
+    @Transactional
+    @Modifying
     public void addAllProductsToMyList(Long id) {
         List<Product> allRecipeProducts = this.recipeRepository
                 .getRecipeById(id).get()
@@ -177,10 +183,14 @@ public class RecipeService {
         }
     }
 
+    @Transactional
+    @Modifying
     public void saveRecipeToMyFavoriteList(Long id) {
         Recipe recipe = this.recipeRepository.findById(id).get();
         recipe.setNumberOfSaves(recipe.getNumberOfSaves() + 1);
         this.recipeRepository.saveAndFlush(recipe);
-       this.userService.updateUserFavoriteList(recipe);
+        this.userService.addRecipeToFavoriteList(recipe);
+
+
     }
 }

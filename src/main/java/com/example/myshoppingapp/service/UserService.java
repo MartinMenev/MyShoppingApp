@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -78,24 +79,29 @@ public class UserService {
     }
 
     public void addBoughtProductToUser(Product product) {
-        User user = this.userRepository.findByUsername(this.loggedUser.getUsername()).orElseThrow(NoSuchElementException::new);
+        User user = getLoggedUser();
         user.getBoughtProducts().add(product);
         this.userRepository.saveAndFlush(user);
     }
 
     public User getLoggedUser (){
-        return this.userRepository.findByUsername(this.loggedUser.getUsername()).orElseThrow(NoSuchElementException::new);
+        return this.userRepository.findById(this.loggedUser.getId()).orElseThrow(NoSuchElementException::new);
     }
 
 
-    public void updateUserFavoriteList(Recipe recipe) {
-        User user = getLoggedUser();
+
+
+    public List<Recipe> getLoggedUserFavoriteList () {
+       return this.getLoggedUser()
+               .getFavoriteRecipes();
+    }
+
+    @Transactional
+    @Modifying
+    public void addRecipeToFavoriteList(Recipe recipe) {
+        User user = this.getLoggedUser();
         user.getFavoriteRecipes().add(recipe);
         this.userRepository.saveAndFlush(user);
-    }
-
-    public List<Recipe> loggedUserFavoriteList () {
-       return this.getLoggedUser().getFavoriteRecipes();
     }
 }
 
