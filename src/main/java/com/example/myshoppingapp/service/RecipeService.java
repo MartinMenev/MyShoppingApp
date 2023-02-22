@@ -73,7 +73,8 @@ public class RecipeService {
         return this.recipeRepository
                 .findAll()
                 .stream()
-                .filter(recipe -> !this.userService.getLoggedUser().getFavoriteRecipes().contains(recipe))
+                .filter(recipe -> !this.userService.getLoggedUser().getFavoriteRecipes().contains(recipe)
+                        && !recipe.getAuthor().equals(this.userService.getLoggedUser()))
                 .map(recipe -> modelMapper.map(recipe, OutputRecipeDTO.class))
                 .sorted((a, b) -> b.getId().compareTo(a.getId()))
                 .limit(5)
