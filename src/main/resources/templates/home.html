@@ -102,7 +102,7 @@
                         <a class="list-group-item list-group-item-action active bg-transparent border-0"  aria-current="true"
                            th:href="@{/recipe/{id}(id=${myRecipe.id})}" >
                           <div class="d-flex w-100 justify-content-between">
-                            <i class="bi bi-pin-angle"></i>
+                            <i class="bi bi-suit-heart"></i>
                             <h6 class="mb-1 text-body-secondary justify-content-start" th:text="${myRecipe.name}"></h6>
                             <small ><img  th:src="${myRecipe.imageUrl}" width="50" height="50" class="square rounded-1" alt=""></small>
                           </div>
@@ -149,7 +149,7 @@
                         <a class="list-group-item list-group-item-action active bg-transparent border-0"  aria-current="true"
                            th:href="@{/recipe/{id}(id=${recipe.id})}" >
                           <div class="d-flex w-100 justify-content-between">
-                            <i class="bi bi-suit-heart"></i>
+                            <i class="bi bi-pin-angle"></i>
                             <h6 class="mb-1 text-body-secondary" th:text="${recipe.name}"></h6>
                             <small ><img  th:src="${recipe.imageUrl}" width="50" height="50" class="square rounded-1" alt=""></small>
                           </div>
@@ -159,9 +159,9 @@
                         <hr class="bg-hero hr-2 bg-body-secondary w-75 aos-animate"/>
                       </div>
                       <div>
-                        <h3 th:if="${recipes.isEmpty()}">
-                          No recipes yet. <br>
-                          But you can add your first recipe <br>
+                        <h6 th:if="${recipes.isEmpty()}">
+                          No new recipes yet. <br>
+                          But you can add an recipe <br>
                           <i class="bi bi-box-arrow-in-down-left"></i>
                           <div class="col-lg-8 justify-content-center">
                             <button class="btn glow-button rounded-5" >
@@ -169,7 +169,7 @@
                                  class="btn btn-light"> <i class="fa-solid fa-book-open-reader"></i> Add recipe </a>
                             </button>
                           </div>
-                        </h3>
+                        </h6>
 
                       </div>
 
