@@ -32,6 +32,7 @@ public class AuthService {
     @Modifying
     public boolean register(RegisterUserDTO registerUserDTO) {
         User user = this.modelMapper.map(registerUserDTO, User.class);
+        // set passwordEncoder.encode(password)....
         if (this.userRepository.count() == 0) {
             user.setUserRole(UserRole.ADMIN);
         } else {

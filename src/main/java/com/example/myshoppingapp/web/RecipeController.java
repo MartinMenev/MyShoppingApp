@@ -112,7 +112,7 @@ public class RecipeController {
     @GetMapping("/add-all-products-to-shopping-list/{id}")
     public String addAllProductToMyList(@PathVariable(value = "id") Long id) {
         this.recipeService.addAllProductsToMyList(id);
-        return "redirect:/recipe/{id}";
+        return "redirect:/product-list";
     }
 
     @GetMapping("/delete-product-from-recipe/{id}/{productId}")
