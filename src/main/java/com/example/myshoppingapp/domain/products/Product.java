@@ -2,7 +2,11 @@ package com.example.myshoppingapp.domain.products;
 
 import com.example.myshoppingapp.domain.BaseEntity;
 import com.example.myshoppingapp.domain.recipes.Recipe;
+<<<<<<< HEAD
 import com.example.myshoppingapp.domain.users.UserEntity;
+=======
+import com.example.myshoppingapp.domain.users.User;
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -22,7 +26,11 @@ public class Product extends BaseEntity {
 
     @ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     @JoinColumn
+<<<<<<< HEAD
     private UserEntity userEntity;
+=======
+    private User user;
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 
     @Column
     private long position;
@@ -33,7 +41,11 @@ public class Product extends BaseEntity {
     private LocalDate boughtOn;
 
     @ManyToOne
+<<<<<<< HEAD
     private UserEntity buyer;
+=======
+    private User buyer;
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 
     public Product() {
         this.recipeList = new ArrayList<>();
@@ -44,7 +56,11 @@ public class Product extends BaseEntity {
         this.name = name;
     }
 
+<<<<<<< HEAD
     public Product setBuyer(UserEntity buyer) {
+=======
+    public Product setBuyer(User buyer) {
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
         this.buyer = buyer;
         return this;
     }
@@ -59,8 +75,13 @@ public class Product extends BaseEntity {
         return this;
     }
 
+<<<<<<< HEAD
     public Product setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
+=======
+    public Product setUser(User user) {
+        this.user = user;
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
         return this;
     }
 

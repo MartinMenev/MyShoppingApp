@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+logging:
+    level:
+        org:
+            hibernate:
+                SQL: DEBUG
+                type:
+                    descriptor: TRACE
+server:
+    port: 8000
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 spring:
     datasource:
         driverClassName: com.mysql.cj.jdbc.Driver
@@ -30,12 +42,16 @@ spring:
                 format_sql: true
         defer-datasource-initialization: true
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
     #Cloudinary Properties cloud
     #cloudinary:
     #api-key:
     #api-secret:
     #cloud-name:
+<<<<<<< HEAD
 
 
 logging:
@@ -44,3 +60,5 @@ logging:
 
 server:
     port: 8000
+=======
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7

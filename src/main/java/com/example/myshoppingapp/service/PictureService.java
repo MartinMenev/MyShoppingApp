@@ -3,7 +3,11 @@ package com.example.myshoppingapp.service;
 import com.example.myshoppingapp.domain.beans.LoggedUser;
 import com.example.myshoppingapp.domain.pictures.OutputPictureDTO;
 import com.example.myshoppingapp.domain.pictures.Picture;
+<<<<<<< HEAD
 import com.example.myshoppingapp.domain.users.UserEntity;
+=======
+import com.example.myshoppingapp.domain.users.User;
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 import com.example.myshoppingapp.repository.PictureRepository;
 import com.example.myshoppingapp.repository.UserRepository;
 import lombok.Getter;
@@ -45,9 +49,15 @@ public class PictureService {
             picture.setPictureUrl(pictureUrl);
             this.pictureRepository.saveAndFlush(picture);
         }
+<<<<<<< HEAD
         UserEntity userEntity = this.userService.findByUsername(this.loggedUser.getUsername());
         userEntity.setPicture(picture);
         this.userRepository.saveAndFlush(userEntity);
+=======
+        User user = this.userService.findByUsername(this.loggedUser.getUsername());
+        user.setPicture(picture);
+        this.userRepository.saveAndFlush(user);
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 
     }
 

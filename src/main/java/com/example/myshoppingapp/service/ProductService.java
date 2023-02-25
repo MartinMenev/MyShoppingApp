@@ -4,7 +4,11 @@ import com.example.myshoppingapp.domain.beans.LoggedUser;
 import com.example.myshoppingapp.domain.products.InputProductDTO;
 import com.example.myshoppingapp.domain.products.OutputProductDTO;
 import com.example.myshoppingapp.domain.products.Product;
+<<<<<<< HEAD
 import com.example.myshoppingapp.domain.users.UserEntity;
+=======
+import com.example.myshoppingapp.domain.users.User;
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 import com.example.myshoppingapp.repository.ProductRepository;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
@@ -36,9 +40,15 @@ public class ProductService {
 
     @Modifying
     public void addProduct(InputProductDTO inputProductDTO) {
+<<<<<<< HEAD
         UserEntity userEntity = userService.findByUsername(this.loggedUser.getUsername());
         Product product = this.modelMapper.map(inputProductDTO, Product.class);
         product.setUserEntity(userEntity);
+=======
+        User user = userService.findByUsername(this.loggedUser.getUsername());
+        Product product = this.modelMapper.map(inputProductDTO, Product.class);
+        product.setUser(user);
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
         product.setBoughtOn(null);
         this.productRepository.saveAndFlush(product);
         product.setPosition(product.getId());
@@ -50,7 +60,11 @@ public class ProductService {
         String currentUsername = this.loggedUser.getUsername();
         Long currentUserId = this.userService.findByUsername(currentUsername).getId();
 
+<<<<<<< HEAD
         return this.productRepository.findAllByUserEntityId(currentUserId)
+=======
+        return this.productRepository.findAllByUserId(currentUserId)
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
                 .orElseThrow(NoSuchElementException::new)
                 .stream()
                 .map(product -> this.modelMapper.map(product, OutputProductDTO.class))
@@ -62,7 +76,11 @@ public class ProductService {
         String currentUsername = this.loggedUser.getUsername();
         Long currentUserId = this.userService.findByUsername(currentUsername).getId();
 
+<<<<<<< HEAD
         List<OutputProductDTO> outputProductDTOS = this.productRepository.findAllByUserEntityId(currentUserId)
+=======
+        List<OutputProductDTO> outputProductDTOS = this.productRepository.findAllByUserId(currentUserId)
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
                 .orElseThrow(NoSuchElementException::new)
                 .stream()
                 .filter(product -> product.getBoughtOn() ==null)
@@ -93,9 +111,15 @@ public class ProductService {
 
     public void moveUpProduct(long position) {
         long userId = this.userService.getLoggedUserId();
+<<<<<<< HEAD
         if (this.productRepository.findFirstByPositionGreaterThanAndUserEntityIdOrderByPositionAsc(position, userId) !=null) {
             long newPosition = this.productRepository.
                     findFirstByPositionGreaterThanAndUserEntityIdOrderByPositionAsc(position, userId).getPosition();
+=======
+        if (this.productRepository.findFirstByPositionGreaterThanAndUserIdOrderByPositionAsc(position, userId) !=null) {
+            long newPosition = this.productRepository.
+                    findFirstByPositionGreaterThanAndUserIdOrderByPositionAsc(position, userId).getPosition();
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
             this.productRepository.swapProductOrder(position, newPosition);
         }
 
@@ -103,9 +127,15 @@ public class ProductService {
 
     public void moveDownProduct(long position) {
         long userId = this.userService.getLoggedUserId();
+<<<<<<< HEAD
         if (this.productRepository.findFirstByPositionLessThanAndUserEntityIdOrderByPositionDesc(position, userId) != null) {
             long newPosition = this.productRepository.
                     findFirstByPositionLessThanAndUserEntityIdOrderByPositionDesc(position, userId).getPosition();
+=======
+        if (this.productRepository.findFirstByPositionLessThanAndUserIdOrderByPositionDesc(position, userId) != null) {
+            long newPosition = this.productRepository.
+                    findFirstByPositionLessThanAndUserIdOrderByPositionDesc(position, userId).getPosition();
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
             this.productRepository.swapProductOrder(position, newPosition);
         }
     }
@@ -115,8 +145,13 @@ public class ProductService {
     public void buyProduct(long id) {
         Product product = this.productRepository.getProductById(id).orElseThrow(NoSuchElementException::new);
         product.setBoughtOn(LocalDate.now());
+<<<<<<< HEAD
         UserEntity userEntity = this.userService.getLoggedUser();
         product.setBuyer(userEntity);
+=======
+        User user = this.userService.getLoggedUser();
+        product.setBuyer(user);
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
         this.productRepository.save(product);
     }
 
@@ -148,8 +183,13 @@ public class ProductService {
     @Modifying
     public void addProductToMyList(String name) {
        Product product = new Product(name);
+<<<<<<< HEAD
         UserEntity userEntity = userService.findByUsername(this.loggedUser.getUsername());
         product.setUserEntity(userEntity);
+=======
+        User user = userService.findByUsername(this.loggedUser.getUsername());
+        product.setUser(user);
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
         product.setBoughtOn(null);
         this.productRepository.saveAndFlush(product);
         product.setPosition(product.getId());

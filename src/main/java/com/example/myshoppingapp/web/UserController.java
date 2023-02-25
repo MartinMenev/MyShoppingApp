@@ -34,7 +34,11 @@ public class UserController {
         //TODO
 //        String currentUrl = this.pictureService.getPictureUrlByLoggedUser();
 //        model.addAttribute("pictureUrl", currentUrl);
+<<<<<<< HEAD
         model.addAttribute("userEntity", userOutputDTO);
+=======
+        model.addAttribute("user", userOutputDTO);
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
         return "user/profile";
     }
 
@@ -48,7 +52,11 @@ public class UserController {
     @PutMapping("/update-user")
     public String doUpdateProduct(Model model, UserInputDTO userInputDTO) {
         UserOutputDTO currentUser = this.userService.getLoggedUserDTO();
+<<<<<<< HEAD
         model.addAttribute("userEntity", currentUser);
+=======
+        model.addAttribute("user", currentUser);
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
         userService.updateUser(userInputDTO);
         return "redirect:/user/profile";
     }

@@ -7,8 +7,14 @@ import com.example.myshoppingapp.domain.products.Product;
 import com.example.myshoppingapp.domain.recipes.InputRecipeDTO;
 import com.example.myshoppingapp.domain.recipes.OutputRecipeDTO;
 import com.example.myshoppingapp.domain.recipes.Recipe;
+<<<<<<< HEAD
 import com.example.myshoppingapp.domain.users.UserEntity;
 import com.example.myshoppingapp.repository.RecipeRepository;
+=======
+import com.example.myshoppingapp.domain.users.User;
+import com.example.myshoppingapp.repository.RecipeRepository;
+import com.example.myshoppingapp.repository.UserRepository;
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +52,11 @@ public class RecipeService {
 
 
     public void addRecipe(InputRecipeDTO inputRecipeDTO) {
+<<<<<<< HEAD
         UserEntity authorId = this.userService.findByUsername(loggedUser.getUsername());
+=======
+        User authorId = this.userService.findByUsername(loggedUser.getUsername());
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
         if (inputRecipeDTO.getImageUrl().isBlank()) {
             inputRecipeDTO.setImageUrl("https://images.pexels.com/photos/4033165/pexels-photo-4033165.jpeg?auto=compress&cs=tinysrgb&w=1600");
         }

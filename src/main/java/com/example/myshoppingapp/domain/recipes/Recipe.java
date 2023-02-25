@@ -5,7 +5,11 @@ import com.example.myshoppingapp.domain.comments.Comment;
 import com.example.myshoppingapp.domain.enums.Category;
 import com.example.myshoppingapp.domain.pictures.Picture;
 import com.example.myshoppingapp.domain.products.Product;
+<<<<<<< HEAD
 import com.example.myshoppingapp.domain.users.UserEntity;
+=======
+import com.example.myshoppingapp.domain.users.User;
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.hibernate.annotations.LazyCollection;
@@ -45,7 +49,11 @@ public class Recipe extends BaseEntity {
 
    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
    @JoinColumn
+<<<<<<< HEAD
    private UserEntity author;
+=======
+   private User author;
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 
    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.MERGE, CascadeType.PERSIST})
    @JoinColumn
@@ -70,7 +78,11 @@ public class Recipe extends BaseEntity {
     private long position;
 
   @ManyToMany
+<<<<<<< HEAD
   private List<UserEntity> fan;
+=======
+  private List<User> fan;
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 
 
   public Recipe() {
@@ -125,7 +137,11 @@ public class Recipe extends BaseEntity {
         return this;
     }
 
+<<<<<<< HEAD
     public Recipe setAuthor(UserEntity author) {
+=======
+    public Recipe setAuthor(User author) {
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
         this.author = author;
         return this;
     }

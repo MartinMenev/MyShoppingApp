@@ -5,7 +5,11 @@ import com.example.myshoppingapp.domain.comments.Comment;
 import com.example.myshoppingapp.domain.comments.InputCommentDTO;
 import com.example.myshoppingapp.domain.comments.OutputCommentDTO;
 import com.example.myshoppingapp.domain.recipes.Recipe;
+<<<<<<< HEAD
 import com.example.myshoppingapp.domain.users.UserEntity;
+=======
+import com.example.myshoppingapp.domain.users.User;
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 import com.example.myshoppingapp.repository.CommentRepository;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
@@ -38,7 +42,11 @@ public class CommentService {
     public void addComment(InputCommentDTO inputCommentDTO, Long recipeId) {
         inputCommentDTO.setId(null);
         Comment comment = modelMapper.map(inputCommentDTO, Comment.class);
+<<<<<<< HEAD
         UserEntity author = this.userService.findByUsername(this.loggedUser.getUsername());
+=======
+        User author = this.userService.findByUsername(this.loggedUser.getUsername());
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
         Recipe recipe = this.recipeService.getRecipeRepository().getById(recipeId);
         comment.setRecipe(recipe);
         if (author != null) {

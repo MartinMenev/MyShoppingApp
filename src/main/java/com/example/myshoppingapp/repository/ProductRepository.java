@@ -12,7 +12,11 @@ import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
+<<<<<<< HEAD
     Optional<List<Product>> findAllByUserEntityId(Long id);
+=======
+    Optional<List<Product>> findAllByUserId(Long id);
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 
 
     @Modifying
@@ -36,12 +40,21 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     "WHERE p.position in (:pos1, :pos2)")
     void swapProductOrder(Long pos1, Long pos2);
 
+<<<<<<< HEAD
     Product findFirstByPositionGreaterThanAndUserEntityIdOrderByPositionAsc(Long position, Long userEntityId);
 
     Product findFirstByPositionLessThanAndUserEntityIdOrderByPositionDesc(Long position, Long userEntityId);
 
 
     Optional<List<Product>> findAllByBuyerId(Long userEntityId);
+=======
+    Product findFirstByPositionGreaterThanAndUserIdOrderByPositionAsc(Long position, Long userId);
+
+    Product findFirstByPositionLessThanAndUserIdOrderByPositionDesc(Long position, Long userId);
+
+
+    Optional<List<Product>> findAllByBuyerId(Long userId);
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 
     Product findByName(String productName);
 }

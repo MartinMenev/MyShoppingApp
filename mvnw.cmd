@@ -43,7 +43,11 @@ title %0
 @REM set %HOME% to equivalent of $HOME
 if "%HOME%" == "" (set "HOME=%HOMEDRIVE%%HOMEPATH%")
 
+<<<<<<< HEAD
 @REM Execute a userEntity defined script before this one
+=======
+@REM Execute a user defined script before this one
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 if not "%MAVEN_SKIP_RC%" == "" goto skipRcPre
 @REM check for pre script, once with legacy .bat ending and once with .cmd ending
 if exist "%USERPROFILE%\mavenrc_pre.bat" call "%USERPROFILE%\mavenrc_pre.bat" %*

@@ -1,6 +1,10 @@
 package com.example.myshoppingapp.service;
 
 import com.example.myshoppingapp.domain.beans.LoggedUser;
+<<<<<<< HEAD
+=======
+import com.example.myshoppingapp.domain.enums.UserRole;
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 import com.example.myshoppingapp.domain.products.Product;
 import com.example.myshoppingapp.domain.recipes.Recipe;
 import com.example.myshoppingapp.domain.users.*;
@@ -41,8 +45,13 @@ public class UserService {
 
 
 
+<<<<<<< HEAD
     public UserEntity findByUsername(String username) {
         return this.userRepository.findUserEntityByUsername(username).orElseThrow(NoSuchElementException::new);
+=======
+    public User findByUsername(String username) {
+        return this.userRepository.findByUsername(username).orElseThrow(NoSuchElementException::new);
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
     }
 
     public Long getLoggedUserId() {
@@ -50,6 +59,7 @@ public class UserService {
     }
 
     public UserOutputDTO getLoggedUserDTO() {
+<<<<<<< HEAD
         UserEntity userEntity = this.userRepository.findUserEntityByUsername(this.loggedUser.getUsername()).orElseThrow(NoSuchElementException::new);
         return this.modelMapper.map(userEntity, UserOutputDTO.class);
     }
@@ -65,12 +75,31 @@ public class UserService {
                     .setEmail(userInputDTO.getEmail());
         }
         this.userRepository.saveAndFlush(user);
+=======
+        User user = this.userRepository.findByUsername(this.loggedUser.getUsername()).orElseThrow(NoSuchElementException::new);
+        return this.modelMapper.map(user, UserOutputDTO.class);
+    }
+
+    public void updateUser(UserInputDTO userInputDTO) {
+        Long idToUpdate = this.getLoggedUserId();
+        String newUsername = userInputDTO.getUsername();
+        String newPassword = userInputDTO.getPassword();
+        String newEmail = userInputDTO.getEmail();
+        if (!newUsername.equals(this.loggedUser.getUsername())) {
+            this.loggedUser.setUsername(newUsername);
+        }
+        this.userRepository.updateUser(idToUpdate, newUsername, newPassword, newEmail);
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
 
     }
 
     //delete user, but first delete all his product lists (if any)!
     public void deleteUserById(long id) {
+<<<<<<< HEAD
         Optional<List<Product>> userProducts= this.productRepository.findAllByUserEntityId(id);
+=======
+        Optional<List<Product>> userProducts= this.productRepository.findAllByUserId(id);
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
         if (userProducts.isPresent()) {
             for (Product userProduct : userProducts.get()) {
                this.productRepository.deleteById(userProduct.getId());
@@ -80,12 +109,21 @@ public class UserService {
     }
 
     public void addBoughtProductToUser(Product product) {
+<<<<<<< HEAD
         UserEntity userEntity = getLoggedUser();
         userEntity.getBoughtProducts().add(product);
         this.userRepository.saveAndFlush(userEntity);
     }
 
     public UserEntity getLoggedUser (){
+=======
+        User user = getLoggedUser();
+        user.getBoughtProducts().add(product);
+        this.userRepository.saveAndFlush(user);
+    }
+
+    public User getLoggedUser (){
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
         return this.userRepository.findById(this.loggedUser.getId()).orElseThrow(NoSuchElementException::new);
     }
 
@@ -100,9 +138,15 @@ public class UserService {
     @Transactional
     @Modifying
     public void addRecipeToFavoriteList(Recipe recipe) {
+<<<<<<< HEAD
         UserEntity userEntity = this.getLoggedUser();
         userEntity.getFavoriteRecipes().add(recipe);
         this.userRepository.saveAndFlush(userEntity);
+=======
+        User user = this.getLoggedUser();
+        user.getFavoriteRecipes().add(recipe);
+        this.userRepository.saveAndFlush(user);
+>>>>>>> 51bc36dd907306a4a92338269502a5a80dcf1bb7
     }
 }
 
